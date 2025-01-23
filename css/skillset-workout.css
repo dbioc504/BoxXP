@@ -1,9 +1,19 @@
+.content-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
 .category-container {
     background-color: var(--hover-color);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     width: 100%;
-    max-width: 500px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-items: center;
 }
 
 
@@ -41,10 +51,12 @@
     transform: scale(1.05);
 }
 
-.category-description {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
+.skills-text {
+    font-size: 1rem;
     line-height: 1.5;
     color: var(--text-color);
+    margin: 0.5rem 0 0;
+    padding: 1.2rem;
+    background-color: var(--background-color);
 }
 
