@@ -50,6 +50,15 @@
     transform: scale(1.05);
 }
 
+.category-buttons .btn-done {
+    display: none;
+}
+
+.category-buttons .btn-edit {
+    margin-right: 0.5rem;
+}
+
+
 .skills-text {
     font-size: 1rem;
     line-height: 1.5;
