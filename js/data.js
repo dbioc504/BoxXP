@@ -9,6 +9,9 @@ let appData = JSON.parse(sessionStorage.getItem('guestData')) || {
         { category: "upper-body", items: ["Pushups", "Dips", "Shoulder Press", "Lateral Raises"] },
         { category: "lower-body", items: ["Squats", "Lunges", "Kettlebell Swings", "RDLs"] },
         { category: "core", items: ["Russian Twists", "Situps", "Bear Crawls"] }
+    ],
+    combos: [
+        { id: 1, combo: "jab-jab-cross + rightUppercut-leftHook-cross + roll + jab-jab + parry + jab-cross" }
     ]
 };
 

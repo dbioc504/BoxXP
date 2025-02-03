@@ -74,27 +74,6 @@
 }
 
 
-.btn-back {
-    color: var(--secondary-color);
-    font-weight: bold;
-    font-size: 2.5rem;
-    padding: 0.25rem 0.5rem;
-    transition: all 0.3s ease;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.btn-back:hover {
-    cursor: pointer;
-}
-
-.back-button-container {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-}
-
 .skills-list {
     list-style: none;
     padding: 0;
