@@ -10,7 +10,7 @@ function displayCombos() {
         const comboDiv = document.createElement('div');
         comboDiv.className = "combo-item";
         comboDiv.innerHTML = `
-            <span class="combo-text">${combo.combo}</span>
+            <span class="combo-text">${combo.combo.map(move => move.toUpperCase()).join(" + ")}</span>
             <div class="menu-container">
                 <button class="menu-btn" onclick="toggleMenu('${combo.id}')">⋮</button>
                 <div class="menu" id="menu-${combo.id}">
@@ -33,7 +33,7 @@ function toggleMenu(comboId) {
 }
 
 function deleteCombo(comboId) {
-    appData.combos = appData.combos.filter(combo => combo.id !== comboId);
+    appData.combos = appData.combos.filter(combo => combo.id !== parseInt(comboId));
     saveData();
     displayCombos();
 }

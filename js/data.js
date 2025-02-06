@@ -11,7 +11,8 @@ let appData = JSON.parse(sessionStorage.getItem('guestData')) || {
         { category: "core", items: ["Russian Twists", "Situps", "Bear Crawls"] }
     ],
     combos: [
-        { id: 1, combo: "jab-jab-cross + rightUppercut-leftHook-cross + roll + jab-jab + parry + jab-cross" }
+        { id: 1, combo: ["jab", "jab", "slip", "jab", "right hand"] },
+        { id: 2, combo: ["tick-tick", "boom", "hook", "uppercut"] }
     ]
 };
 
