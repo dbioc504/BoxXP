@@ -2,29 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComboPieces();
     setupDragAndDrop();
 
+    if (isTouchDevice) {
+        document.getElementById("instruction-text").textContent = "Tap pieces above to add to combo";
+    }
     console.log(JSON.parse(sessionStorage.getItem("guestData")));
 
 });
 
-function loadGuestData() {
-    let storedData = JSON.parse(sessionStorage.getItem('guestData'));
-
-    if (!storedData) {
-        console.warn("No guestData found. Initializing default data.");
-        storedData = {
-            user: "guestData",
-            skills: [],
-            workouts: [],
-            combos: []
-        };
-    }
-
-    if (!storedData.combos) storedData.combos = [];
-
-    console.log("Loaded guestData:", storedData);
-    return storedData;
-}
-
+const isTouchDevice = "ontouchsatart" in window || navigator.maxTouchPoints > 0;
 
 const comboPieces = [
     "JAB", "CROSS", "HOOK", "UPPERCUT", "SLIP",
@@ -40,10 +25,16 @@ function loadComboPieces() {
     comboPieces.forEach(move => {
         const moveElement = document.createElement("div");
         moveElement.className = "combo-piece";
-        moveElement.draggable = true;
         moveElement.textContent = move;
         moveElement.setAttribute("data-move", move);
-        moveElement.addEventListener("dragstart", handleDragStart);
+
+        if (isTouchDevice) {
+            moveElement.addEventListener("click", () => addMoveToCombo(move));
+        } else {
+            moveElement.draggable = true
+            moveElement.addEventListener("dragstart", handleDragStart);
+        }
+
         piecesContainer.appendChild(moveElement);
     });
 }
@@ -68,6 +59,7 @@ function handleDragStart(event) {
 
 function addMoveToCombo(move) {
     const comboContainer = document.getElementById("your-combo");
+    document.getElementById("instruction-text").style.display = "none";
 
     const moveElement = document.createElement("div");
     moveElement.className = "combo-move";
@@ -89,6 +81,10 @@ function removeMove(element) {
     const moveText = element.firstChild.textContent;
     userCombo = userCombo.filter(move => move !== moveText);
     comboContainer.removeChild(element)
+
+    if (userCombo.length == 0) {
+        document.getElementById("instruction-text").style.display = "block";
+    }
 }
 
 function saveCombo() {
