@@ -150,6 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (skillsContainer) {
         displaySkills()
     }
-
-    displaySkills();
 });
+
+
+if (!sessionStorage.getItem('guestData')) {
+    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    console.log("guestData initialized:", appData);
+} else {
+    console.log("guestData loaded:", JSON.parse(sessionStorage.getItem('guestData')));
+}

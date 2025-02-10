@@ -1,7 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadComboPieces();
     setupDragAndDrop();
+
+    console.log(JSON.parse(sessionStorage.getItem("guestData")));
+
 });
+
+function loadGuestData() {
+    let storedData = JSON.parse(sessionStorage.getItem('guestData'));
+
+    if (!storedData) {
+        console.warn("No guestData found. Initializing default data.");
+        storedData = {
+            user: "guestData",
+            skills: [],
+            workouts: [],
+            combos: []
+        };
+    }
+
+    if (!storedData.combos) storedData.combos = [];
+
+    console.log("Loaded guestData:", storedData);
+    return storedData;
+}
+
 
 const comboPieces = [
     "JAB", "CROSS", "HOOK", "UPPERCUT", "SLIP",
@@ -74,18 +97,25 @@ function saveCombo() {
         return;
     }
 
-    let appData = JSON.parse(sessionStorage.getItem('guestData')) || { skills: [], workouts: [], combos: []};
+    let storedData = JSON.parse(sessionStorage.getItem('guestData'));
+
+    if (!storedData) {
+        storedData = { user: "guestData", skills: [], workouts: [], combos: [] };
+    }
+
+    if (!storedData.combos) storedData.combos = [];
 
     const newCombo = {
         id: Date.now(),
         combo: [...userCombo]
     };
 
-    appData.combos.push(newCombo);
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    storedData.combos.push(newCombo);
 
-    console.log("Updated guestData: ", appData);
+    sessionStorage.setItem('guestData', JSON.stringify(storedData));
+
+    console.log("Updated guestData: ", storedData);
 
     window.location.href = "combos.html";
-
 }
+
