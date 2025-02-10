@@ -74,7 +74,7 @@ function saveCombo() {
         return;
     }
 
-    let appData = JSON.parse(sessionStorage.getItem('guestData')) || { combos: []};
+    let appData = JSON.parse(sessionStorage.getItem('guestData')) || { skills: [], workouts: [], combos: []};
 
     const newCombo = {
         id: Date.now(),
@@ -83,6 +83,8 @@ function saveCombo() {
 
     appData.combos.push(newCombo);
     sessionStorage.setItem('guestData', JSON.stringify(appData));
+
+    console.log("Updated guestData: ", appData);
 
     window.location.href = "combos.html";
 

@@ -116,6 +116,12 @@ function addSkill(category) {
 
 function displaySkills() {
     const container = document.getElementById("skills-container");
+
+    if (!container) {
+        console.error("No container found");
+        return
+    }
+
     container.innerHTML = "";
     const pageType = getPageType();
 
@@ -139,5 +145,11 @@ function displaySkills() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const skillsContainer = document.getElementById("skills-container");
+
+    if (skillsContainer) {
+        displaySkills()
+    }
+
     displaySkills();
 });
