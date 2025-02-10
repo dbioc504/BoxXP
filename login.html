@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Create Account</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="back-button-container">
+    <a href="index.html" class="btn btn-back btn-sm">⬅</a>
+</div>
+
+<div class="auth-container">
+    <h1>ACCOUNT</h1>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SQL Connection</title>
+    </head>
+
+    <form action="sql_connection.php" method="POST">
+
+        <label for="email">EMAIL</label>
+        <input type="email" id="email" name="email" class="input-field" placeholder="Enter email address" required>
+
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" class="input-field" placeholder="Enter password" required>
+
+        <div id="confirm-password-container" style="display: none;">
+            <label for="confirm-password">CONFIRM PASSWORD</label>
+            <input type="password" id="confirm-password" class="input-field" placeholder="Confirm password">
+        </div>
+
+        <button id="sign-in-btn" class="btn-auth" type="button">SIGN IN</button>
+        <button id="create-account-btn" class="btn-auth" type="submit" name="create_account">Create Account</button>
+    </form>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>
