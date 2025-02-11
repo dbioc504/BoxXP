@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupDragAndDrop();
 
     if (isTouchDevice) {
-        document.getElementById("instruction-text").textContent = "Tap pieces above to add to combo";
+        document.getElementById("instruction-text").textContent = "TAP PIECES ABOVE TO ADD TO COMBO";
     }
     console.log(JSON.parse(sessionStorage.getItem("guestData")));
 
