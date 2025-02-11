@@ -3,18 +3,16 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database credentials
+// database
 $servername = "localhost";
-$username = "root"; // Default XAMPP user
-$password = ""; // Default password is empty
+$username = "root";
+$password = "";
 $database = "boxxp";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database); // connect
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($conn->connect_error) { // if no connection
+    die("Couldn't connect: " . $conn->connect_error);
 }
 //if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
@@ -24,17 +22,17 @@ if ($conn->connect_error) {
 //$email = "email";
 //$pass = "pass";
 
-// Insert data into database
+// database insertion
     $sql = "INSERT INTO login (username, password) VALUES ('$email', '$pass')";
 
     if ($conn->query($sql)) {
-        echo "New record created successfully!";
+        echo "Inserted successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 //}
 
-// Close connection
+// quit connection
 $conn->close();
 
 
