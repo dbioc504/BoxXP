@@ -50,7 +50,7 @@ $conn->close();
 //}
 //
 //echo "Connected successfully";
-
+///
 var_dump($_POST);
 
 ?>
