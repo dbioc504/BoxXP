@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timer Setup</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/timer.css">
+
+</head>
+<body>
+
+    <div class="back-button-container">
+      <a href="index.html" class="btn btn-back">⬅</a>
+    </div>
+
+    <h1 class="title">TIMER</h1>
+
+    <div class="timer-settings">
+      <button class="setting-button" onclick="navigateToSelection('rounds')">ROUNDS <span id="rounds-value">12</span></button>
+      <button class="setting-button" onclick="navigateToSelection('round-time')">ROUND TIME <span id="round-time-value">4:00</span></button>
+      <button class="setting-button" onclick="navigateToSelection('rest-time')">REST TIME <span id="rest-time-value">0:30</span></button>
+      <button class="setting-button" onclick="navigateToSelection('get-ready-time')">GET READY TIME <span id="get-ready-time-value">0:15</span></button>
+
+      <div class="toggle-container">
+          <label>SKILL DISPLAY</label>
+          <input type="checkbox" id="skill-toggle">
+      </div>
+
+      <div class="toggle-container">
+          <label>COMBO DISPLAY</label>
+          <input type="checkbox" id="combo-toggle">
+      </div>
+
+      <div class="toggle-container">
+          <label>WORKOUT DISPLAY</label>
+        <input type="checkbox" id="workout-toggle">
+      </div>
+    </div>
+
+    <button class="start-button" onclick="startTimer()">START</button>
+
+    <script src="js/timer.js"></script>
+</body>
+</html>
