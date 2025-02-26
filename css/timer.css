@@ -61,8 +61,16 @@ h1 {
     max-width: 600px;
 }
 
+input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
 .toggle-container label {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-right: 10px;
     font-weight: bold;
 }
 
@@ -96,12 +104,13 @@ h1 {
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 300px;
     width: 90%;
     max-width: 600px;
     background-color: var(--background-color);
     border-radius: 10px;
-    border: 2px solid var(--background-color);
+    border: 5px solid var(--background-color);
     padding: 1rem;
 }
 
@@ -118,4 +127,41 @@ h1 {
 .time-option:hover {
     background-color: var(--hover-color);
     transform: scale(1.02);
+}
+
+#timer-display {
+    font-size: 8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+    border-radius: 4rem;
+}
+
+#phase-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#round-display {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pause-button {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: yellow;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.35s ease;
+    display: block;
+    margin: 1rem auto;
+}
+
+.pause-button:hover {
+    background-color: #e6e600;
 }

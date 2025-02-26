@@ -11,14 +11,14 @@ function loadTimeOptions() {
 
     switch (selectionType) {
         case "rounds":
-            title.textContent = "Rounds";
-            timeOptions = [...Array(20).keys()].map(i => i+1);
+            title.textContent = "ROUNDS";
+            timeOptions = [...Array(50).keys()].map(i => i+1);
             break;
         case "round-time":
         case "rest-time":
         case "get-ready-time":
             title.textContent = selectionType.replace("-", " ").toUpperCase();
-            timeOptions = [15,30,45,60,90,120,180,240];
+            timeOptions = [0,15,30,45,60,90,120,180,240];
             break;
         default:
             console.error("Unknown selection type");
@@ -28,7 +28,7 @@ function loadTimeOptions() {
     timeOptions.forEach(time =>{
         const timeElement = document.createElement("div");
         timeElement.className = "time-option";
-        timeElement.textContent = formatTime(time);
+        timeElement.textContent = selectionType === "rounds" ? time : formatTime(time);
         timeElement.onclick = () => saveSelection(selectionType, time);
         timeOptionsContainer.appendChild(timeElement);
     });
@@ -36,12 +36,17 @@ function loadTimeOptions() {
 
 function formatTime(seconds) {
     if (seconds >= 60) {
-        return `${Math.floor(seconds / 60)} min. ${seconds % 60} sec.`;
+        var minutes = Math.floor(seconds / 60);
+        var newSeconds = seconds % 60;
+        if (newSeconds === 0) {newSeconds = "00"}
+        return `0${minutes}:${newSeconds}`;
     }
     return `${seconds} sec.`;
 }
 
 function saveSelection(type, value) {
-    sessionStorage.setItem(type, value);
+    const storedValue = type === "rounds" ? value : formatTime(parseInt(value));
+
+    sessionStorage.setItem(type, storedValue);
     window.location.href = "timerSetup.html";
 }
