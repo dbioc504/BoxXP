@@ -33,3 +33,15 @@ document.getElementById("workout-toggle").addEventListener("change", (e) => {
 function startTimer() {
     window.location.href = "timeRunning.html";
 }
+
+function openSkillEditor() {
+    window.location.href = "editSkills.html";
+}
+
+function openComboEditor() {
+    window.location.href = "editCombos.html";
+}
+
+function openWorkoutEditor() {
+    window.location.href = "editWorkout.html";
+}

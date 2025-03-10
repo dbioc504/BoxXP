@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentRound++;
                 currentPhase = "round";
                 timeLeft = roundTime;
-                phaseTitle.textContent = `Round ${currentRound}`;
+                phaseTitle.textContent = `ROUND ${currentRound}`;
                 updateExtras();
                 break;
 
