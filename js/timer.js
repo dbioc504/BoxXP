@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadTimerSettings();
+    const savedWorkouts = JSON.parse(localStorage.getItem("selectedWorkouts"));
+    console.log("Saved Workouts:", savedWorkouts);
+
+    const savedCombos = JSON.parse(sessionStorage.getItem("selectedCombos"));
+    console.log("Saved Combos:", savedCombos);
 })
 
 function loadTimerSettings() {
@@ -43,5 +48,5 @@ function openComboEditor() {
 }
 
 function openWorkoutEditor() {
-    window.location.href = "editWorkout.html";
+    window.location.href = "editWorkouts.html";
 }

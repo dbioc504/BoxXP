@@ -7,6 +7,8 @@ function displayCombos() {
     container.innerHTML = "";
 
     const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    console.log("guestDataFirstLoad:", guestData);
+
     if (!guestData || !guestData.combos) {
         container.innerHTML += "<p>No combos found.</p>";
         return;
@@ -26,8 +28,10 @@ function displayCombos() {
         comboDiv.addEventListener("click", () => {
             comboDiv.classList.toggle("selected");
             if (comboDiv.classList.contains("selected")) {
+                console.log(selectedCombos);
                 selectedCombos.push(combo.id);
             } else {
+                console.log(selectedCombos);
                 selectedCombos = selectedCombos.filter(id => id !== combo.id);
             }
         });
@@ -51,5 +55,8 @@ function saveCombos() {
     });
 
     sessionStorage.setItem("selectedCombos", JSON.stringify(newSelected));
+
+    console.log(newSelected);
+
     window.location.href = "timerSetup.html";
 }

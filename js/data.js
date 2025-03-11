@@ -141,3 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
         displaySkills();
     }
 })
+
+if (!sessionStorage.getItem('guestData')) {
+    sessionStorage.setItem('guestData', JSON.stringify(appData));
+}

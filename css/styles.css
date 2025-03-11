@@ -98,7 +98,7 @@ h1 {
 }
 
 .selectable-item {
-    background-color: #1b1b1b;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 1rem;
     margin: 0.5rem 0;
@@ -108,12 +108,9 @@ h1 {
     user-select: none;
 }
 
-.selectable-item:hover {
-    background-color: #2b2b2b;
-}
 
 .selectable-item.selected {
-    background-color: var(--primary-color);
+    background-color: #2b2b2b;
 }
 
 .save-btn {
