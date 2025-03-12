@@ -11,18 +11,21 @@ $database = "boxxp";
 
 $conn = new mysqli($servername, $username, $password, $database); // connect
 
-if ($conn->connect_error) { // if no connection
-    die("Couldn't connect: " . $conn->connect_error);
+
+
+if (empty($_POST['email']) || empty($_POST['password'])) {
+    echo "Fill in all fields.";
+    exit; // Stop further execution
 }
-//if (isset($_POST['email']) && isset($_POST['password'])) {
+
+
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
 
-//$email = "email";
-//$pass = "pass";
-
 // database insertion
+if (isset($_POST['create_account'])) {
+
     $sql = "INSERT INTO login (username, password) VALUES ('$email', '$pass')";
 
     if ($conn->query($sql)) {
@@ -30,7 +33,22 @@ if ($conn->connect_error) { // if no connection
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-//}
+}
+
+if (isset($_POST['sign_in'])) {
+
+    $sql2 = "SELECT * FROM login WHERE username = '$email' AND password = '$pass'";
+    $result = $conn->query($sql2);
+
+// Check if user exists
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "User found: Username: " . $row["username"] . " - Password: " . $row["password"] . "<br>";
+        }
+    } else {
+        echo "User not found. Please check your login details.";
+    }
+}
 
 // quit connection
 $conn->close();
