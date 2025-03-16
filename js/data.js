@@ -25,6 +25,26 @@ if (storedData) {
 function saveData() {
     sessionStorage.setItem('guestData', JSON.stringify(appData));
     console.log("guestData saved:", appData)
+
+    const storedData = sessionStorage.getItem('guestData');
+    const appDataToSend = storedData ? JSON.parse(storedData) : {};
+
+    fetch('sql_connection.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'  // This indicates you're sending form data
+        },
+        body: `appData=${encodeURIComponent(JSON.stringify(appDataToSend))}&email=user@example.com&password=password123` // URL-encode the data
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                console.log("Data successfully saved to database!");
+            } else {
+                console.error("Failed to save data:", data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 function getPageType() {
