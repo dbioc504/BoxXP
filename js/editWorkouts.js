@@ -60,6 +60,8 @@ function saveWorkouts() {
     });
 
     sessionStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
-    console.log("Selected workouts so far:", newSelected);
+    console.log("Selected workouts saved:",newSelected);
     window.location.href = "timerSetup.html"
 }
+
+

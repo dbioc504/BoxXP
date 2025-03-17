@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadTimerSettings();
-    const savedWorkouts = JSON.parse(localStorage.getItem("selectedWorkouts"));
+    const savedWorkouts = JSON.parse(sessionStorage.getItem("selectedWorkouts"));
     console.log("Saved Workouts:", savedWorkouts);
 
     const savedCombos = JSON.parse(sessionStorage.getItem("selectedCombos"));
