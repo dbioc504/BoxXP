@@ -57,22 +57,24 @@ document.addEventListener("DOMContentLoaded", function() {
         return arr[index];
     }
 
+
+
     function updateExtras() {
         if (currentPhase === "round") {
             if (showCombo) {
-                const guestData = JSON.parse(sessionStorage.getItem('guestData'));
-            } if (guestData && guestData.combos && guestData.combos.length > 0) {
-                const randomCombo = getRandomFromArray(guestData.combos);
-                comboDisplay.textContent = `Combo: ${randomCombo.combo.join(" + ")}`;
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                if (guestData && guestData.combos && guestData.combos.length > 0) {
+                    const randomCombo = getRandomFromArray(guestData.combos);
+                    comboDisplay.textContent = `Combo: ${randomCombo.combo.join(" + ")}`;
+                } else {
+                    comboDisplay.textContent = "";
+                }
             } else {
                 comboDisplay.textContent = "";
             }
-        } else {
-            comboDisplay.textContent = "";
-        }
 
             if (showSkill) {
-                const guestData = JSON.parse(sessionStorage.getItem('guestData'));
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
                 if (guestData && guestData.skills && guestData.skills.length > 0) {
                     const allSkills = guestData.skills.flatMap(cat => cat.items);
                     const randomSkill = getRandomFromArray(allSkills);
@@ -85,18 +87,54 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (showWorkout) {
-                const guestData = JSON.parse(sessionStorage.getItem('guestData'));
-                if (guestData && guestData.workouts && guestData.workouts.length > 0) {
-                    const allWorkouts = guestData.workouts.flatMap(cat => cat.items);
-                    const randomWorkout = getRandomFromArray(allWorkouts);
-                    workoutDisplay.textContent = `Workout: ${randomWorkout}`;
+                const selectedIDs = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                let allWorkouts = [];
+                guestData.workouts.forEach((catObj, catIndex) => {
+                    catObj.items.forEach((workout, workoutIndex) => {
+                        allWorkouts.push({
+                            id: `${catIndex}-${workoutIndex}`,
+                            category: catObj.category.toLowerCase(), // ensure lowercase for comparison
+                            name: workout
+                        });
+                    });
+                });
+                const selectedWorkouts = allWorkouts.filter(w => selectedIDs.includes(w.id));
+                const upperBody = selectedWorkouts.filter(w => w.category === "upper-body");
+                const lowerBody = selectedWorkouts.filter(w => w.category === "lower-body");
+                const core = selectedWorkouts.filter(w => w.category === "core");
+
+                let displayText = "";
+                if (currentRound % 2 === 1) {
+                    const randomUpper = getRandomFromArray(upperBody);
+                    const randomCore = getRandomFromArray(core);
+                    if (randomUpper && randomCore) {
+                        displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                    }
                 } else {
-                    workoutDisplay.textContent = "";
+                    const randomLower = getRandomFromArray(lowerBody);
+                    const randomCore = getRandomFromArray(core);
+                    if (randomLower && randomCore) {
+                        displayText = `WORKOUT: ${randomLower.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                    }
                 }
+                workoutDisplay.textContent = displayText;
             } else {
                 workoutDisplay.textContent = "";
             }
+        } else {
+            comboDisplay.textContent = "";
+            skillDisplay.textContent = "";
+            workoutDisplay.textContent = "";
+        }
     }
+
+
+
+
+
+
+
 
     function nextPhase() {
         switch (currentPhase) {
