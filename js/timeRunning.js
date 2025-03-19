@@ -41,6 +41,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const skillDisplay = document.getElementById("skill-display");
     const workoutDisplay = document.getElementById("workout-display");
 
+    function updateBackground() {
+        if (currentPhase === "round") {
+            document.body.style.backgroundColor = "green";
+        } else {
+            document.body.style.backgroundColor = "red";
+        }
+        document.body.style.color = "white";
+    }
 
     function updateDisplays() {
         timerDisplay.textContent = formatTime(timeLeft);
@@ -49,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             roundDisplay.textContent = "";
         }
+        updateBackground()
     }
 
     function getRandomFromArray(arr) {
@@ -65,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const guestData = JSON.parse(sessionStorage.getItem("guestData"));
                 if (guestData && guestData.combos && guestData.combos.length > 0) {
                     const randomCombo = getRandomFromArray(guestData.combos);
-                    comboDisplay.textContent = `Combo: ${randomCombo.combo.join(" + ")}`;
+                    comboDisplay.textContent = `COMBO: ${randomCombo.combo.join(" + ").toUpperCase()}`;
                 } else {
                     comboDisplay.textContent = "";
                 }
@@ -129,13 +138,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-
-
-
-
-
-
-
     function nextPhase() {
         switch (currentPhase) {
             case "get-ready":
@@ -160,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     timeLeft = 0;
                     clearInterval(timerInterval);
                     timerDisplay.textContent = formatTime(timeLeft);
+                    updateBackground();
                     return;
                 }
                 break;
@@ -188,13 +191,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-
     timerInterval = setInterval(timerTick, 1000);
 
     const pauseResumeButton = document.getElementById("pause-resume");
     pauseResumeButton.addEventListener("click", function() {
         isPaused = !isPaused;
         pauseResumeButton.textContent = isPaused ? "Resume" : "Pause";
+        updateBackground();
     });
 
     updateDisplays();
