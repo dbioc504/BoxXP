@@ -168,10 +168,10 @@ input[type="checkbox"] {
 
 #combo-display,
 #workout-display {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    /*font-weight: bold;*/
     text-align: center;
-    margin: 2rem 0;
+    margin:0.5rem auto;
     line-height: 1.3;
-    padding: 1rem 2rem;
+    padding: 0 1rem;
 }
