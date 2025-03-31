@@ -102,6 +102,7 @@ function exitEditMode(skillsText, category, editButton, doneButton) {
     skillsText.dataset.editMode = "false";
     editButton.style.display = "inline-block";
     doneButton.style.display = "none";
+    console.log("HERE", "here");
     saveData();
 }
 
@@ -128,33 +129,88 @@ function addSkill(category) {
     }
 }
 
+// function displaySkills() {
+//     const container = document.getElementById("skills-container");
+//     if (!container) {
+//         console.error('No skills found');
+//         return;
+//     }
+//
+//     container.innerHTML = "";
+//     const pageType = getPageType();
+//     appData[pageType].forEach((category) => {
+//         const section = document.createElement("div");
+//         section.className = "category-container";
+//         section.innerHTML = `
+//             <div class="category-header" data-category="${category.category.toLowerCase()}">
+//                 <h2>${category.category.toUpperCase()}</h2>
+//                 <div class="category-buttons">
+//                     <button class="btn btn-edit" onclick="toggleEdit('${category.category.toLowerCase()}')">EDIT</button>
+//                     <button class="btn btn-done" style="display: none;" onclick="toggleEdit('${category.category.toLowerCase()}')">DONE</button>
+//                 </div>
+//             </div>
+//             <p class="skills-text" id="${category.category.toLowerCase()}-skills">
+//                 ${category.items.join(", ")}
+//             </p>
+//         `;
+//         container.appendChild(section);
+//     })
+// }
+
 function displaySkills() {
     const container = document.getElementById("skills-container");
     if (!container) {
-        console.error('No skills found');
+        console.error('No skills container found');
         return;
     }
 
-    container.innerHTML = "";
-    const pageType = getPageType();
-    appData[pageType].forEach((category) => {
-        const section = document.createElement("div");
-        section.className = "category-container";
-        section.innerHTML = `
-            <div class="category-header" data-category="${category.category.toLowerCase()}">
-                <h2>${category.category.toUpperCase()}</h2>
-                <div class="category-buttons">
-                    <button class="btn btn-edit" onclick="toggleEdit('${category.category.toLowerCase()}')">EDIT</button>
-                    <button class="btn btn-done" style="display: none;" onclick="toggleEdit('${category.category.toLowerCase()}')">DONE</button>
-                </div>
-            </div>
-            <p class="skills-text" id="${category.category.toLowerCase()}-skills">
-                ${category.items.join(", ")}
-            </p>
-        `;
-        container.appendChild(section);
+
+    //get the user and if user == guestUser@guestUser then
+
+    container.innerHTML = ""; // Clear any existing content in the container
+
+    fetch('sql_connection.php?fetch_skills=true', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
     })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetched Data:", data);
+
+            if (data.status === "error") {
+                console.error('Error fetching skills:', data.message);
+                return;
+            }
+
+            if (data.skills && data.skills.length > 0) {
+                data.skills.forEach(category => {
+                    const section = document.createElement("div");
+                    section.className = "category-container";
+
+                    // Build the HTML for each skill category
+                    section.innerHTML = `
+                    <div class="category-header" data-category="${category.category.toLowerCase()}">
+                        <h2>${category.category.toUpperCase()}</h2>
+                        <div class="category-buttons">
+                            <button class="btn btn-edit" onclick="toggleEdit('${category.category.toLowerCase()}')">EDIT</button>
+                            <button class="btn btn-done" style="display: none;" onclick="toggleEdit('${category.category.toLowerCase()}')">DONE</button>
+                        </div>
+                    </div>
+                    <p class="skills-text" id="${category.category.toLowerCase()}-skills">
+                        ${category.items.join(", ")}
+                    </p>
+                `;
+
+                    container.appendChild(section);
+                });
+            } else {
+                // If no skills data is available
+                // container.innerHTML = "<p>No skills data found.</p>";
+            }
+        })
+        .catch(error => console.error('Error fetching skills:', error));
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("skills-container")) {
