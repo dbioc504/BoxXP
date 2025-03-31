@@ -74,6 +74,84 @@ document.addEventListener("DOMContentLoaded", function() {
                 const guestData = JSON.parse(sessionStorage.getItem("guestData"));
                 if (guestData && guestData.combos && guestData.combos.length > 0) {
                     const randomCombo = getRandomFromArray(guestData.combos);
+                    comboDisplay.textContent = `COMBO: ${randomCombo.combo.map(move => move.toUpperCase()).join(" + ")}`;
+                } else {
+                    comboDisplay.textContent = "";
+                }
+            } else {
+                comboDisplay.textContent = "";
+            }
+
+            if (showSkill) {
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                if (guestData && guestData.skills && guestData.skills.length > 0) {
+                    const allSkills = guestData.skills.flatMap(cat => cat.items);
+                    const randomSkill = getRandomFromArray(allSkills);
+                    skillDisplay.textContent = `SKILL: ${randomSkill.toUpperCase()}`;
+                } else {
+                    skillDisplay.textContent = "";
+                }
+            } else {
+                skillDisplay.textContent = "";
+            }
+
+            if (showWorkout) {
+                const selectedIDs = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                let allWorkouts = [];
+                guestData.workouts.forEach((catObj, catIndex) => {
+                    catObj.items.forEach((workout, workoutIndex) => {
+                        allWorkouts.push({
+                            id: `${catIndex}-${workoutIndex}`,
+                            category: catObj.category.toLowerCase(),
+                            name: workout
+                        });
+                    });
+                });
+                const selectedWorkouts = allWorkouts.filter(w => selectedIDs.includes(w.id));
+                const upperBody = selectedWorkouts.filter(w => w.category === "upper-body");
+                const lowerBody = selectedWorkouts.filter(w => w.category === "lower-body");
+                const core = selectedWorkouts.filter(w => w.category === "core");
+
+                let displayText = "";
+                if (roundsSetting === 1) {
+                    const randomUpper = getRandomFromArray(upperBody);
+                    const randomCore = getRandomFromArray(core);
+                    const randomLower = getRandomFromArray(lowerBody);
+                    if (randomUpper && randomCore && randomLower) {
+                        displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()} & ${randomLower.name.toUpperCase()}`;
+                    }
+                } else {
+                    if (currentRound % 2 === 1) {
+                        const randomUpper = getRandomFromArray(upperBody);
+                        const randomCore = getRandomFromArray(core);
+                        if (randomUpper && randomCore) {
+                            displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                        }
+                    } else {
+                        const randomLower = getRandomFromArray(lowerBody);
+                        const randomCore = getRandomFromArray(core);
+                        if (randomLower && randomCore) {
+                            displayText = `WORKOUT: ${randomLower.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                        }
+                    }
+                }
+                workoutDisplay.textContent = displayText;
+            } else {
+                workoutDisplay.textContent = "";
+            }
+        } else {
+            comboDisplay.textContent = "";
+            skillDisplay.textContent = "";
+            workoutDisplay.textContent = "";
+        }
+    }
+    function updateExtras() {
+        if (currentPhase === "round") {
+            if (showCombo) {
+                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                if (guestData && guestData.combos && guestData.combos.length > 0) {
+                    const randomCombo = getRandomFromArray(guestData.combos);
                     comboDisplay.textContent = `COMBO: ${randomCombo.combo.join(" + ").toUpperCase()}`;
                 } else {
                     comboDisplay.textContent = "";
@@ -103,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     catObj.items.forEach((workout, workoutIndex) => {
                         allWorkouts.push({
                             id: `${catIndex}-${workoutIndex}`,
-                            category: catObj.category.toLowerCase(), // ensure lowercase for comparison
+                            category: catObj.category.toLowerCase(),
                             name: workout
                         });
                     });
@@ -114,17 +192,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 const core = selectedWorkouts.filter(w => w.category === "core");
 
                 let displayText = "";
-                if (currentRound % 2 === 1) {
+
+                if (roundsSetting === 1 || roundsSetting % 2 === 1 && currentRound === roundsSetting) {
                     const randomUpper = getRandomFromArray(upperBody);
                     const randomCore = getRandomFromArray(core);
-                    if (randomUpper && randomCore) {
-                        displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
-                    }
-                } else {
                     const randomLower = getRandomFromArray(lowerBody);
-                    const randomCore = getRandomFromArray(core);
-                    if (randomLower && randomCore) {
-                        displayText = `WORKOUT: ${randomLower.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                    console.log("Single round selection:", randomUpper, randomCore, randomLower);
+                    if (randomUpper && randomCore && randomLower) {
+                        displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()} & ${randomLower.name.toUpperCase()}`;
+                    } else {
+                        console.warn("One or more required workout categories are empty for a single round.");
+                    }
+                } else  {
+                    if (currentRound % 2 === 1) {
+                        const randomUpper = getRandomFromArray(upperBody);
+                        const randomCore = getRandomFromArray(core);
+                        if (randomUpper && randomCore) {
+                            displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                        }
+                    } else {
+                        const randomLower = getRandomFromArray(lowerBody);
+                        const randomCore = getRandomFromArray(core);
+                        if (randomLower && randomCore) {
+                            displayText = `WORKOUT: ${randomLower.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
+                        }
                     }
                 }
                 workoutDisplay.textContent = displayText;
