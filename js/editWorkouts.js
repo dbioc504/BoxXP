@@ -59,7 +59,40 @@ function saveWorkouts() {
         newSelected.push(item.dataset.workoutId);
     });
 
+    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    let allWorkouts = [];
+    guestData.workouts.forEach((catObj, catIndex) => {
+        catObj.items.forEach((workout, workoutIndex) => {
+            allWorkouts.push({
+                id: `${catIndex}-${workoutIndex}`,
+                category: catObj.category,
+                name: workout
+            });
+        });
+    });
+
+    let selectedByCategory = {};
+    newSelected.forEach(id => {
+        const workout = allWorkouts.find(w => w.id === id);
+        if (workout) {
+            if (!selectedByCategory[workout.category]) {
+                selectedByCategory[workout.category] = [];
+            }
+            selectedByCategory[workout.category].push(workout);
+        }
+    });
+
+    const requiredCategories = ["upper-body", "lower-body", "core"];
+    for (const category of requiredCategories) {
+        if (!selectedByCategory[category] || selectedByCategory[category].length === 0) {
+            alert("Please select at least one workout from each category: upper-body, lower-body, and core.");
+            return;
+    }}
+
     sessionStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
-    console.log("Selected workouts so far:", newSelected);
-    window.location.href = "timerSetup.html"
+    console.log("Selected workouts saved:", newSelected);
+    window.location.href = "timerSetup.html";
 }
+
+
+

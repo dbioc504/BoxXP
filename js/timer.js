@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadTimerSettings();
-    const savedWorkouts = JSON.parse(localStorage.getItem("selectedWorkouts"));
+    const savedWorkouts = JSON.parse(sessionStorage.getItem("selectedWorkouts"));
     console.log("Saved Workouts:", savedWorkouts);
 
     const savedCombos = JSON.parse(sessionStorage.getItem("selectedCombos"));
@@ -50,3 +50,19 @@ function openComboEditor() {
 function openWorkoutEditor() {
     window.location.href = "editWorkouts.html";
 }
+
+document.getElementById("combo-toggle").addEventListener("change", (e) => {
+    if (e.target.checked) {
+        document.getElementById("workout-toggle").checked = false;
+        sessionStorage.setItem("workout-display", "false");
+    }
+    sessionStorage.setItem("combo-display", e.target.checked);
+});
+
+document.getElementById("workout-toggle").addEventListener("change", (e) => {
+    if (e.target.checked) {
+        document.getElementById("combo-toggle").checked = false;
+        sessionStorage.setItem("combo-display", "false");
+    }
+    sessionStorage.setItem("workout-display", e.target.checked);
+});
