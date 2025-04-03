@@ -1,8 +1,8 @@
 function parseTime(timeStr) {
     const parts = timeStr.split(":");
     if (parts.length === 2) {
-        const minutes = parseInt(parts[0],10);
-        const seconds = parseInt(parts[1],10);
+        const minutes = parseInt(parts[0], 10);
+        const seconds = parseInt(parts[1], 10);
         return minutes * 60 + seconds;
     }
     return parseInt(timeStr, 10);
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             roundDisplay.textContent = "";
         }
-        updateBackground()
+        updateBackground();
     }
 
     function getRandomFromArray(arr) {
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateExtras() {
         if (currentPhase === "round") {
+            // --- Combo Display ---
             if (showCombo) {
                 const guestData = JSON.parse(sessionStorage.getItem("guestData"));
                 if (guestData && guestData.combos && guestData.combos.length > 0) {
@@ -91,29 +92,45 @@ document.addEventListener("DOMContentLoaded", function() {
                 comboDisplay.textContent = "";
             }
 
+            // --- Skill Display ---
             if (showSkill) {
-                const plan = JSON.parse(sessionStorage.getItem("skillPlan")) || [];
-                const chosenCategory = plan[currentRound - 1];
+                let plan = JSON.parse(sessionStorage.getItem("skillPlan"));
 
+                if (!plan || plan.length === 0) {
+                    const skillDict = getSkillDict();
+                    console.log("Skill dictionary:", skillDict);
+                    if (Object.keys(skillDict).length === 0) {
+                        console.warn("Skill dictionary is empty. Cannot generate skill plan.");
+                        skillDisplay.textContent = "NO SKILLS AVAILABLE";
+                        return;
+                    }
+                    plan = balancedPlan(skillDict, roundsSetting);
+                    sessionStorage.setItem("skillPlan", JSON.stringify(plan));
+                    sessionStorage.setItem("skillPlanType", "balanced");
+                    console.log("Generated default balanced skill plan:", plan);
+                }
+
+                const chosenCategory = plan[currentRound - 1];
+                console.log("Chosen category for round", currentRound, ":", chosenCategory);
                 if (!chosenCategory) {
                     skillDisplay.textContent = "";
-                    return;
+                } else {
+                    const skillDict = getSkillDict();
+                    const techniques = skillDict[chosenCategory];
+                    console.log("Techniques for", chosenCategory, ":", techniques);
+                    if (!techniques || techniques.length === 0) {
+                        skillDisplay.textContent = "";
+                    } else {
+                        const randomTechnique = techniques[Math.floor(Math.random() * techniques.length)];
+                        skillDisplay.textContent = `SKILL: ${chosenCategory.toUpperCase()} - ${randomTechnique.toUpperCase()}`;
+                    }
                 }
-
-                const skillDict = getSkillDict();
-                const techniques = skillDict[chosenCategory];
-                if (!techniques || techniques.length === 0) {
-                    skillDisplay.textContent = "";
-                    return;
-                }
-                const randomTechnique = techniques[Math.floor(Math.random() * techniques.length)];
-                skillDisplay.textContent = `SKILL: ${chosenCategory.toUpperCase()} - ${randomTechnique.toUpperCase()}`;
             } else {
                 skillDisplay.textContent = "";
             }
 
 
-
+            // --- Workout Display ---
             if (showWorkout) {
                 const selectedIDs = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
                 const guestData = JSON.parse(sessionStorage.getItem("guestData"));
@@ -133,8 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const core = selectedWorkouts.filter(w => w.category === "core");
 
                 let displayText = "";
-
-                if (roundsSetting === 1 || roundsSetting % 2 === 1 && currentRound === roundsSetting) {
+                if ((roundsSetting === 1) || ((roundsSetting % 2 === 1) && (currentRound === roundsSetting))) {
                     const randomUpper = getRandomFromArray(upperBody);
                     const randomCore = getRandomFromArray(core);
                     const randomLower = getRandomFromArray(lowerBody);
@@ -144,16 +160,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else {
                         console.warn("One or more required workout categories are empty for a single round.");
                     }
-                } else  {
+                } else {
                     if (currentRound % 2 === 1) {
                         const randomUpper = getRandomFromArray(upperBody);
                         const randomCore = getRandomFromArray(core);
+                        console.log("Odd round selection:", randomUpper, randomCore);
                         if (randomUpper && randomCore) {
                             displayText = `WORKOUT: ${randomUpper.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
                         }
                     } else {
                         const randomLower = getRandomFromArray(lowerBody);
                         const randomCore = getRandomFromArray(core);
+                        console.log("Even round selection:", randomLower, randomCore);
                         if (randomLower && randomCore) {
                             displayText = `WORKOUT: ${randomLower.name.toUpperCase()} & ${randomCore.name.toUpperCase()}`;
                         }
@@ -176,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentPhase = "round";
                 currentRound = 1;
                 timeLeft = roundTime;
-                phaseTitle.textContent = `ROUND ${currentRound}`;
+                phaseTitle.textContent = `ROUND ${currentRound} OF ${roundsSetting}`;
                 updateExtras();
                 break;
 
@@ -185,9 +203,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     currentPhase = "rest";
                     timeLeft = restTime;
                     phaseTitle.textContent = "REST";
-                    comboDisplay.textContent ="";
-                    skillDisplay.textContent ="";
-                    workoutDisplay.textContent ="";
+                    comboDisplay.textContent = "";
+                    skillDisplay.textContent = "";
+                    workoutDisplay.textContent = "";
                 } else {
                     currentPhase = "finished";
                     phaseTitle.textContent = "WORKOUT COMPLETE!";
@@ -203,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentRound++;
                 currentPhase = "round";
                 timeLeft = roundTime;
-                phaseTitle.textContent = `ROUND ${currentRound}`;
+                phaseTitle.textContent = `ROUND ${currentRound} OF ${roundsSetting}`;
                 updateExtras();
                 break;
 
@@ -223,7 +241,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-    timerInterval = setInterval(timerTick, 1000);
+
+    let timerInterval = setInterval(timerTick, 1000);
 
     const pauseResumeButton = document.getElementById("pause-resume");
     pauseResumeButton.addEventListener("click", function() {
@@ -233,4 +252,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     updateDisplays();
-})
+});

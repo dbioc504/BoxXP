@@ -32,10 +32,33 @@ document.getElementById("combo-toggle").addEventListener("change", (e) => {
 });
 
 document.getElementById("workout-toggle").addEventListener("change", (e) => {
-    sessionStorage.setItem("workout-display", e.target.checked);
+    if (e.target.checked) {
+        document.getElementById("skill-toggle").checked = false;
+        document.getElementById("combo-toggle").checked = false;
+        sessionStorage.setItem("skill-display", "false");
+        sessionStorage.setItem("combo-display", "false");
+        sessionStorage.setItem("workout-display", "true");
+    } else {
+        sessionStorage.setItem("workout-display", "false");
+    }
 });
 
 function startTimer() {
+    let message = "";
+    if (sessionStorage.getItem("skill-display") === "true" && !sessionStorage.getItem("skillPlan")) {
+        message += "Please visit the Edit Skills page to configure your skill display.\n";
+    }
+    if (sessionStorage.getItem("combo-display") === "true" && !sessionStorage.getItem("selectedCombos")) {
+        message += "Please visit the Edit Combos page to configure your combo display.\n";
+    }
+    if (sessionStorage.getItem("workout-display") === "true" && !sessionStorage.getItem("selectedWorkouts")) {
+        message += "PLease visit the Edit Workouts page to configure your workout display.\n";
+    }
+
+    if (message !== "") {
+        alert(message);
+        return;
+    }
     window.location.href = "timeRunning.html";
 }
 

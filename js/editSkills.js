@@ -85,20 +85,13 @@ function balancedPlan(skillDict, totalRounds) {
     const categories = Object.keys(skillDict);
     const counts = {};
     categories.forEach(cat => counts[cat] = 0);
-
     const plan = [];
-    for (let i=0; i < totalRounds; i++) {
-        let minCount = Infinity;
-        categories.forEach(cat => {
-            if (counts[cat] < minCount) {
-                minCount = counts[cat];
-            }
-        });
+    for (let i = 0; i < totalRounds; i++) {
+        let minCount = Math.min(...categories.map(cat => counts[cat]));
         const leastUsed = categories.filter(cat => counts[cat] === minCount);
-        const chosenCat = leastUsed[Math.floor(Math.random() * leastUsed.length)];
-        plan.push(chosenCat);
-        counts[chosenCat]++;
+        const chosen = leastUsed[Math.floor(Math.random() * leastUsed.length)];
+        plan.push(chosen);
+        counts[chosen]++;
     }
-
     return plan;
 }
