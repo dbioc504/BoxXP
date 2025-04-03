@@ -15,7 +15,7 @@ function formatTime(seconds) {
 }
 
 function getSkillDict() {
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     const skillDict = {};
     if (guestData && guestData.skills) {
         guestData.skills.forEach(catObj => {
@@ -26,18 +26,18 @@ function getSkillDict() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const roundsSetting = parseInt(sessionStorage.getItem("rounds")) || 12;
-    const roundTimeStr = sessionStorage.getItem("round-time") || "04:00";
-    const restTimeStr = sessionStorage.getItem("rest-time") || "00:30";
-    const getReadyTimeStr = sessionStorage.getItem("get-ready-time") || "00:15";
+    const roundsSetting = parseInt(localStorage.getItem("rounds")) || 12;
+    const roundTimeStr = localStorage.getItem("round-time") || "04:00";
+    const restTimeStr = localStorage.getItem("rest-time") || "00:30";
+    const getReadyTimeStr = localStorage.getItem("get-ready-time") || "00:15";
 
     const roundTime = parseTime(roundTimeStr);
     const restTime = parseTime(restTimeStr);
     const getReadyTime = parseTime(getReadyTimeStr);
 
-    const showSkill = sessionStorage.getItem("skill-display") === "true";
-    const showCombo = sessionStorage.getItem("combo-display") === "true";
-    const showWorkout = sessionStorage.getItem("workout-display") === "true";
+    const showSkill = localStorage.getItem("skill-display") === "true";
+    const showCombo = localStorage.getItem("combo-display") === "true";
+    const showWorkout = localStorage.getItem("workout-display") === "true";
 
     let currentPhase = "get-ready";
     let currentRound = 0;
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (currentPhase === "round") {
             // --- Combo Display ---
             if (showCombo) {
-                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                const guestData = JSON.parse(localStorage.getItem("guestData"));
                 if (guestData && guestData.combos && guestData.combos.length > 0) {
                     const randomCombo = getRandomFromArray(guestData.combos);
                     comboDisplay.textContent = `COMBO: ${randomCombo.combo.join(" + ").toUpperCase()}`;
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // --- Skill Display ---
             if (showSkill) {
-                let plan = JSON.parse(sessionStorage.getItem("skillPlan"));
+                let plan = JSON.parse(localStorage.getItem("skillPlan"));
 
                 if (!plan || plan.length === 0) {
                     const skillDict = getSkillDict();
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         return;
                     }
                     plan = balancedPlan(skillDict, roundsSetting);
-                    sessionStorage.setItem("skillPlan", JSON.stringify(plan));
-                    sessionStorage.setItem("skillPlanType", "balanced");
+                    localStorage.setItem("skillPlan", JSON.stringify(plan));
+                    localStorage.setItem("skillPlanType", "balanced");
                     console.log("Generated default balanced skill plan:", plan);
                 }
 
@@ -132,8 +132,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // --- Workout Display ---
             if (showWorkout) {
-                const selectedIDs = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
-                const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+                const selectedIDs = JSON.parse(localStorage.getItem("selectedWorkouts")) || [];
+                const guestData = JSON.parse(localStorage.getItem("guestData"));
                 let allWorkouts = [];
                 guestData.workouts.forEach((catObj, catIndex) => {
                     catObj.items.forEach((workout, workoutIndex) => {

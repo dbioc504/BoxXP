@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function loadTimeOptions() {
-    const selectionType = sessionStorage.getItem("time-selection-type");
+    const selectionType = localStorage.getItem("time-selection-type");
     const title = document.getElementById("selection-title");
     const timeOptionsContainer = document.getElementById("time-options");
 
@@ -47,6 +47,6 @@ function formatTime(seconds) {
 function saveSelection(type, value) {
     const storedValue = type === "rounds" ? value : formatTime(parseInt(value));
 
-    sessionStorage.setItem(type, storedValue);
+    localStorage.setItem(type, storedValue);
     window.location.href = "timerSetup.html";
 }

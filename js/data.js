@@ -1,4 +1,4 @@
-let storedData = sessionStorage.getItem('guestData');
+let storedData = localStorage.getItem('guestData');
 if (storedData) {
     appData = JSON.parse(storedData);
 } else {
@@ -19,11 +19,11 @@ if (storedData) {
             { id: 2, combo: ["slip", "jab", "jab", "fake", "roll", "hook", "right hand"]}
         ]
     };
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    localStorage.setItem('guestData', JSON.stringify(appData));
 }
 
 function saveData() {
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    localStorage.setItem('guestData', JSON.stringify(appData));
     console.log("guestData saved:", appData)
 }
 
@@ -142,6 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-if (!sessionStorage.getItem('guestData')) {
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+if (!localStorage.getItem('guestData')) {
+    localStorage.setItem('guestData', JSON.stringify(appData));
 }

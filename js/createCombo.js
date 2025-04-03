@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isTouchDevice) {
         document.getElementById("instruction-text").textContent = "TAP PIECES ABOVE TO ADD TO COMBO";
     }
-    console.log(JSON.parse(sessionStorage.getItem("guestData")));
+    console.log(JSON.parse(localStorage.getItem("guestData")));
 
 });
 
@@ -93,7 +93,7 @@ function saveCombo() {
         return;
     }
 
-    let storedData = JSON.parse(sessionStorage.getItem('guestData'));
+    let storedData = JSON.parse(localStorage.getItem('guestData'));
 
     if (!storedData) {
         storedData = { user: "guestData", skills: [], workouts: [], combos: [] };
@@ -108,7 +108,7 @@ function saveCombo() {
 
     storedData.combos.push(newCombo);
 
-    sessionStorage.setItem('guestData', JSON.stringify(storedData));
+    localStorage.setItem('guestData', JSON.stringify(storedData));
 
     console.log("Updated guestData: ", storedData);
 

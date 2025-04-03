@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     saveBtn.addEventListener("click", () => {
         const mode = document.querySelector('input[name="skillMode"]:checked').value;
-        sessionStorage.setItem("skillPlanType", mode);
+        localStorage.setItem("skillPlanType", mode);
 
         let focusSkill = null;
         if (mode === "specialized") {
             focusSkill = document.querySelector('input[name="focusSkill"]:checked');
-            sessionStorage.setItem("skillFocus", focusSkill);
+            localStorage.setItem("skillFocus", focusSkill);
         } else {
-            sessionStorage.removeItem("skillFocus");
+            localStorage.removeItem("skillFocus");
         }
 
         generateSkillPlan(mode, focusSkill);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function getSkillDict() {
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     const skillDict = {};
     if (guestData && guestData.skills) {
         guestData.skills.forEach(catObj => {
@@ -45,7 +45,7 @@ function generateSkillPlan(mode, focusSkill) {
     const skillDict = getSkillDict();
     if (!skillDict) return;
 
-    const totalRounds = parseInt(sessionStorage.getItem("rounds") || 12);
+    const totalRounds = parseInt(localStorage.getItem("rounds") || 12);
 
     let plan = [];
     if (mode === "specialized" && focusSkill) {
@@ -53,7 +53,7 @@ function generateSkillPlan(mode, focusSkill) {
     } else {
         plan = balancedPlan(skillDict, totalRounds);
     }
-    sessionStorage.setItem("skillPlan", JSON.stringify(plan));
+    localStorage.setItem("skillPlan", JSON.stringify(plan));
 }
 
 function specializedPlan(skillDict, focusSkill, totalRounds) {

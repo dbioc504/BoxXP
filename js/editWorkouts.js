@@ -6,7 +6,7 @@ function displayWorkouts() {
     const container = document.getElementById("workouts-container");
     container.innerHTML = "";
 
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     console.log("guesData (workouts):", guestData);
 
     if(!guestData || !guestData.workouts) {
@@ -25,7 +25,7 @@ function displayWorkouts() {
         });
     });
 
-    let selectedWorkouts = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
+    let selectedWorkouts = JSON.parse(localStorage.getItem("selectedWorkouts")) || [];
 
     allWorkouts.forEach(workoutObj => {
         const workoutDiv = document.createElement("div");
@@ -59,7 +59,7 @@ function saveWorkouts() {
         newSelected.push(item.dataset.workoutId);
     });
 
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     let allWorkouts = [];
     guestData.workouts.forEach((catObj, catIndex) => {
         catObj.items.forEach((workout, workoutIndex) => {
@@ -89,7 +89,7 @@ function saveWorkouts() {
             return;
     }}
 
-    sessionStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
+    localStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
     console.log("Selected workouts saved:", newSelected);
     window.location.href = "timerSetup.html";
 }
