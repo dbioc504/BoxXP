@@ -56,8 +56,9 @@ if (isset($_POST['create_account'])) {
     $password = isset($_POST['password']) ? $_POST['password'] : null;
 
     if ($email && $password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO login (username, password) VALUES ('$email', '$pass')";
+        $sql = "INSERT INTO login (username, password) VALUES ('$email', '$hashedPassword')";
 
         if ($conn->query($sql)) {
             echo "Inserted!";
@@ -80,38 +81,54 @@ if (isset($_POST['sign_in'])) {
 
     if ($email && $password) {
 
-        $sql2 = "SELECT * FROM login WHERE username = '$email' AND password = '$pass'";
-        $result = $conn->query($sql2);
+//        $sql2 = "SELECT * FROM login WHERE username = '$email' AND password = '$password'";
+//        $result = $conn->query($sql2);
 
 // Check if user exists
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-//            echo "User found: Username: " . $row["username"] . " - Password: " . $row["password"] . "<br>";
-                $_SESSION['user'] = $email; // Store the email in session
-
-
-//            $skills_sql = "SELECT dogwork, pressure, boxing FROM skills WHERE username = ?";
-//            $stmt = $conn->prepare($skills_sql);
-//            $stmt->bind_param("s", $email);
-//            $stmt->execute();
-//            $skills_result = $stmt->get_result();
+//        if ($result->num_rows > 0) {
+//            while ($row = $result->fetch_assoc()) {
+////            echo "User found: Username: " . $row["username"] . " - Password: " . $row["password"] . "<br>";
+////                $_SESSION['user'] = $email; // Store the email in session
 //
-//            if ($skills_result->num_rows > 0) {
-//                $_SESSION['skills'] = $skills_result->fetch_assoc(); // Store skills in session
-//            } else {
-//                $_SESSION['skills'] = ["dogwork" => "", "pressure" => "", "boxing" => ""]; // Default empty skills
-//            }
+//                $sql3 = "SELECT password_hash FROM users WHERE username = ?";
+//                $stmt = $conn->prepare($sql3);
+//                $stmt->bind_param("s", $username);
+//                $stmt->execute();
+//                $stmt->bind_result($storedHash);
+//                $stmt->fetch();
+//                $stmt->close();
+//
+//                echo $storedHash;
+//
+//                if (password_verify($password, $storedHash)) {
+//                    $_SESSION['user'] = $email; // Store the email in session
+//                    session_write_close();
+//                    header("Location: index.html"); // page change
+//                    exit();
+//                }
+                // Query to check if user exists
+                $sql2 = "SELECT username, password FROM login WHERE username = ?";
+                $stmt = $conn->prepare($sql2);
+                $stmt->bind_param("s", $email);  // Bind the email to the query
+                $stmt->execute();
+                $stmt->bind_result($username, $storedHash);  // Fetch the result
+                $stmt->fetch();
+                $stmt->close();
 
-
-                session_write_close();
-                header("Location: index.html"); // page change
-                exit();
+                if ($username) {
+                    // Verify the password
+                    if (password_verify($password, $storedHash)) {
+                        $_SESSION['user'] = $username; // Store the username in session
+                        session_write_close();
+                        header("Location: index.html"); // Redirect to the homepage
+                        exit();
+                    } else {
+                        echo "Invalid password.";
+                    }
             }
-        } else {
-            echo "User not found. Please check your login details.";
-        }
     } else {
-        echo "Email or password is missing.";
+        echo "User not found. Please check your login details.";
+
     }
 }
 
@@ -185,17 +202,26 @@ if (isset($_POST['appData'])) {
 // Handle request to fetch user skills
 if (isset($_GET['fetch_skills'])) {
     header('Content-Type: application/json');
-    $email = isset($_SESSION['user']) ? $_SESSION['user'] : "guestData";
+    $email = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
 
     // Log the email value to check if it's correct
     error_log("Email: " . $email);
 
-    if ($email === "guestData") {
-        // Log the guestData response
-        error_log("Returning guestData response");
-        echo json_encode(["user" => "guestData", "skills" => [], "workouts" => [], "combos" => []]);
-        exit();
-    }
+//    if ($email === "guestUser@guestUser") {
+//        // Log the guestData response
+//        error_log("Returning guestData response");
+////        echo json_encode(["user" => "guestData", "skills" => [], "workouts" => [], "combos" => []]);
+//        echo json_encode([
+//            "user" => "guestData",
+//            "skills" => [
+//                ["category" => "dogwork", "items" => array_filter(explode(",", "Combo-Angle-Combo,Left Hook(s),Combo-Roll-Combo"))],
+//                ["category" => "pressure", "items" => array_filter(explode(",", "Forward Shuffle,Cut Off Ring,Left Hand Up, Roll Head Inside"))],
+//                ["category" => "boxing", "items" => array_filter(explode(",", "Shuffle and Tick,Stand Ground, Block Combo, Combo, Shuffle Out"))]
+//            ]
+//        ]);
+//
+//        exit();
+//    }
 
     $skillsSQL = "SELECT dogwork, pressure, boxing FROM skills WHERE username = ?";
     $stmt = $conn->prepare($skillsSQL);
@@ -230,8 +256,79 @@ if (isset($_GET['fetch_skills'])) {
         ]);
     } else {
         // Log the case when no skills are found
-        error_log("No skills found for user: " . $email);
-        echo json_encode(["status" => "error", "message" => "No skills found"]);
+        echo json_encode([
+            "user" => "guestData",
+            "skills" => [
+                ["category" => "dogwork", "items" => array_filter(explode(",", "Combo-Angle-Combo,Left Hook(s),Combo-Roll-Combo"))],
+                ["category" => "pressure", "items" => array_filter(explode(",", "Forward Shuffle,Cut Off Ring,Left Hand Up, Roll Head Inside"))],
+                ["category" => "boxing", "items" => array_filter(explode(",", "Shuffle and Tick,Stand Ground, Block Combo, Combo, Shuffle Out"))]
+            ]
+        ]);
+//        error_log("No skills found for user: " . $email);
+//        echo json_encode(["status" => "error", "message" => "No skills found"]);
+    }
+    $stmt->close();
+    exit();
+}
+
+if (isset($_GET['fetch_workouts'])) {
+    header('Content-Type: application/json');
+    $email = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+
+    // Log the email value to check if it's correct
+    error_log("Email: " . $email);
+
+    if ($email === "guestUser@guestUser") {
+        // Log the guestData response
+        error_log("Returning guestData response");
+//        echo json_encode(["user" => "guestData", "skills" => [], "workouts" => [], "combos" => []]);
+        echo json_encode([
+            "user" => "guestUser@guestUser",
+            "workouts" => [
+                ["category" => "upper-body", "items" => array_filter(explode(",", "Pushups, Dips, Shoulder Press"))],
+                ["category" => "lower-body", "items" => array_filter(explode(",", "Squats, Squat Jumps, Deadlifts"))],
+                ["category" => "core", "items" => array_filter(explode(",", "Russian Twists, Dumbell Rack Marches"))]
+            ]
+        ]);
+
+        exit();
+    }
+
+    $workoutsSQL = "SELECT upper-body, lower-body, core FROM skills WHERE username = ?";
+    $stmt = $conn->prepare($workoutsSQL);
+
+    // Log before binding the parameter
+    error_log("Preparing SQL query");
+
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    // Log after executing the query
+    error_log("Query executed, fetching result");
+
+    $result = $stmt->get_result();
+
+    // Log the number of rows in the result
+    error_log("Number of rows in result: " . $result->num_rows);
+
+    if ($result->num_rows > 0) {
+        $workouts = $result->fetch_assoc();
+
+        // Log the fetched skills data
+        error_log("Fetched workouts: " . print_r($workouts, true));
+
+        echo json_encode([
+            "user" => $email,
+            "workouts" => [
+                ["category" => "upper-body", "items" => array_filter(explode(",", isset($workouts['upper-body']) ? $workouts['upper-body'] : ''))],
+                ["category" => "lower-body", "items" => array_filter(explode(",", isset($workouts['lower-body']) ? $workouts['lower-body'] : ''))],
+                ["category" => "core", "items" => array_filter(explode(",", isset($workouts['core']) ? $workouts['core'] : ''))],
+            ]
+        ]);
+    } else {
+        // Log the case when no skills are found
+        error_log("No workouts found for user: " . $email);
+        echo json_encode(["status" => "error", "message" => "No workouts found"]);
     }
     $stmt->close();
     exit();

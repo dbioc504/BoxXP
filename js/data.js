@@ -169,26 +169,31 @@ function displaySkills() {
 
     container.innerHTML = ""; // Clear any existing content in the container
 
-    fetch('sql_connection.php?fetch_skills=true', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Fetched Data:", data);
+    const pageType = getPageType();
 
-            if (data.status === "error") {
-                console.error('Error fetching skills:', data.message);
-                return;
-            }
+    if(pageType == 'skills') {
 
-            if (data.skills && data.skills.length > 0) {
-                data.skills.forEach(category => {
-                    const section = document.createElement("div");
-                    section.className = "category-container";
 
-                    // Build the HTML for each skill category
-                    section.innerHTML = `
+        fetch('sql_connection.php?fetch_skills=true', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched Data:", data);
+
+                if (data.status === "error") {
+                    console.error('Error fetching skills:', data.message);
+                    return;
+                }
+
+                if (data.skills && data.skills.length > 0) {
+                    data.skills.forEach(category => {
+                        const section = document.createElement("div");
+                        section.className = "category-container";
+
+                        // Build the HTML for each skill category
+                        section.innerHTML = `
                     <div class="category-header" data-category="${category.category.toLowerCase()}">
                         <h2>${category.category.toUpperCase()}</h2>
                         <div class="category-buttons">
@@ -201,14 +206,60 @@ function displaySkills() {
                     </p>
                 `;
 
-                    container.appendChild(section);
-                });
-            } else {
-                // If no skills data is available
-                // container.innerHTML = "<p>No skills data found.</p>";
-            }
-        })
-        .catch(error => console.error('Error fetching skills:', error));
+                        container.appendChild(section);
+                    });
+                } else {
+                    // If no skills data is available
+                    // container.innerHTML = "<p>No skills data found.</p>";
+                }
+            })
+            .catch(error => console.error('Error fetching skills:', error));
+    }
+    // if(pageType == 'workouts') {
+    //
+    //     displayWorkouts();
+    //     fetch('sql_connection.php?fetch_workouts=true', {
+    //         method: 'GET',
+    //         headers: {'Content-Type': 'application/json'}
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log("Fetched Data:", data);
+    //
+    //             if (data.status === "error") {
+    //                 console.error('Error fetching workouts:', data.message);
+    //                 return;
+    //             }
+    //
+    //             if (data.workouts && data.workouts.length > 0) {
+    //                 data.workouts.forEach(category => {
+    //                     const section = document.createElement("div");
+    //                     section.className = "category-container";
+    //
+    //                     // Build the HTML for each skill category
+    //                     section.innerHTML = `
+    //                 <div class="category-header" data-category="${category.category.toLowerCase()}">
+    //                     <h2>${category.category.toUpperCase()}</h2>
+    //                     <div class="category-buttons">
+    //                         <button class="btn btn-edit" onclick="toggleEdit('${category.category.toLowerCase()}')">EDIT</button>
+    //                         <button class="btn btn-done" style="display: none;" onclick="toggleEdit('${category.category.toLowerCase()}')">DONE</button>
+    //                     </div>
+    //                 </div>
+    //                 <p class="workouts-text" id="${category.category.toLowerCase()}-workouts">
+    //                     ${category.items.join(", ")}
+    //                 </p>
+    //             `;
+    //
+    //                     container.appendChild(section);
+    //                 });
+    //             } else {
+    //                 // If no skills data is available
+    //                 // container.innerHTML = "<p>No skills data found.</p>";
+    //             }
+    //         })
+    //         .catch(error => console.error('Error fetching workouts:', error));
+    //
+    // }
 }
 
 

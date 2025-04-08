@@ -1,5 +1,38 @@
+let storedData = sessionStorage.getItem('guestData');
+if (storedData) {
+    appData = JSON.parse(storedData);
+} else {
+    appData = {
+        user: "guestData",
+        skills: [
+            { category: "dogwork", items: ["Combo-Angle-Combo", "Left Hook(s)", "Combo-Roll-Combo"]},
+            { category: "pressure", items: ["Forward Shuffle", "Cut Off Ring", "Left Hand Up, Roll Head Inside"] },
+            { category: "boxing", items: ["Shuffle and Tick", "Stand Ground, Block Combo, Combo, Shuffle Out"]}
+        ],
+        workouts: [
+            { category: "upper-body", items: ["Pushups", "Dips", "Shoulder Press"] },
+            { category: "lower-body", items: ["Squats", "Squat Jumps", "Deadlifts"] },
+            { category: "core", items: ["Russian Twists", "Dumbell Rack Marches"] }
+        ],
+        combos: [
+            { id: 1, combo: ["jab", "jab", "roll", "flurry"]},
+            { id: 2, combo: ["slip", "jab", "jab", "fake", "roll", "hook", "right hand"]}
+        ]
+    };
+    sessionStorage.setItem('guestData', JSON.stringify(appData));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    displayWorkouts();
+    // displayWorkouts();
+    // const pageType = getPageType();
+    // if (pageType === "workouts") {
+    //     displayWorkouts();
+    // }
+
+    // if (document.getElementById("workouts-container")) {
+        // If the element exists, call the displayWorkouts() function
+        displayWorkouts();
+    // }
 });
 
 function displayWorkouts() {
@@ -93,6 +126,3 @@ function saveWorkouts() {
     console.log("Selected workouts saved:", newSelected);
     window.location.href = "timerSetup.html";
 }
-
-
-

@@ -483,3 +483,305 @@ Stack trace:
 #1 {main}
   thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 34
 [31-Mar-2025 18:50:29 Europe/Berlin] This is a test log message
+[07-Apr-2025 18:58:44 Europe/Berlin] This is a test log message
+[07-Apr-2025 18:58:44 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 18:58:44 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 18:58:44 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 18:58:44 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 18:58:44 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:00:26 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:00:26 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:00:26 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:00:26 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:00:26 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:00:26 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:01:27 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:01:27 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:01:27 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:01:27 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:01:27 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:01:27 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:01:30 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:01:30 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:01:30 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:01:30 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:01:30 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:01:30 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:02:41 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:02:41 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:02:41 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:02:41 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:02:41 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:02:41 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:03:11 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:03:11 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:03:11 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:03:11 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:03:11 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:03:11 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 19:05:51 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:05:51 Europe/Berlin] PHP Warning:  Undefined variable $pass in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 83
+[07-Apr-2025 19:09:41 Europe/Berlin] This is a test log message
+[07-Apr-2025 19:09:41 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 19:09:41 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 19:09:41 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 19:09:41 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 19:09:41 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 22:20:32 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:20:32 Europe/Berlin] PHP Warning:  Undefined variable $pass in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 83
+[07-Apr-2025 22:23:23 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:23:23 Europe/Berlin] PHP Warning:  Undefined variable $pass in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 83
+[07-Apr-2025 22:25:21 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:25:21 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:25:21 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:25:21 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:25:21 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 22:25:21 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 22:25:31 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:25:34 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:25:34 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:25:34 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:25:34 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:25:34 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:25:34 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:26:03 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:26:06 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:26:06 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:26:06 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:26:06 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:26:06 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 22:26:06 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 22:26:42 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:26:42 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:26:42 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:26:42 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:26:42 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 22:26:42 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 22:26:53 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:26:56 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:26:56 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:26:56 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:26:56 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:26:56 Europe/Berlin] Number of rows in result: 0
+[07-Apr-2025 22:26:56 Europe/Berlin] No skills found for user: guestUser@guestUser
+[07-Apr-2025 22:29:54 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:29:58 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:29:58 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:29:58 Europe/Berlin] Returning guestData response
+[07-Apr-2025 22:35:44 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:35:47 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:35:47 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 22:35:47 Europe/Berlin] Returning guestData response
+[07-Apr-2025 22:35:59 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:36:02 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:36:02 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:36:02 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:36:02 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:36:02 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:36:02 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:36:06 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:36:06 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:36:06 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:36:06 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:36:06 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:36:06 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:47:08 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:47:08 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:47:08 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:47:08 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:47:08 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:47:08 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:47:14 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:47:14 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:47:14 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:47:14 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:47:14 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:47:14 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:47:19 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:47:19 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:47:19 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:47:19 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:47:19 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:47:19 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 22:47:32 Europe/Berlin] This is a test log message
+[07-Apr-2025 22:47:32 Europe/Berlin] Email: test@test
+[07-Apr-2025 22:47:32 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 22:47:32 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 22:47:32 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 22:47:32 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 23:02:32 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:02:32 Europe/Berlin] Email: test@test
+[07-Apr-2025 23:02:32 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 23:02:32 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 23:02:32 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 23:02:32 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 23:43:32 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:43:32 Europe/Berlin] Email: test@test
+[07-Apr-2025 23:43:32 Europe/Berlin] Preparing SQL query
+[07-Apr-2025 23:43:32 Europe/Berlin] Query executed, fetching result
+[07-Apr-2025 23:43:32 Europe/Berlin] Number of rows in result: 1
+[07-Apr-2025 23:43:32 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, here
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[07-Apr-2025 23:43:35 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:43:35 Europe/Berlin] Email: test@test
+[07-Apr-2025 23:43:35 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:273
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(273): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 273
+[07-Apr-2025 23:43:46 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:43:51 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:43:51 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 23:43:51 Europe/Berlin] Returning guestData response
+[07-Apr-2025 23:43:56 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:43:56 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 23:43:56 Europe/Berlin] Returning guestData response
+[07-Apr-2025 23:44:00 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:44:00 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 23:44:00 Europe/Berlin] Returning guestData response
+[07-Apr-2025 23:48:38 Europe/Berlin] This is a test log message
+[07-Apr-2025 23:48:38 Europe/Berlin] Email: guestUser@guestUser
+[07-Apr-2025 23:48:38 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:01:56 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:01:56 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:01:56 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:02:14 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:02:14 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:02:14 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:03:37 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:03:43 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:03:43 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:03:43 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:18:34 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:18:34 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:18:34 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:20:25 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:20:25 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:20:25 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:20:40 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:20:40 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:20:40 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:22:22 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:22:22 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:22:22 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:23:54 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:23:54 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:23:54 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:28:43 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:28:43 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:28:43 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:28:46 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:28:46 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:28:46 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:28:48 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:28:48 Europe/Berlin] Email: guestUser@guestUser
+[08-Apr-2025 00:28:48 Europe/Berlin] Returning guestData response
+[08-Apr-2025 00:40:14 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:42:31 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:42:45 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:43:11 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:43:11 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'password'])) {                     $_SESSION['user'] = $email; // Store the e...' at line 1 in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:85
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(85): mysqli->query('SELECT * FROM l...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 85
+[08-Apr-2025 00:52:27 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:52:35 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:53:12 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:55:23 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:59:20 Europe/Berlin] This is a test log message
+[08-Apr-2025 00:59:20 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'password_hash' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:111
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(111): mysqli->prepare('SELECT username...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 111
+[08-Apr-2025 01:02:10 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:02:12 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:02:12 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:02:12 Europe/Berlin] Preparing SQL query
+[08-Apr-2025 01:02:12 Europe/Berlin] Query executed, fetching result
+[08-Apr-2025 01:02:12 Europe/Berlin] Number of rows in result: 0
+[08-Apr-2025 01:02:12 Europe/Berlin] No skills found for user: kb@test
+[08-Apr-2025 01:02:26 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:03:23 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:03:23 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:03:23 Europe/Berlin] Preparing SQL query
+[08-Apr-2025 01:03:23 Europe/Berlin] Query executed, fetching result
+[08-Apr-2025 01:03:23 Europe/Berlin] Number of rows in result: 0
+[08-Apr-2025 01:03:23 Europe/Berlin] No skills found for user: kb@test
+[08-Apr-2025 01:08:43 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:08:43 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:08:43 Europe/Berlin] Preparing SQL query
+[08-Apr-2025 01:08:43 Europe/Berlin] Query executed, fetching result
+[08-Apr-2025 01:08:43 Europe/Berlin] Number of rows in result: 0
+[08-Apr-2025 01:08:56 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:09:03 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:09:03 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:09:03 Europe/Berlin] Preparing SQL query
+[08-Apr-2025 01:09:03 Europe/Berlin] Query executed, fetching result
+[08-Apr-2025 01:09:03 Europe/Berlin] Number of rows in result: 0
+[08-Apr-2025 01:09:41 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:09:41 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:09:41 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[08-Apr-2025 01:22:39 Europe/Berlin] This is a test log message
+[08-Apr-2025 01:22:39 Europe/Berlin] Email: kb@test
+[08-Apr-2025 01:22:39 Europe/Berlin] Preparing SQL query
+[08-Apr-2025 01:22:39 Europe/Berlin] Query executed, fetching result
+[08-Apr-2025 01:22:39 Europe/Berlin] Number of rows in result: 0
