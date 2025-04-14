@@ -1,4 +1,4 @@
-let storedData = sessionStorage.getItem('guestData');
+let storedData = localStorage.getItem('guestData');
 if (storedData) {
     appData = JSON.parse(storedData);
 } else {
@@ -19,14 +19,14 @@ if (storedData) {
             { id: 2, combo: ["slip", "jab", "jab", "fake", "roll", "hook", "right hand"]}
         ]
     };
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    localStorage.setItem('guestData', JSON.stringify(appData));
 }
 
 function saveData() {
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+    localStorage.setItem('guestData', JSON.stringify(appData));
     console.log("guestData saved:", appData)
 
-    const storedData = sessionStorage.getItem('guestData');
+    const storedData = localStorage.getItem('guestData');
     const appDataToSend = storedData ? JSON.parse(storedData) : {};
 
     fetch('sql_connection.php', {
@@ -56,6 +56,12 @@ function getPageType() {
 }
 
 function toggleEdit(categoryId) {
+    // if (pageType === "workouts") {
+    //     // Redirect to editWorkouts.html
+    //     window.location.href = "editWorkouts.html";
+    //     return;
+    // }
+
     const categoryHeader = document.querySelector(`[data-category="${categoryId}"]`);
     if (!categoryHeader) {
         console.error('category not found');
@@ -71,7 +77,8 @@ function toggleEdit(categoryId) {
 
     const editButton = categoryHeader.querySelector(".btn-edit");
     const doneButton = categoryHeader.querySelector(".btn-done");
-    const skillsText = document.getElementById(`${categoryId}-skills`);
+    // const skillsText = document.getElementById(`${categoryId}-skills`);
+    const skillsText = document.getElementById(`${categoryId}-skills`) || document.getElementById(`${categoryId}-workouts`);
 
     if (skillsText.dataset.editMode === "true") {
         exitEditMode(skillsText, category, editButton, doneButton);
@@ -188,6 +195,9 @@ function displaySkills() {
                 }
 
                 if (data.skills && data.skills.length > 0) {
+                    const updatedAppData = { workouts: data.skills };
+                    localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+
                     data.skills.forEach(category => {
                         const section = document.createElement("div");
                         section.className = "category-container";
@@ -217,7 +227,7 @@ function displaySkills() {
     }
     if(pageType == 'workouts') {
 
-        displayWorkouts();
+        // displayWorkouts();
         fetch('sql_connection.php?fetch_workouts=true', {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
@@ -232,6 +242,9 @@ function displaySkills() {
                 }
 
                 if (data.workouts && data.workouts.length > 0) {
+                    const updatedAppData = { workouts: data.workouts };
+                    localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+
                     data.workouts.forEach(category => {
                         const section = document.createElement("div");
                         section.className = "category-container";
@@ -269,6 +282,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-if (!sessionStorage.getItem('guestData')) {
-    sessionStorage.setItem('guestData', JSON.stringify(appData));
+if (!localStorage.getItem('guestData')) {
+    localStorage.setItem('guestData', JSON.stringify(appData));
 }

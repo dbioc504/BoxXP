@@ -1,27 +1,3 @@
-// let storedData = sessionStorage.getItem('guestData');
-// if (storedData) {
-//     appData = JSON.parse(storedData);
-// } else {
-//     appData = {
-//         user: "guestData",
-//         skills: [
-//             { category: "dogwork", items: ["Combo-Angle-Combo", "Left Hook(s)", "Combo-Roll-Combo"]},
-//             { category: "pressure", items: ["Forward Shuffle", "Cut Off Ring", "Left Hand Up, Roll Head Inside"] },
-//             { category: "boxing", items: ["Shuffle and Tick", "Stand Ground, Block Combo, Combo, Shuffle Out"]}
-//         ],
-//         workouts: [
-//             { category: "upper-body", items: ["Pushups", "Dips", "Shoulder Press"] },
-//             { category: "lower-body", items: ["Squats", "Squat Jumps", "Deadlifts"] },
-//             { category: "core", items: ["Russian Twists", "Dumbell Rack Marches"] }
-//         ],
-//         combos: [
-//             { id: 1, combo: ["jab", "jab", "roll", "flurry"]},
-//             { id: 2, combo: ["slip", "jab", "jab", "fake", "roll", "hook", "right hand"]}
-//         ]
-//     };
-//     sessionStorage.setItem('guestData', JSON.stringify(appData));
-// }
-
 document.addEventListener("DOMContentLoaded", () => {
     displayWorkouts();
 });
@@ -30,8 +6,8 @@ function displayWorkouts() {
     const container = document.getElementById("workouts-container");
     container.innerHTML = "";
 
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
-    console.log("guesData (workouts):", guestData);
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
+    console.log("guestData (workouts):", guestData);
 
     if(!guestData || !guestData.workouts) {
         container.innerHTML += "<p>No workouts found.</p>";
@@ -49,7 +25,7 @@ function displayWorkouts() {
         });
     });
 
-    let selectedWorkouts = JSON.parse(sessionStorage.getItem("selectedWorkouts")) || [];
+    let selectedWorkouts = JSON.parse(localStorage.getItem("selectedWorkouts")) || [];
 
     allWorkouts.forEach(workoutObj => {
         const workoutDiv = document.createElement("div");
@@ -83,7 +59,7 @@ function saveWorkouts() {
         newSelected.push(item.dataset.workoutId);
     });
 
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     let allWorkouts = [];
     guestData.workouts.forEach((catObj, catIndex) => {
         catObj.items.forEach((workout, workoutIndex) => {
@@ -113,7 +89,7 @@ function saveWorkouts() {
             return;
         }}
 
-    sessionStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
+    localStorage.setItem("selectedWorkouts", JSON.stringify(newSelected));
     console.log("Selected workouts saved:", newSelected);
     window.location.href = "timerSetup.html";
 }

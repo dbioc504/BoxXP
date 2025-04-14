@@ -168,9 +168,9 @@ if (isset($_POST['appData'])) {
             }
 
 //            // Clean up trailing commas
-//            $dogwork = rtrim($dogwork, ', ');
-//            $pressure = rtrim($pressure, ', ');
-//            $boxing = rtrim($boxing, ', ');
+            $dogwork = rtrim($dogwork, ', ');
+            $pressure = rtrim($pressure, ', ');
+            $boxing = rtrim($boxing, ', ');
 
             // Check if the user already exists in the skills table
             $check_sql = "SELECT * FROM skills WHERE username = '$username'";
@@ -197,6 +197,61 @@ if (isset($_POST['appData'])) {
     } else {
         echo json_encode(["status" => "error", "message" => "No skills data received"]);
     }
+
+    if (isset($appData['workouts'])) {
+
+        $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser"; // Use the email as the username
+        $upperBody = $lowerBody = $core = '';  // Initialize the variables for workout categories
+
+        // Loop through the workouts array and insert/update data
+        foreach ($appData['workouts'] as $workout) {
+
+            // Insert based on category type
+            foreach ($workout['items'] as $item) {
+                switch (strtolower($workout['category'])) {
+                    case 'upper-body':
+                        $upperBody .= $item . ', ';
+                        break;
+                    case 'lower-body':
+                        $lowerBody .= $item . ', ';
+                        break;
+                    case 'core':
+                        $core .= $item . ', ';
+                        break;
+                }
+            }
+
+            // Clean up trailing commas
+            $upperBody = rtrim($upperBody, ', ');
+            $lowerBody = rtrim($lowerBody, ', ');
+            $core = rtrim($core, ', ');
+
+            // Check if the user already exists in the workouts table
+            $check_sql = "SELECT * FROM workouts WHERE username = '$username'";
+            $result = $conn->query($check_sql);
+
+            if ($result->num_rows > 0) {
+                // Update existing record
+                $update_sql = "UPDATE workouts SET `upper-body` = ?, `lower-body` = ?, `core` = ? WHERE username = ?";
+                $stmt = $conn->prepare($update_sql);
+                $stmt->bind_param("ssss", $upperBody, $lowerBody, $core, $username);
+                $stmt->execute();
+                $stmt->close();
+            } else {
+                // Insert new record
+                $insert_sql = "INSERT INTO workouts (username, `upper-body`, `lower-body`, `core`) VALUES (?, ?, ?, ?)";
+                $stmt = $conn->prepare($insert_sql);
+                $stmt->bind_param("ssss", $username, $upperBody, $lowerBody, $core);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => "No workouts data found."]);
+    }
+
 }
 
 // Handle request to fetch user skills
@@ -292,43 +347,52 @@ if (isset($_GET['fetch_workouts'])) {
         ]);
 
         exit();
-    }
-
-    $workoutsSQL = "SELECT upper-body, lower-body, core FROM skills WHERE username = ?";
-    $stmt = $conn->prepare($workoutsSQL);
-
-    // Log before binding the parameter
-    error_log("Preparing SQL query");
-
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-
-    // Log after executing the query
-    error_log("Query executed, fetching result");
-
-    $result = $stmt->get_result();
-
-    // Log the number of rows in the result
-    error_log("Number of rows in result: " . $result->num_rows);
-
-    if ($result->num_rows > 0) {
-        $workouts = $result->fetch_assoc();
-
-        // Log the fetched skills data
-        error_log("Fetched workouts: " . print_r($workouts, true));
-
-        echo json_encode([
-            "user" => $email,
-            "workouts" => [
-                ["category" => "upper-body", "items" => array_filter(explode(",", isset($workouts['upper-body']) ? $workouts['upper-body'] : ''))],
-                ["category" => "lower-body", "items" => array_filter(explode(",", isset($workouts['lower-body']) ? $workouts['lower-body'] : ''))],
-                ["category" => "core", "items" => array_filter(explode(",", isset($workouts['core']) ? $workouts['core'] : ''))],
-            ]
-        ]);
     } else {
-        // Log the case when no skills are found
-        error_log("No workouts found for user: " . $email);
-        echo json_encode(["status" => "error", "message" => "No workouts found"]);
+
+        $workoutsSQL = "SELECT `upper-body`, `lower-body`, core FROM workouts WHERE username = ?";
+        $stmt = $conn->prepare($workoutsSQL);
+
+        // Log before binding the parameter
+        error_log("Preparing SQL query");
+
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        // Log after executing the query
+        error_log("Query executed, fetching result");
+
+        $result = $stmt->get_result();
+
+        // Log the number of rows in the result
+        error_log("Number of rows in result: " . $result->num_rows);
+
+        if ($result->num_rows > 0) {
+            $workouts = $result->fetch_assoc();
+
+            // Log the fetched skills data
+            error_log("Fetched workouts: " . print_r($workouts, true));
+
+            echo json_encode([
+                "user" => $email,
+                "workouts" => [
+                    ["category" => "upper-body", "items" => array_filter(explode(",", isset($workouts['upper-body']) ? $workouts['upper-body'] : ''))],
+                    ["category" => "lower-body", "items" => array_filter(explode(",", isset($workouts['lower-body']) ? $workouts['lower-body'] : ''))],
+                    ["category" => "core", "items" => array_filter(explode(",", isset($workouts['core']) ? $workouts['core'] : ''))],
+                ]
+            ]);
+        } else {
+            // Log the case when no skills are found
+            error_log("No workouts found for user: " . $email);
+//        echo json_encode(["status" => "error", "message" => "No workouts found"]);
+            echo json_encode([
+                "user" => $email,
+                "workouts" => [
+                    ["category" => "upper-body", "items" => array_filter(explode(",", "Pushups, Dips, Shoulder Press"))],
+                    ["category" => "lower-body", "items" => array_filter(explode(",", "Squats, Squat Jumps, Deadlifts"))],
+                    ["category" => "core", "items" => array_filter(explode(",", "Russian Twists, Dumbell Rack Marches"))]
+                ]
+            ]);
+        }
     }
     $stmt->close();
     exit();

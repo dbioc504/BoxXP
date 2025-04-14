@@ -785,3 +785,533 @@ Stack trace:
 [08-Apr-2025 01:22:39 Europe/Berlin] Preparing SQL query
 [08-Apr-2025 01:22:39 Europe/Berlin] Query executed, fetching result
 [08-Apr-2025 01:22:39 Europe/Berlin] Number of rows in result: 0
+[08-Apr-2025 23:58:46 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:01:04 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:03:49 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:04:05 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:04:05 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:04:05 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 00:04:05 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 00:04:05 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 00:04:09 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:04:09 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:04:09 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 00:05:45 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:05:45 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:05:45 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 00:05:45 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 00:05:45 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 00:05:47 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:05:52 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:35:27 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:35:27 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:35:27 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 00:35:32 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:35:32 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:35:32 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 00:35:32 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 00:35:32 Europe/Berlin] Number of rows in result: 1
+[09-Apr-2025 00:35:32 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, 
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[09-Apr-2025 00:35:36 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:35:36 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:35:36 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 00:37:10 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:37:10 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:37:10 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 00:38:48 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:38:48 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:38:48 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 00:38:55 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:38:55 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:38:55 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 00:38:55 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 00:38:55 Europe/Berlin] Number of rows in result: 1
+[09-Apr-2025 00:38:55 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, 
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[09-Apr-2025 00:38:59 Europe/Berlin] This is a test log message
+[09-Apr-2025 00:38:59 Europe/Berlin] Email: kb@test
+[09-Apr-2025 00:38:59 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 01:08:17 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:08:17 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:08:17 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'upper' in 'field list' in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php:298
+Stack trace:
+#0 C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php(298): mysqli->prepare('SELECT upper-bo...')
+#1 {main}
+  thrown in C:\Users\Kendall Baggett\IdeaProjects\BoxXPnew\sql_connection.php on line 298
+[09-Apr-2025 01:19:14 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:19:14 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:19:14 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:19:14 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:19:14 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 01:19:14 Europe/Berlin] No workouts found for user: kb@test
+[09-Apr-2025 01:21:18 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:18 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:18 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:18 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:18 Europe/Berlin] Number of rows in result: 1
+[09-Apr-2025 01:21:18 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, 
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[09-Apr-2025 01:21:21 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:21 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:21 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:21 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:21 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 01:21:21 Europe/Berlin] No workouts found for user: kb@test
+[09-Apr-2025 01:21:24 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:24 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:24 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:24 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:24 Europe/Berlin] Number of rows in result: 1
+[09-Apr-2025 01:21:24 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, 
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[09-Apr-2025 01:21:29 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:29 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:29 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:29 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:29 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 01:21:29 Europe/Berlin] No workouts found for user: kb@test
+[09-Apr-2025 01:21:31 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:31 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:31 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:31 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:31 Europe/Berlin] Number of rows in result: 1
+[09-Apr-2025 01:21:31 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, 
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside, 
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out, 
+)
+
+[09-Apr-2025 01:21:33 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:21:33 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:21:33 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:21:33 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:21:33 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 01:21:33 Europe/Berlin] No workouts found for user: kb@test
+[09-Apr-2025 01:36:05 Europe/Berlin] This is a test log message
+[09-Apr-2025 01:36:05 Europe/Berlin] Email: kb@test
+[09-Apr-2025 01:36:05 Europe/Berlin] Preparing SQL query
+[09-Apr-2025 01:36:05 Europe/Berlin] Query executed, fetching result
+[09-Apr-2025 01:36:05 Europe/Berlin] Number of rows in result: 0
+[09-Apr-2025 01:36:05 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:01:47 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:01:47 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:01:47 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:01:47 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:01:47 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:01:47 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:42:12 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:42:12 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:42:12 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:42:12 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:42:12 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:42:12 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:42:24 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:42:24 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:42:24 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:42:24 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:42:24 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:42:24 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:44:19 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:44:19 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:44:19 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:44:19 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:44:19 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:44:19 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:53:37 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:53:37 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:53:37 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:53:37 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:53:37 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:53:37 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:54:40 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:54:40 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:54:40 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:54:40 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:54:40 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:54:40 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:58:54 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:58:54 Europe/Berlin] Email: kb@test
+[13-Apr-2025 23:58:54 Europe/Berlin] Preparing SQL query
+[13-Apr-2025 23:58:54 Europe/Berlin] Query executed, fetching result
+[13-Apr-2025 23:58:54 Europe/Berlin] Number of rows in result: 0
+[13-Apr-2025 23:58:54 Europe/Berlin] No workouts found for user: kb@test
+[13-Apr-2025 23:58:57 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:58:59 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:59:03 Europe/Berlin] This is a test log message
+[13-Apr-2025 23:59:04 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:22:03 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:22:03 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:22:03 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:22:03 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:22:03 Europe/Berlin] Number of rows in result: 0
+[14-Apr-2025 00:22:03 Europe/Berlin] No workouts found for user: kb@test
+[14-Apr-2025 00:22:06 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:24:37 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:24:37 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:24:37 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:24:37 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:24:37 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:24:37 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, 
+    [lower-body] => Squats, Squat Jumps, Deadlifts, 
+    [core] => Russian Twists, Dumbell Rack Marches, 
+)
+
+[14-Apr-2025 00:24:37 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:24:40 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:25:26 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:25:26 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:25:26 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:25:26 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:25:26 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:25:26 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, testedit, 
+    [lower-body] => Squats, Squat Jumps, Deadlifts, 
+    [core] => Russian Twists, Dumbell Rack Marches, 
+)
+
+[14-Apr-2025 00:25:47 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:25:47 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:25:47 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:25:47 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:25:47 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:25:47 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:25:47 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press
+    [lower-body] => Squats, Squat Jumps, Deadlifts
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 00:26:14 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:26:14 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:26:14 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:26:14 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:26:14 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:26:14 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press
+    [lower-body] => Squats, Squat Jumps, Deadlifts
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 00:26:14 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:26:20 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:26:36 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:26:36 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:26:36 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:26:36 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:26:36 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:26:36 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 00:26:36 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:26:45 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:45:53 Europe/Berlin] This is a test log message
+[14-Apr-2025 00:45:53 Europe/Berlin] Email: kb@test
+[14-Apr-2025 00:45:53 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 00:45:53 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 00:45:53 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 00:45:53 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => read, from, database
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 00:46:01 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:02:04 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:02:04 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:02:04 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:02:04 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:02:04 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:02:04 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:02:38 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:02:38 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:02:38 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:02:38 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:02:38 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:02:38 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => read, from, data
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:08:27 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:34 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:34 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:08:34 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:08:34 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:08:34 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:08:34 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out
+)
+
+[14-Apr-2025 01:08:36 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:45 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:45 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:45 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:08:45 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:08:45 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:08:45 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:08:45 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, test
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out
+)
+
+[14-Apr-2025 01:08:47 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:08:47 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:08:47 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:08:47 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:08:47 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:08:47 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, test
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out
+)
+
+[14-Apr-2025 01:08:50 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:09:01 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:09:01 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:09:01 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:09:01 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:09:01 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:09:01 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:09:07 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:09:17 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:09:17 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:09:17 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:09:17 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:09:17 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:09:17 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:09:53 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:09:53 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:09:53 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:09:53 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:09:53 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:09:53 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:10:06 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:10:06 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:10:06 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:10:06 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:10:06 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:10:06 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => read, from, data
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:11:32 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:11:32 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:11:32 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:11:32 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:11:32 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:11:32 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => read, from, data
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:11:36 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:10 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:10 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:12:10 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:12:10 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:12:10 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:12:10 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Pushups, Dips, Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:12:10 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:13 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:13 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:13 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:12:13 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:12:13 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:12:13 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:12:13 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => Shoulder Press, test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:12:17 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:17 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:12:17 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:12:17 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:12:17 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:12:17 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:12:17 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:13:06 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:13:06 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:13:06 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:13:06 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:13:06 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:13:06 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test
+    [lower-body] => Squats, Squat Jumps, Deadlifts, teset2
+    [core] => Russian Twists, Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:13:16 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:13:16 Europe/Berlin] This is a test log message
+[14-Apr-2025 01:13:16 Europe/Berlin] Email: kb@test
+[14-Apr-2025 01:13:16 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 01:13:16 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 01:13:16 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 01:13:16 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test, test2
+    [lower-body] => Squats,  Squat Jumps,  Deadlifts,  teset2
+    [core] => Russian Twists,  Dumbell Rack Marches
+)
+
+[14-Apr-2025 01:13:20 Europe/Berlin] This is a test log message
+[14-Apr-2025 18:58:16 Europe/Berlin] This is a test log message
+[14-Apr-2025 18:58:16 Europe/Berlin] Email: kb@test
+[14-Apr-2025 18:58:16 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 18:58:16 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 18:58:16 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 18:58:16 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test, test2
+    [lower-body] => Squats,  Squat Jumps,  Deadlifts,  teset2
+    [core] => Russian Twists,  Dumbell Rack Marches
+)
+
+[14-Apr-2025 18:58:23 Europe/Berlin] This is a test log message
+[14-Apr-2025 18:58:23 Europe/Berlin] This is a test log message
+[14-Apr-2025 18:58:23 Europe/Berlin] Email: kb@test
+[14-Apr-2025 18:58:23 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 18:58:23 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 18:58:23 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 18:58:23 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test, test2, test3
+    [lower-body] => Squats,  Squat Jumps,  Deadlifts,  teset2
+    [core] => Russian Twists,  Dumbell Rack Marches
+)
+
+[14-Apr-2025 18:58:36 Europe/Berlin] This is a test log message
+[14-Apr-2025 18:58:36 Europe/Berlin] Email: kb@test
+[14-Apr-2025 18:58:36 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 18:58:36 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 18:58:36 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 18:58:36 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test, test2, test3
+    [lower-body] => Squats,  Squat Jumps,  Deadlifts,  teset2
+    [core] => Russian Twists,  Dumbell Rack Marches
+)
+
+[14-Apr-2025 18:58:42 Europe/Berlin] This is a test log message
+[14-Apr-2025 19:00:05 Europe/Berlin] This is a test log message
+[14-Apr-2025 19:00:05 Europe/Berlin] Email: kb@test
+[14-Apr-2025 19:00:05 Europe/Berlin] Preparing SQL query
+[14-Apr-2025 19:00:05 Europe/Berlin] Query executed, fetching result
+[14-Apr-2025 19:00:05 Europe/Berlin] Number of rows in result: 1
+[14-Apr-2025 19:00:05 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test, test2
+    [lower-body] => Squats,   Squat Jumps,   Deadlifts,   teset2
+    [core] => Russian Twists,   Dumbell Rack Marches
+)
+
+[14-Apr-2025 19:00:14 Europe/Berlin] This is a test log message
+[14-Apr-2025 19:00:17 Europe/Berlin] This is a test log message
