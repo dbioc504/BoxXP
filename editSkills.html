@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/timer.css">
+    <style>
+        .option-group{
+            margin: 1rem auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        .option-group label{
+            font-size: 1.3rem;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+        .option-group input[type=radio]{
+            transform: scale(1.2);
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        #focus-container{
+            display: none;
+            margin-top: 1rem;
+        }
+        #focus-container label{
+            display: block;
+            margin: 0.25rem 0;
+        }
+    </style>
+    <title>EDIT SKILLS DISPLAY</title>
+</head>
+<body>
+    <div class="container">
+        <h1>EDIT SKILLS DISPLAY</h1>
+        <div class="option-group">
+            <input type="radio" name="skillMode" id="balanced" value="balanced" checked>
+            <label for="balanced">BALANCED</label>
+            <input type="radio" name="skillMode" id="specialized" value="specialized">
+            <label for="specialized">SPECIALIZED</label>
+        </div>
+
+        <div id="focus-container" class="option-group">
+            <input type="radio" name="focusSkill" id="focus-pressure" value="Pressure" checked>
+            <label for="focus-pressure">PRESSURE</label>
+            <input type="radio" name="focusSkill" id="focus-boxing" value="Boxing">
+            <label for="focus-boxing">BOXING</label>
+            <input type="radio" name="focusSkill" id="focus-dogwork" value="Dogwork">
+            <label for="focus-dogwork">Dogwork</label>
+        </div>
+
+        <button id="save-btn">SAVE SELECTION</button>
+    </div>
+
+    <script src="js/editSkills.js"></script>
+</body>
+</html>

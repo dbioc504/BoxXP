@@ -6,7 +6,7 @@ function displayCombos() {
     const container = document.getElementById("combos-container");
     container.innerHTML = "";
 
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
     console.log("guestDataFirstLoad:", guestData);
 
     if (!guestData || !guestData.combos) {
@@ -14,7 +14,7 @@ function displayCombos() {
         return;
     }
 
-    let selectedCombos = JSON.parse(sessionStorage.getItem("selectedCombos")) || [];
+    let selectedCombos = JSON.parse(localStorage.getItem("selectedCombos")) || [];
 
     guestData.combos.forEach(combo => {
         const comboDiv = document.createElement("div");
@@ -45,7 +45,7 @@ function saveCombos() {
     const allItems = container.querySelectorAll(".selectable-item");
 
     let newSelected = [];
-    const guestData = JSON.parse(sessionStorage.getItem("guestData"));
+    const guestData = JSON.parse(localStorage.getItem("guestData"));
 
     allItems.forEach((item, index) => {
         if (item.classList.contains("selected")) {
@@ -54,7 +54,7 @@ function saveCombos() {
         }
     });
 
-    sessionStorage.setItem("selectedCombos", JSON.stringify(newSelected));
+    localStorage.setItem("selectedCombos", JSON.stringify(newSelected));
 
     console.log(newSelected);
 
