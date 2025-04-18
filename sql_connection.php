@@ -4,9 +4,9 @@ session_start();
 //session_unset();
 //session_destroy();
 //if (isset($_COOKIE[session_name()])) {
-//    setcookie(session_name(), '', time() - 3600, '/'); // Expire the session cookie
+//    setcookie(session_name(), '', time() - 3600, '/');
 //}
-header('Content-Type: application/json'); // Ensure the response is JSON
+header('Content-Type: application/json');
 
 
 //error_reporting(E_ALL);
@@ -14,10 +14,9 @@ header('Content-Type: application/json'); // Ensure the response is JSON
 
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/php_errors.log');
-error_log("This is a test log message");
+error_log("test log message");
 
 
-// database
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -28,16 +27,16 @@ $database = "boxxp";
 //session_unset();
 //session_destroy();
 //if (isset($_COOKIE[session_name()])) {
-//    setcookie(session_name(), '', time() - 3600, '/'); // Expire the session cookie
+//    setcookie(session_name(), '', time() - 3600, '/');
 //}
 
-$conn = new mysqli($servername, $username, $password, $database); // connect
+$conn = new mysqli($servername, $username, $password, $database);
 
 
 
 //if (empty($_POST['email']) || empty($_POST['password'])) {
 //    echo "Fill in all fields.";
-//    exit; // Stop further execution
+//    exit;
 //}
 
 
@@ -45,11 +44,10 @@ $conn = new mysqli($servername, $username, $password, $database); // connect
 //    $pass = $_POST['password'];
 
 
-//$hashedPassword = password_hash($pass, PASSWORD_DEFAULT); // <-- CHANGED: Secure password hashing
+//$hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 //look into this line for password security
 
 
-// database insertion
 if (isset($_POST['create_account'])) {
 
     $email = isset($_POST['email']) ? $_POST['email'] : null;
@@ -63,9 +61,9 @@ if (isset($_POST['create_account'])) {
         if ($conn->query($sql)) {
             echo "Inserted!";
 
-            $_SESSION['user'] = $email; // Store the email in session
+            $_SESSION['user'] = $email;
             session_write_close();
-            header("Location: index.html"); // page change
+            header("Location: index.html");
             exit();
         } else {
         }
@@ -84,7 +82,6 @@ if (isset($_POST['sign_in'])) {
 //        $sql2 = "SELECT * FROM login WHERE username = '$email' AND password = '$password'";
 //        $result = $conn->query($sql2);
 
-// Check if user exists
 //        if ($result->num_rows > 0) {
 //            while ($row = $result->fetch_assoc()) {
 ////            echo "User found: Username: " . $row["username"] . " - Password: " . $row["password"] . "<br>";
@@ -106,21 +103,19 @@ if (isset($_POST['sign_in'])) {
 //                    header("Location: index.html"); // page change
 //                    exit();
 //                }
-                // Query to check if user exists
                 $sql2 = "SELECT username, password FROM login WHERE username = ?";
                 $stmt = $conn->prepare($sql2);
-                $stmt->bind_param("s", $email);  // Bind the email to the query
+                $stmt->bind_param("s", $email);
                 $stmt->execute();
-                $stmt->bind_result($username, $storedHash);  // Fetch the result
+                $stmt->bind_result($username, $storedHash);
                 $stmt->fetch();
                 $stmt->close();
 
                 if ($username) {
-                    // Verify the password
                     if (password_verify($password, $storedHash)) {
-                        $_SESSION['user'] = $username; // Store the username in session
+                        $_SESSION['user'] = $username; //
                         session_write_close();
-                        header("Location: index.html"); // Redirect to the homepage
+                        header("Location: index.html");
                         exit();
                     } else {
                         echo "Invalid password.";
@@ -138,21 +133,17 @@ if (isset($_POST['appData'])) {
         exit();
     }
 
-    // Decode the JSON data sent from JavaScript
     $appData = json_decode($_POST['appData'], true);
 
-    // Check if 'skills' data exists
     if (isset($appData['skills'])) {
 
-        $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser"; // Use the email as the username
+        $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser";
 //        $username =
         $dogwork = $pressure = $boxing = '';
 
 
-        // Loop through the skills array and insert/update data
         foreach ($appData['skills'] as $skill) {
 
-            // Insert based on category type
             foreach ($skill['items'] as $item) {
                 switch (strtolower($skill['category'])) {
                     case 'dogwork':
@@ -167,24 +158,20 @@ if (isset($_POST['appData'])) {
                 }
             }
 
-//            // Clean up trailing commas
             $dogwork = rtrim($dogwork, ', ');
             $pressure = rtrim($pressure, ', ');
             $boxing = rtrim($boxing, ', ');
 
-            // Check if the user already exists in the skills table
             $check_sql = "SELECT * FROM skills WHERE username = '$username'";
             $result = $conn->query($check_sql);
 
             if ($result->num_rows > 0) {
-                // Update existing record
                 $update_sql = "UPDATE skills SET dogwork = ?, pressure = ?, boxing = ? WHERE username = ?";
                 $stmt = $conn->prepare($update_sql);
                 $stmt->bind_param("ssss", $dogwork, $pressure, $boxing, $username);
                 $stmt->execute();
                 $stmt->close();
             } else {
-                // Insert new record
                 $insert_sql = "INSERT INTO skills (username, dogwork, pressure, boxing) VALUES (?, ?, ?, ?)";
                 $stmt = $conn->prepare($insert_sql);
                 $stmt->bind_param("ssss", $username, $dogwork, $pressure, $boxing);
@@ -200,13 +187,11 @@ if (isset($_POST['appData'])) {
 
     if (isset($appData['workouts'])) {
 
-        $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser"; // Use the email as the username
-        $upperBody = $lowerBody = $core = '';  // Initialize the variables for workout categories
+        $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser";
+        $upperBody = $lowerBody = $core = '';
 
-        // Loop through the workouts array and insert/update data
         foreach ($appData['workouts'] as $workout) {
 
-            // Insert based on category type
             foreach ($workout['items'] as $item) {
                 switch (strtolower($workout['category'])) {
                     case 'upper-body':
@@ -221,24 +206,20 @@ if (isset($_POST['appData'])) {
                 }
             }
 
-            // Clean up trailing commas
             $upperBody = rtrim($upperBody, ', ');
             $lowerBody = rtrim($lowerBody, ', ');
             $core = rtrim($core, ', ');
 
-            // Check if the user already exists in the workouts table
             $check_sql = "SELECT * FROM workouts WHERE username = '$username'";
             $result = $conn->query($check_sql);
 
             if ($result->num_rows > 0) {
-                // Update existing record
                 $update_sql = "UPDATE workouts SET `upper-body` = ?, `lower-body` = ?, `core` = ? WHERE username = ?";
                 $stmt = $conn->prepare($update_sql);
                 $stmt->bind_param("ssss", $upperBody, $lowerBody, $core, $username);
                 $stmt->execute();
                 $stmt->close();
             } else {
-                // Insert new record
                 $insert_sql = "INSERT INTO workouts (username, `upper-body`, `lower-body`, `core`) VALUES (?, ?, ?, ?)";
                 $stmt = $conn->prepare($insert_sql);
                 $stmt->bind_param("ssss", $username, $upperBody, $lowerBody, $core);
@@ -254,16 +235,13 @@ if (isset($_POST['appData'])) {
 
 }
 
-// Handle request to fetch user skills
 if (isset($_GET['fetch_skills'])) {
     header('Content-Type: application/json');
     $email = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
 
-    // Log the email value to check if it's correct
     error_log("Email: " . $email);
 
 //    if ($email === "guestUser@guestUser") {
-//        // Log the guestData response
 //        error_log("Returning guestData response");
 ////        echo json_encode(["user" => "guestData", "skills" => [], "workouts" => [], "combos" => []]);
 //        echo json_encode([
@@ -281,24 +259,20 @@ if (isset($_GET['fetch_skills'])) {
     $skillsSQL = "SELECT dogwork, pressure, boxing FROM skills WHERE username = ?";
     $stmt = $conn->prepare($skillsSQL);
 
-    // Log before binding the parameter
     error_log("Preparing SQL query");
 
     $stmt->bind_param("s", $email);
     $stmt->execute();
 
-    // Log after executing the query
     error_log("Query executed, fetching result");
 
     $result = $stmt->get_result();
 
-    // Log the number of rows in the result
     error_log("Number of rows in result: " . $result->num_rows);
 
     if ($result->num_rows > 0) {
         $skills = $result->fetch_assoc();
 
-        // Log the fetched skills data
         error_log("Fetched skills: " . print_r($skills, true));
 
         echo json_encode([
@@ -310,7 +284,6 @@ if (isset($_GET['fetch_skills'])) {
             ]
         ]);
     } else {
-        // Log the case when no skills are found
         echo json_encode([
             "user" => "guestData",
             "skills" => [
@@ -330,11 +303,9 @@ if (isset($_GET['fetch_workouts'])) {
     header('Content-Type: application/json');
     $email = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
 
-    // Log the email value to check if it's correct
     error_log("Email: " . $email);
 
     if ($email === "guestUser@guestUser") {
-        // Log the guestData response
         error_log("Returning guestData response");
 //        echo json_encode(["user" => "guestData", "skills" => [], "workouts" => [], "combos" => []]);
         echo json_encode([
@@ -352,24 +323,20 @@ if (isset($_GET['fetch_workouts'])) {
         $workoutsSQL = "SELECT `upper-body`, `lower-body`, core FROM workouts WHERE username = ?";
         $stmt = $conn->prepare($workoutsSQL);
 
-        // Log before binding the parameter
         error_log("Preparing SQL query");
 
         $stmt->bind_param("s", $email);
         $stmt->execute();
 
-        // Log after executing the query
         error_log("Query executed, fetching result");
 
         $result = $stmt->get_result();
 
-        // Log the number of rows in the result
         error_log("Number of rows in result: " . $result->num_rows);
 
         if ($result->num_rows > 0) {
             $workouts = $result->fetch_assoc();
 
-            // Log the fetched skills data
             error_log("Fetched workouts: " . print_r($workouts, true));
 
             echo json_encode([
@@ -381,7 +348,6 @@ if (isset($_GET['fetch_workouts'])) {
                 ]
             ]);
         } else {
-            // Log the case when no skills are found
             error_log("No workouts found for user: " . $email);
 //        echo json_encode(["status" => "error", "message" => "No workouts found"]);
             echo json_encode([
@@ -398,15 +364,284 @@ if (isset($_GET['fetch_workouts'])) {
     exit();
 }
 
+//if (isset($_POST['combos'])) {
+//    $combos = json_decode($_POST['combos'], true);
+//    error_log(print_r($combos, true));
+//
+//    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+//
+//    if ($conn->connect_error) {
+//        echo json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]);
+//        exit();
+//    }
+//
+//    if (!is_array($combos)) {
+//        echo json_encode(["status" => "error", "message" => "Invalid combo data"]);
+//        exit();
+//    }
+//
+////    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser";
+//
+//    $delete_sql = "DELETE FROM combos WHERE username = ?";
+//    $stmt = $conn->prepare($delete_sql);
+//    $stmt->bind_param("s", $username);
+//    $stmt->execute();
+//    $stmt->close();
+//
+//    $insert_sql = "INSERT INTO combos (username, id, combo) VALUES (?, ?, ?)";
+//    $stmt = $conn->prepare($insert_sql);
+//
+//    foreach ($combos as $combo) {
+//        if (isset($combo['id']) && isset($combo['combo'])) {
+//            $comboId = $combo['id'];
+//            $comboText = implode(', ', $combo['combo']);
+//            $stmt->bind_param("sis", $username, $comboId, $comboText);
+//            $stmt->execute();
+//        }
+//    }
+//
+//    $stmt->close();
+//    echo json_encode(["status" => "success"]);
+//}
+
+if (isset($_POST['combos'])) {
+    $newCombos = json_decode($_POST['combos'], true);
+    error_log(print_r($newCombos, true));
+
+    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+
+    if ($conn->connect_error) {
+        echo json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]);
+        exit();
+    }
+
+    if (!is_array($newCombos)) {
+        echo json_encode(["status" => "error", "message" => "Invalid combo data"]);
+        exit();
+    }
+
+    $existing_sql = "SELECT combo FROM combos WHERE username = ?";
+    $stmt = $conn->prepare($existing_sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->bind_result($existingComboString);
+    $stmt->fetch();
+    $stmt->close();
+
+    $existingCombos = [];
+    if (!empty($existingComboString)) {
+        $existingCombos = json_decode($existingComboString, true);
+        if (!is_array($existingCombos)) $existingCombos = [];
+    }
+
+    foreach ($newCombos as $combo) {
+        if (isset($combo['id']) && isset($combo['combo'])) {
+            $existingCombos[] = $combo;
+        }
+    }
+
+    $updatedComboString = json_encode($existingCombos);
+
+    $check_sql = "SELECT COUNT(*) FROM combos WHERE username = ?";
+    $stmt = $conn->prepare($check_sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->bind_result($exists);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($exists > 0) {
+        $update_sql = "UPDATE combos SET combo = ? WHERE username = ?";
+        $stmt = $conn->prepare($update_sql);
+        $stmt->bind_param("ss", $updatedComboString, $username);
+    } else {
+        $insert_sql = "INSERT INTO combos (username, combo) VALUES (?, ?)";
+        $stmt = $conn->prepare($insert_sql);
+        $stmt->bind_param("ss", $username, $updatedComboString);
+    }
+
+    $stmt->execute();
+    $stmt->close();
+
+    echo json_encode(["status" => "success"]);
+}
+
+//if (isset($_GET['fetch_combos'])) {
+//    header('Content-Type: application/json');
+//
+//    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+//
+//    $sql = "SELECT combo FROM combos WHERE username = ?";
+//    $stmt = $conn->prepare($sql);
+//    $stmt->bind_param("s", $username);
+//    $stmt->execute();
+//    $stmt->bind_result($comboData);
+//    $stmt->fetch();
+//    $stmt->close();
+//
+//    $combos = json_decode($comboData, true);
+//    if (!$combos) $combos = [];
+//
+//    echo json_encode(["status" => "success", "combos" => $combos]);
+//    exit();
+//}
+
+if (isset($_GET['fetch_combos'])) {
+    header('Content-Type: application/json');
+
+    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+
+    $sql = "SELECT combo FROM combos WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $allCombos = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $storedCombo = json_decode($row['combo'], true);
+
+        if (is_array($storedCombo)) {
+            foreach ($storedCombo as $comboItem) {
+                if (isset($comboItem['combo'])) {
+                    $allCombos[] = [
+                        "id" => $comboItem['id'],
+                        "combo" => $comboItem['combo']
+                    ];
+                }
+            }
+        }
+    }
+
+    // If nothing found, send default combos for guestUser
+    if (empty($allCombos) && $username === "guestUser@guestUser") {
+        $allCombos = [
+            [ "id" => "1", "combo" => ["jab", "jab", "roll", "flurry"] ],
+            [ "id" => "2", "combo" => ["slip", "jab", "jab", "fake", "roll", "hook", "right hand"] ]
+        ];
+    }
+
+    echo json_encode(["status" => "success", "combos" => $allCombos]);
+
+    $stmt->close();
+    exit();
+}
+
+if (isset($_GET['read_only_combos'])) {
+    header('Content-Type: application/json');
+
+
+    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser@guestUser";
+
+    if (!$username) {
+        echo json_encode(["status" => "error", "message" => "User not logged in."]);
+        exit();
+    }
+
+    $sql = "SELECT combo FROM combos WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $allCombos = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $storedCombo = json_decode($row['combo'], true);
+
+        if (is_array($storedCombo)) {
+            foreach ($storedCombo as $comboItem) {
+                if (isset($comboItem['combo'])) {
+                    $allCombos[] = [
+                        "id" => $comboItem['id'],
+                        "combo" => $comboItem['combo']
+                    ];
+                }
+            }
+        }
+    }
+
+    echo json_encode(["status" => "success", "combos" => $allCombos]);
+
+    $stmt->close();
+    exit();
+}
+
+
+//if (isset($_POST['overwrite_combos'])) {
+//    if ($conn->connect_error) {
+//        echo json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]);
+//        exit();
+//    }
+//
+//    $combos = json_decode($_POST['combos'], true);
+//
+//    if (!is_array($combos)) {
+//        echo json_encode(["status" => "error", "message" => "Invalid combo data"]);
+//        exit();
+//    }
+//
+//    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser";
+//
+//    $delete_sql = "DELETE FROM combos WHERE username = ?";
+//    $stmt = $conn->prepare($delete_sql);
+//    $stmt->bind_param("s", $username);
+//    $stmt->execute();
+//    $stmt->close();
+//
+//    $insert_sql = "INSERT INTO combos (username, id, combo) VALUES (?, ?, ?)";
+//    $stmt = $conn->prepare($insert_sql);
+//
+//    foreach ($combos as $combo) {
+//        if (isset($combo['id']) && isset($combo['combo'])) {
+//            $comboId = $combo['id'];
+//            $comboText = $combo['combo'];
+//            $stmt->bind_param("sss", $username, $comboId, $comboText);
+//            $stmt->execute();
+//        }
+//    }
+//
+//    $stmt->close();
+//    echo json_encode(["status" => "success"]);
+//}
+
+
+
+if (isset($_POST['overwrite_combos'])) {
+    if ($conn->connect_error) {
+        echo json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]);
+        exit();
+    }
+
+    $username = isset($_SESSION['user']) ? $_SESSION['user'] : "guestUser";
+    $combos = json_decode($_POST['combos'], true);
+
+    if (!is_array($combos)) {
+        echo json_encode(["status" => "error", "message" => "Invalid combo data"]);
+        exit();
+    }
+
+    $comboJson = json_encode($combos);
+
+    $sql = "REPLACE INTO combos (username, combo) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $comboJson);
+    $stmt->execute();
+    $stmt->close();
+
+    echo json_encode(["status" => "success"]);
+}
+
+
 
 //if (isset($_SESSION['user'])) {
 //    echo json_encode(["user" => $_SESSION['user']]);
 //} else {
-//    echo json_encode(["user" => null]); // No user logged in
+//    echo json_encode(["user" => null]);
 //}
 
 
-// quit connection
 $conn->close();
 
 var_dump($_POST);

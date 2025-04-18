@@ -32,7 +32,7 @@ function saveData() {
     fetch('sql_connection.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'  // This indicates you're sending form data
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: `appData=${encodeURIComponent(JSON.stringify(appDataToSend))}&email=user@example.com&password=password123` // URL-encode the data
     })
@@ -57,7 +57,6 @@ function getPageType() {
 
 function toggleEdit(categoryId) {
     // if (pageType === "workouts") {
-    //     // Redirect to editWorkouts.html
     //     window.location.href = "editWorkouts.html";
     //     return;
     // }
@@ -202,7 +201,6 @@ function displaySkills() {
                         const section = document.createElement("div");
                         section.className = "category-container";
 
-                        // Build the HTML for each skill category
                         section.innerHTML = `
                     <div class="category-header" data-category="${category.category.toLowerCase()}">
                         <h2>${category.category.toUpperCase()}</h2>
@@ -219,7 +217,6 @@ function displaySkills() {
                         container.appendChild(section);
                     });
                 } else {
-                    // If no skills data is available
                     // container.innerHTML = "<p>No skills data found.</p>";
                 }
             })
@@ -249,7 +246,6 @@ function displaySkills() {
                         const section = document.createElement("div");
                         section.className = "category-container";
 
-                        // Build the HTML for each skill category
                         section.innerHTML = `
                     <div class="category-header" data-category="${category.category.toLowerCase()}">
                         <h2>${category.category.toUpperCase()}</h2>
@@ -266,7 +262,6 @@ function displaySkills() {
                         container.appendChild(section);
                     });
                 } else {
-                    // If no skills data is available
                     // container.innerHTML = "<p>No skills data found.</p>";
                 }
             })

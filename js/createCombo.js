@@ -106,6 +106,27 @@ function saveCombo() {
         combo: [...userCombo]
     };
 
+    fetch('sql_connection.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        // body: `combos=${encodeURIComponent(JSON.stringify(newCombo))}&email=user@example.com&password=password123`
+        body: `combos=${encodeURIComponent(JSON.stringify([newCombo]))}`
+
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                console.log("Combos successfully saved to database!");
+            } else {
+                console.error("Failed to save combos:", data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+
+
     storedData.combos.push(newCombo);
 
     localStorage.setItem('guestData', JSON.stringify(storedData));
@@ -113,5 +134,6 @@ function saveCombo() {
     console.log("Updated guestData: ", storedData);
 
     window.location.href = "combos.html";
+
 }
 
