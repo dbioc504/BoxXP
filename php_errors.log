@@ -4049,3 +4049,536 @@ Stack trace:
     [core] => Russian Twists,     Dumbell Rack Marches
 )
 
+[18-Apr-2025 19:44:58 Europe/Berlin] test log message
+[18-Apr-2025 19:44:58 Europe/Berlin] Email: kb@test
+[18-Apr-2025 19:44:58 Europe/Berlin] Preparing SQL query
+[18-Apr-2025 19:44:58 Europe/Berlin] Query executed, fetching result
+[18-Apr-2025 19:44:58 Europe/Berlin] Number of rows in result: 1
+[18-Apr-2025 19:44:58 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test,    test3,  test4
+    [lower-body] => Squats,     Squat Jumps,     Deadlifts,     teset2
+    [core] => Russian Twists,     Dumbell Rack Marches
+)
+
+[18-Apr-2025 19:45:02 Europe/Berlin] test log message
+[18-Apr-2025 19:45:09 Europe/Berlin] test log message
+[18-Apr-2025 19:45:09 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1744998309835
+            [combo] => Array
+                (
+                    [0] => SLIP
+                    [1] => ROLL
+                )
+
+        )
+
+)
+
+[18-Apr-2025 19:45:09 Europe/Berlin] test log message
+[18-Apr-2025 19:45:14 Europe/Berlin] test log message
+[18-Apr-2025 19:45:14 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1744998314684
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => STEP BACK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 19:45:14 Europe/Berlin] test log message
+[18-Apr-2025 19:45:24 Europe/Berlin] test log message
+[18-Apr-2025 19:45:24 Europe/Berlin] test log message
+[18-Apr-2025 19:45:24 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1744998314684
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => STEP BACK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 19:45:24 Europe/Berlin] test log message
+[18-Apr-2025 23:05:11 Europe/Berlin] test log message
+[18-Apr-2025 23:05:11 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745010311757
+            [combo] => Array
+                (
+                    [0] => UPPERCUT
+                    [1] => SLIP
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:05:11 Europe/Berlin] test log message
+[18-Apr-2025 23:05:32 Europe/Berlin] test log message
+[18-Apr-2025 23:05:32 Europe/Berlin] test log message
+[18-Apr-2025 23:05:32 Europe/Berlin] test log message
+[18-Apr-2025 23:05:32 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745010311757
+            [combo] => Array
+                (
+                    [0] => UPPERCUT
+                    [1] => SLIP
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:05:38 Europe/Berlin] test log message
+[18-Apr-2025 23:05:48 Europe/Berlin] test log message
+[18-Apr-2025 23:05:48 Europe/Berlin] test log message
+[18-Apr-2025 23:05:48 Europe/Berlin] Array
+(
+)
+
+[18-Apr-2025 23:05:48 Europe/Berlin] test log message
+[18-Apr-2025 23:05:51 Europe/Berlin] test log message
+[18-Apr-2025 23:05:57 Europe/Berlin] test log message
+[18-Apr-2025 23:05:57 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745010356987
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => ROLL
+                    [2] => BLOCK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:05:57 Europe/Berlin] test log message
+[18-Apr-2025 23:06:02 Europe/Berlin] test log message
+[18-Apr-2025 23:06:02 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745010362295
+            [combo] => Array
+                (
+                    [0] => HOOK
+                    [1] => CROSS
+                    [2] => JAB
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:06:02 Europe/Berlin] test log message
+[18-Apr-2025 23:06:07 Europe/Berlin] test log message
+[18-Apr-2025 23:06:07 Europe/Berlin] test log message
+[18-Apr-2025 23:51:26 Europe/Berlin] test log message
+[18-Apr-2025 23:51:26 Europe/Berlin] Email: guestUser@guestUser
+[18-Apr-2025 23:51:26 Europe/Berlin] Returning guestData response
+[18-Apr-2025 23:51:30 Europe/Berlin] test log message
+[18-Apr-2025 23:51:47 Europe/Berlin] test log message
+[18-Apr-2025 23:51:57 Europe/Berlin] test log message
+[18-Apr-2025 23:52:50 Europe/Berlin] test log message
+[18-Apr-2025 23:52:54 Europe/Berlin] test log message
+[18-Apr-2025 23:52:54 Europe/Berlin] Email: kb@test
+[18-Apr-2025 23:52:54 Europe/Berlin] Preparing SQL query
+[18-Apr-2025 23:52:54 Europe/Berlin] Query executed, fetching result
+[18-Apr-2025 23:52:54 Europe/Berlin] Number of rows in result: 1
+[18-Apr-2025 23:52:54 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, test
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out
+)
+
+[18-Apr-2025 23:53:00 Europe/Berlin] test log message
+[18-Apr-2025 23:53:00 Europe/Berlin] Email: kb@test
+[18-Apr-2025 23:53:00 Europe/Berlin] Preparing SQL query
+[18-Apr-2025 23:53:00 Europe/Berlin] Query executed, fetching result
+[18-Apr-2025 23:53:00 Europe/Berlin] Number of rows in result: 1
+[18-Apr-2025 23:53:00 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test,    test3,  test4
+    [lower-body] => Squats,     Squat Jumps,     Deadlifts,     teset2
+    [core] => Russian Twists,     Dumbell Rack Marches
+)
+
+[18-Apr-2025 23:53:43 Europe/Berlin] test log message
+[18-Apr-2025 23:53:47 Europe/Berlin] test log message
+[18-Apr-2025 23:53:47 Europe/Berlin] test log message
+[18-Apr-2025 23:53:47 Europe/Berlin] test log message
+[18-Apr-2025 23:53:47 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745010362295
+            [combo] => Array
+                (
+                    [0] => HOOK
+                    [1] => CROSS
+                    [2] => JAB
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:54:03 Europe/Berlin] test log message
+[18-Apr-2025 23:54:16 Europe/Berlin] test log message
+[18-Apr-2025 23:54:16 Europe/Berlin] test log message
+[18-Apr-2025 23:54:16 Europe/Berlin] test log message
+[18-Apr-2025 23:54:16 Europe/Berlin] Array
+(
+)
+
+[18-Apr-2025 23:54:31 Europe/Berlin] test log message
+[18-Apr-2025 23:57:04 Europe/Berlin] test log message
+[18-Apr-2025 23:57:04 Europe/Berlin] Email: kb@test
+[18-Apr-2025 23:57:04 Europe/Berlin] Preparing SQL query
+[18-Apr-2025 23:57:04 Europe/Berlin] Query executed, fetching result
+[18-Apr-2025 23:57:04 Europe/Berlin] Number of rows in result: 1
+[18-Apr-2025 23:57:04 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test,    test3,  test4
+    [lower-body] => Squats,     Squat Jumps,     Deadlifts,     teset2
+    [core] => Russian Twists,     Dumbell Rack Marches
+)
+
+[18-Apr-2025 23:57:10 Europe/Berlin] test log message
+[18-Apr-2025 23:57:20 Europe/Berlin] test log message
+[18-Apr-2025 23:57:20 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013440369
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => UPPERCUT
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:57:20 Europe/Berlin] test log message
+[18-Apr-2025 23:57:26 Europe/Berlin] test log message
+[18-Apr-2025 23:57:26 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013446410
+            [combo] => Array
+                (
+                    [0] => PARRY
+                    [1] => BLOCK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:57:26 Europe/Berlin] test log message
+[18-Apr-2025 23:57:35 Europe/Berlin] test log message
+[18-Apr-2025 23:57:35 Europe/Berlin] test log message
+[18-Apr-2025 23:57:35 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013446410
+            [combo] => Array
+                (
+                    [0] => PARRY
+                    [1] => BLOCK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:58:12 Europe/Berlin] test log message
+[18-Apr-2025 23:58:12 Europe/Berlin] Email: kb@test
+[18-Apr-2025 23:58:12 Europe/Berlin] Preparing SQL query
+[18-Apr-2025 23:58:12 Europe/Berlin] Query executed, fetching result
+[18-Apr-2025 23:58:12 Europe/Berlin] Number of rows in result: 1
+[18-Apr-2025 23:58:12 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test,    test3,  test4
+    [lower-body] => Squats,     Squat Jumps,     Deadlifts,     teset2
+    [core] => Russian Twists,     Dumbell Rack Marches
+)
+
+[18-Apr-2025 23:58:27 Europe/Berlin] test log message
+[18-Apr-2025 23:58:33 Europe/Berlin] test log message
+[18-Apr-2025 23:58:33 Europe/Berlin] test log message
+[18-Apr-2025 23:58:33 Europe/Berlin] Array
+(
+)
+
+[18-Apr-2025 23:58:33 Europe/Berlin] test log message
+[18-Apr-2025 23:58:41 Europe/Berlin] test log message
+[18-Apr-2025 23:58:41 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013521771
+            [combo] => Array
+                (
+                    [0] => HOOK
+                    [1] => HOOK
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:58:41 Europe/Berlin] test log message
+[18-Apr-2025 23:58:53 Europe/Berlin] test log message
+[18-Apr-2025 23:58:53 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013533793
+            [combo] => Array
+                (
+                    [0] => JAB
+                    [1] => JAB
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:58:53 Europe/Berlin] test log message
+[18-Apr-2025 23:59:14 Europe/Berlin] test log message
+[18-Apr-2025 23:59:14 Europe/Berlin] test log message
+[18-Apr-2025 23:59:14 Europe/Berlin] test log message
+[18-Apr-2025 23:59:14 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013533793
+            [combo] => Array
+                (
+                    [0] => JAB
+                    [1] => JAB
+                )
+
+        )
+
+)
+
+[18-Apr-2025 23:59:28 Europe/Berlin] test log message
+[19-Apr-2025 00:05:26 Europe/Berlin] test log message
+[19-Apr-2025 00:05:26 Europe/Berlin] test log message
+[19-Apr-2025 00:05:26 Europe/Berlin] Array
+(
+)
+
+[19-Apr-2025 00:05:26 Europe/Berlin] test log message
+[19-Apr-2025 00:05:33 Europe/Berlin] test log message
+[19-Apr-2025 00:05:33 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013933068
+            [combo] => Array
+                (
+                    [0] => SLIP
+                    [1] => SLIP
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:05:33 Europe/Berlin] test log message
+[19-Apr-2025 00:05:36 Europe/Berlin] test log message
+[19-Apr-2025 00:05:36 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013936805
+            [combo] => Array
+                (
+                    [0] => JAB
+                    [1] => JAB
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:05:36 Europe/Berlin] test log message
+[19-Apr-2025 00:05:45 Europe/Berlin] test log message
+[19-Apr-2025 00:05:45 Europe/Berlin] test log message
+[19-Apr-2025 00:05:58 Europe/Berlin] test log message
+[19-Apr-2025 00:06:01 Europe/Berlin] test log message
+[19-Apr-2025 00:06:01 Europe/Berlin] test log message
+[19-Apr-2025 00:06:01 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013933068
+            [combo] => Array
+                (
+                    [0] => SLIP
+                    [1] => SLIP
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:06:01 Europe/Berlin] test log message
+[19-Apr-2025 00:06:07 Europe/Berlin] test log message
+[19-Apr-2025 00:06:07 Europe/Berlin] test log message
+[19-Apr-2025 00:06:07 Europe/Berlin] Array
+(
+)
+
+[19-Apr-2025 00:06:07 Europe/Berlin] test log message
+[19-Apr-2025 00:06:34 Europe/Berlin] test log message
+[19-Apr-2025 00:06:34 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745013994429
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => STEP BACK
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:06:34 Europe/Berlin] test log message
+[19-Apr-2025 00:06:37 Europe/Berlin] test log message
+[19-Apr-2025 00:06:37 Europe/Berlin] test log message
+[19-Apr-2025 00:06:37 Europe/Berlin] test log message
+[19-Apr-2025 00:06:37 Europe/Berlin] Array
+(
+)
+
+[19-Apr-2025 00:06:50 Europe/Berlin] test log message
+[19-Apr-2025 00:06:55 Europe/Berlin] test log message
+[19-Apr-2025 00:06:55 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745014014981
+            [combo] => Array
+                (
+                    [0] => ROLL
+                    [1] => STEP BACK
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:06:55 Europe/Berlin] test log message
+[19-Apr-2025 00:07:06 Europe/Berlin] test log message
+[19-Apr-2025 00:07:06 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745014026297
+            [combo] => Array
+                (
+                    [0] => UPPERCUT
+                    [1] => HOOK
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:07:06 Europe/Berlin] test log message
+[19-Apr-2025 00:07:25 Europe/Berlin] test log message
+[19-Apr-2025 00:07:25 Europe/Berlin] Email: kb@test
+[19-Apr-2025 00:07:25 Europe/Berlin] Preparing SQL query
+[19-Apr-2025 00:07:25 Europe/Berlin] Query executed, fetching result
+[19-Apr-2025 00:07:25 Europe/Berlin] Number of rows in result: 1
+[19-Apr-2025 00:07:25 Europe/Berlin] Fetched workouts: Array
+(
+    [upper-body] => test,    test3,  test4
+    [lower-body] => Squats,     Squat Jumps,     Deadlifts,     teset2
+    [core] => Russian Twists,     Dumbell Rack Marches
+)
+
+[19-Apr-2025 00:07:28 Europe/Berlin] test log message
+[19-Apr-2025 00:07:35 Europe/Berlin] test log message
+[19-Apr-2025 00:07:35 Europe/Berlin] test log message
+[19-Apr-2025 00:07:35 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745014014981
+            [combo] => Array
+                (
+                    [0] => ROLL
+                    [1] => STEP BACK
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:07:35 Europe/Berlin] test log message
+[19-Apr-2025 00:07:53 Europe/Berlin] test log message
+[19-Apr-2025 00:07:53 Europe/Berlin] Array
+(
+    [0] => Array
+        (
+            [id] => 1745014073058
+            [combo] => Array
+                (
+                    [0] => STEP BACK
+                    [1] => SLIP
+                )
+
+        )
+
+)
+
+[19-Apr-2025 00:07:53 Europe/Berlin] test log message
+[20-Apr-2025 21:36:02 Europe/Berlin] test log message
+[20-Apr-2025 21:36:11 Europe/Berlin] test log message
+[20-Apr-2025 21:36:11 Europe/Berlin] Email: kb@test
+[20-Apr-2025 21:36:11 Europe/Berlin] Preparing SQL query
+[20-Apr-2025 21:36:11 Europe/Berlin] Query executed, fetching result
+[20-Apr-2025 21:36:11 Europe/Berlin] Number of rows in result: 1
+[20-Apr-2025 21:36:11 Europe/Berlin] Fetched skills: Array
+(
+    [dogwork] => Combo-Angle-Combo, Left Hook(s), Combo-Roll-Combo, test
+    [pressure] => Forward Shuffle, Cut Off Ring, Left Hand Up, Roll Head Inside
+    [boxing] => Shuffle and Tick, Stand Ground, Block Combo, Combo, Shuffle Out
+)
+

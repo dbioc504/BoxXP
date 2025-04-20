@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 function displayCombos() {
     const container = document.getElementById('combos-container');
-    container.innerHTML = ""; // Clear container first
+    container.innerHTML = "";
 
     fetch('sql_connection.php?fetch_combos=true')
         .then(response => response.json())
@@ -147,7 +147,7 @@ function deleteCombo(comboId) {
                                         if (data.status === "success") {
                                             appData.combos = data.combos;
 
-                                            // displayCombos();
+                                            displayCombos();
                                         } else {
                                             console.error("Error fetching updated combos:", data.message);
                                         }
