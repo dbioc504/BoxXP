@@ -60,6 +60,10 @@ function toggleEdit(categoryId) {
     //     window.location.href = "editWorkouts.html";
     //     return;
     // }
+    // if (!appData[pageType]) {
+    //     setTimeout(() => toggleEdit(categoryId), 300);
+    //     return;
+    // }
 
     const categoryHeader = document.querySelector(`[data-category="${categoryId}"]`);
     if (!categoryHeader) {
@@ -110,6 +114,7 @@ function exitEditMode(skillsText, category, editButton, doneButton) {
     doneButton.style.display = "none";
     console.log("HERE", "here");
     saveData();
+    displaySkills();
 }
 
 function removeSkill(category, skill) {
@@ -118,8 +123,9 @@ function removeSkill(category, skill) {
     if (categoryObj) {
         categoryObj.items = categoryObj.items.filter(item => item !== skill);
         saveData();
-        displaySkills();
+        // displaySkills();
     }
+    displaySkills()
 }
 
 function addSkill(category) {
@@ -133,6 +139,7 @@ function addSkill(category) {
         saveData();
         displaySkills();
     }
+    // displaySkills();
 }
 
 // function displaySkills() {
@@ -194,8 +201,11 @@ function displaySkills() {
                 }
 
                 if (data.skills && data.skills.length > 0) {
-                    const updatedAppData = { workouts: data.skills };
-                    localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+                    // const updatedAppData = { skills: data.skills };
+                    // localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+
+                    appData.skills = data.skills;
+                    localStorage.setItem("guestData", JSON.stringify(appData));
 
                     data.skills.forEach(category => {
                         const section = document.createElement("div");
@@ -239,8 +249,11 @@ function displaySkills() {
                 }
 
                 if (data.workouts && data.workouts.length > 0) {
-                    const updatedAppData = { workouts: data.workouts };
-                    localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+                    // const updatedAppData = { workouts: data.workouts };
+                    // localStorage.setItem("guestData", JSON.stringify(updatedAppData));
+
+                    appData.workouts = data.workouts;
+                    localStorage.setItem("guestData", JSON.stringify(appData));
 
                     data.workouts.forEach(category => {
                         const section = document.createElement("div");
