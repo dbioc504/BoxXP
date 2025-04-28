@@ -1,0 +1,48 @@
+sql_connection.php included
+DB connection succeeded
+DB connection succeeded
+sql_connection.php included
+DB connection succeeded
+DB connection succeeded
+About to prepare statement...
+sql_connection.php included
+DB connection succeeded
+DB connection succeeded
+About to prepare statement...
+sql_connection.php included
+DB connection succeeded
+sql_connection.php included
+DB connection succeeded
+sql_connection.php included
+DB connection succeeded
+sql_connection.php included
+DB connection succeeded
+sql_connection.php included
+DB connection succeeded
+
+[saveAppData CALLED]
+SESSION: 
+POST appData: MISSING
+DB connection succeeded
+[LOGIN ATTEMPT]
+Email: dbioc917@gmail.com
+Fetched hash: $2y$10$bUfXTe7OP4r.9tx0zOyuWOb3sk3RroYDhYls3xmn3F4tuHjIdT9oS
+Login successful. Session set.
+
+[saveAppData CALLED]
+SESSION: 
+POST appData: MISSING
+DB connection succeeded
+[LOGIN ATTEMPT]
+Email: dbioc917@gmail.com
+Fetched hash: $2y$10$bUfXTe7OP4r.9tx0zOyuWOb3sk3RroYDhYls3xmn3F4tuHjIdT9oS
+Login successful. Session set.
+
+[saveAppData CALLED]
+SESSION: 
+POST appData: MISSING
+DB connection succeeded
+[LOGIN ATTEMPT]
+Email: dbioc917@gmail.com
+Fetched hash: $2y$10$bUfXTe7OP4r.9tx0zOyuWOb3sk3RroYDhYls3xmn3F4tuHjIdT9oS
+Login successful. Session set.
