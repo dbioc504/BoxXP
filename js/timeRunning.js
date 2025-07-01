@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', initTimer);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimer);
+} else {
+    initTimer();
+}
 
 const boxingBell = new Audio("sounds/boxing-bell.mp3");
 boxingBell.volume = 0.8;
