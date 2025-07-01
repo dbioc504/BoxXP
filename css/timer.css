@@ -175,3 +175,20 @@ input[type="checkbox"] {
     line-height: 1.3;
     padding: 0 1rem;
 }
+
+.audio-overlay{
+    position:fixed; inset: 0;
+    display: flex;
+    z-index: 9999;
+    justify-content: flex-end;
+    align-items: flex-start;
+    pointer-events: none;
+}
+.audio-overlay img{
+    pointer-events: auto;
+    margin: 1rem;
+    width: 48px; height: 48px;
+    cursor: pointer;
+    transition:transform 0.2s ease;
+}
+.audio-overlay img:active{ transform:scale(.9);}

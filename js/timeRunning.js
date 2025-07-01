@@ -4,33 +4,28 @@ boxingBell.volume = 0.8;
 const sticksClack = new Audio("sounds/hand-clap-106596.mp3");
 sticksClack.volume = 0.5;
 
-function parseTime(timeStr) {
-    const parts = timeStr.split(":");
-    if (parts.length === 2) {
-        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+let audioReady = false;
+
+const overlay = document.getElementById("overlay");
+const icon = document.getElementById("audio-icon");
+
+overlay.addEventListener("click", async () => {
+    try{
+        await boxingBell.play();
+        boxingBell.pause();
+        boxingBell.currentTime = 0;
+        audioReady = true;
+
+        icon.src = "images/sound_on.svg"
+        overlay.style.opacity = 0;
+        setTimeout(()=>overlay.remove(), 300);
+
+    }catch (err) {
+        alert("Turn off silent mode to hear sound.");
     }
-    return parseInt(timeStr, 10);
-}
-function formatTime(sec) {
-    const m = Math.floor(sec / 60), s = sec % 60;
-    return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
-}
+});
 
-function getSkillDict() {
-    const gd = JSON.parse(localStorage.getItem("guestData") || "{}");
-    return (gd.skills || []).reduce((o, c) => {
-        o[c.category.toLowerCase()] = c.items;
-        return o;
-    }, {});
-}
-
-function getRandom(arr) {
-    return arr && arr.length
-        ? arr[Math.floor(Math.random() * arr.length)]
-        : "";
-}
-
-document.addEventListener("DOMContentLoaded", () => {
+function initTimer() {
     const showSkill   = localStorage.getItem("skill-display") === "true";
     const showCombo   = localStorage.getItem("combo-display") === "true";
     const showWorkout = localStorage.getItem("workout-display") === "true";
@@ -60,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const phaseTitle   = document.getElementById("phase-title");
     const timerDisplay = document.getElementById("timer-display");
-    const roundDisplay = document.getElementById("round-display");
     const comboDisp    = document.getElementById("combo-display");
     const skillDisp    = document.getElementById("skill-display");
     const workoutDisp  = document.getElementById("workout-display");
@@ -175,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (prev !== "round" && currentPhase === "round") {
-            boxingBell.play();
+            if (audioReady) boxingBell.play();
         }
         updateExtras();
         updateDisplays();
@@ -187,10 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 timeLeft--;
                 updateDisplays();
                 if (timeLeft === 10 && currentPhase === "round") {
-                    sticksClack.play();
+                   if (audioReady) sticksClack.play();
                 }
             } else {
-                boxingBell.play();
+                if (audioReady) boxingBell.play();
                 nextPhase();
             }
         }
@@ -204,4 +198,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateExtras();
     updateDisplays();
-});
+}
+
+function parseTime(timeStr) {
+    const parts = timeStr.split(":");
+    if (parts.length === 2) {
+        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    }
+    return parseInt(timeStr, 10);
+}
+function formatTime(sec) {
+    const m = Math.floor(sec / 60), s = sec % 60;
+    return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+}
+
+function getSkillDict() {
+    const gd = JSON.parse(localStorage.getItem("guestData") || "{}");
+    return (gd.skills || []).reduce((o, c) => {
+        o[c.category.toLowerCase()] = c.items;
+        return o;
+    }, {});
+}
+
+function getRandom(arr) {
+    return arr && arr.length
+        ? arr[Math.floor(Math.random() * arr.length)]
+        : "";
+}
+
+document.addEventListener('DOMContentLoaded', initTimer);
