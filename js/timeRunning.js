@@ -1,3 +1,5 @@
+console.log(">>> timeRunning.js LOADED", Date.now());
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initTimer);
 } else {
