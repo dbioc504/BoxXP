@@ -6,8 +6,8 @@ sticksClack.volume = 0.5;
 
 let audioReady = false;
 
-const overlay = document.getElementById("overlay");
-const icon = document.getElementById("audio-icon");
+const audioBtn = document.getElementById('audio-btn');
+const icon = document.getElementById('audio-icon');
 
 overlay.addEventListener("click", async () => {
     try{
@@ -17,8 +17,7 @@ overlay.addEventListener("click", async () => {
         audioReady = true;
 
         icon.src = "images/sound_on.svg"
-        overlay.style.opacity = 0;
-        setTimeout(()=>overlay.remove(), 300);
+        audioBtn.style.pointerEvents = "none";
 
     }catch (err) {
         alert("Turn off silent mode to hear sound.");
