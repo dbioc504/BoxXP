@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', initTimer);
 
 const boxingBell = new Audio("sounds/boxing-bell.mp3");
 boxingBell.volume = 0.8;
@@ -225,4 +226,3 @@ function getRandom(arr) {
         : "";
 }
 
-document.addEventListener('DOMContentLoaded', initTimer);
