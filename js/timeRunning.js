@@ -9,7 +9,7 @@ let audioReady = false;
 const audioBtn = document.getElementById('audio-btn');
 const icon = document.getElementById('audio-icon');
 
-overlay.addEventListener("click", async () => {
+audioBtn.addEventListener("click", async () => {
     try{
         await boxingBell.play();
         boxingBell.pause();
