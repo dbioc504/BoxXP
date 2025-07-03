@@ -136,15 +136,21 @@ h1 {
 
 #auth-link,
 #sign-out-btn {
-    display: block;           
-    margin: 0 auto;            
-    background: none !important; 
-    border: none !important;     
-    color: yellow !important;    
+    display: block;
+    margin: 0 auto;
+    background: none !important;
+    border: none !important;
+    color: yellow !important;
     font-weight: bold;
-    text-decoration: none;     
+    text-decoration: none;
+}
 
 #sign-out-btn {
     margin-top: 0.5rem;        
     cursor: pointer;
+}
+
+.brand-logo{
+    width:64px;
+    height: auto;
 }
