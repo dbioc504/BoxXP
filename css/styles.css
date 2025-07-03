@@ -151,10 +151,9 @@ h1 {
 }
 
 .brand-logo{
-    width:64px;
+    width: clamp(48px,10vw, 80px);
     height: auto;
 }
 
 .brand-logo{
-    width: clamp(48px,10vw, 80px);
 }
