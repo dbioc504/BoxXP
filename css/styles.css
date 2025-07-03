@@ -150,10 +150,8 @@ h1 {
     cursor: pointer;
 }
 
-.brand-logo img{
-    width: clamp(28px,10vw, 56px);
+.brand-logo {
+    width: 32px;
     height: auto;
 }
 
-.brand-logo{
-}
