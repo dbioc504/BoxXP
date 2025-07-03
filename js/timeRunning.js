@@ -1,17 +1,46 @@
 console.log(">>> timeRunning.js LOADED", Date.now());
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTimer);
-} else {
-    initTimer();
-}
+
 
 const boxingBell = new Audio("sounds/boxing-bell.mp3");
 boxingBell.volume = 0.8;
 const sticksClack = new Audio("sounds/hand-clap-106596.mp3");
 sticksClack.volume = 0.5;
-
 let audioReady = false;
+
+let wakeLockHandle = null;
+async function enableKeepAwake(){
+    try{
+        if('wakeLock' in navigator){
+            wakeLockHandle = await navigator.wakeLock.request('screen');
+        }else{
+            const {default:NoSleep} = await import(
+                'https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js');
+            new NoSleep().enable();
+        }
+    }catch(e){ console.warn('Wake-lock error',e); }
+}
+document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='visible'&&wakeLockHandle?.released)
+        enableKeepAwake();
+});
+
+window.addEventListener('load', ()=>{
+    const audioBtn = document.getElementById('audio-btn');
+    const icon     = document.getElementById('audio-icon');
+
+    audioBtn.addEventListener('click', async ()=>{
+        try{
+            await boxingBell.play();  boxingBell.pause(); boxingBell.currentTime=0;
+            audioReady = true;
+            icon.src = 'images/sound_on.svg';
+            audioBtn.style.pointerEvents='none';
+        }catch(e){ alert('Turn off silent mode to hear sound.'); }
+    });
+
+    enableKeepAwake();
+    initTimer();
+});
 
 const audioBtn = document.getElementById('audio-btn');
 const icon = document.getElementById('audio-icon');
@@ -232,3 +261,4 @@ function getRandom(arr) {
         : "";
 }
 
+// Auto-Lock Countermeasure
