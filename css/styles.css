@@ -151,7 +151,7 @@ h1 {
 }
 
 .brand-logo img{
-    width: clamp(48px,10vw, 80px);
+    width: clamp(32px,10vw, 80px);
     height: auto;
 }
 
