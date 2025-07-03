@@ -5,7 +5,7 @@ console.log(">>> timeRunning.js LOADED", Date.now());
 const boxingBell = new Audio("sounds/boxing-bell.mp3");
 boxingBell.volume = 0.8;
 const sticksClack = new Audio("sounds/hand-clap-106596.mp3");
-sticksClack.volume = 0.5;
+sticksClack.volume = 0.8;
 let audioReady = false;
 
 let wakeLockHandle = null;
@@ -33,12 +33,12 @@ window.addEventListener('load', ()=>{
         try{
             await boxingBell.play();  boxingBell.pause(); boxingBell.currentTime=0;
             audioReady = true;
+            enableKeepAwake();
             icon.src = 'images/sound_on.svg';
             audioBtn.style.pointerEvents='none';
         }catch(e){ alert('Turn off silent mode to hear sound.'); }
     });
 
-    enableKeepAwake();
     initTimer();
 });
 
@@ -260,5 +260,3 @@ function getRandom(arr) {
         ? arr[Math.floor(Math.random() * arr.length)]
         : "";
 }
-
-// Auto-Lock Countermeasure
