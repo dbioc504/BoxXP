@@ -47,24 +47,26 @@ async function loadUserData() {
         appData.workouts = parsed.workouts || [];
         appData.combos = parsed.combos || [];
     } else {
-        appData = {
+        Object.assign(appData, {
             user: 'guestData',
             skills: [
-                { category: 'dogwork',    items: ['Combo-Angle-Combo', 'Left Hook(s)', 'Combo-Roll-Combo'] },
-                { category: 'pressure',   items: ['Forward Shuffle', 'Cut Off Ring', 'Left Hand Up, Roll Head Inside'] },
-                { category: 'boxing',     items: ['Shuffle and Tick', 'Stand Ground, Block Combo, Combo, Shuffle Out'] }
+                {category: 'dogwork', items: ['Combo-Angle-Combo', 'Left Hook(s)', 'Combo-Roll-Combo']},
+                {category: 'pressure', items: ['Forward Shuffle', 'Cut Off Ring', 'Left Hand Up, Roll Head Inside']},
+                {category: 'boxing', items: ['Shuffle and Tick', 'Stand Ground, Block Combo, Combo, Shuffle Out']}
             ],
             workouts: [
-                { category: 'upper-body', items: ['Pushups', 'Dips', 'Shoulder Press'] },
-                { category: 'lower-body', items: ['Squats', 'Squat Jumps', 'Deadlifts'] },
-                { category: 'core',       items: ['Russian Twists', 'Dumbell Rack Marches'] }
+                {category: 'upper-body', items: ['Pushups', 'Dips', 'Shoulder Press']},
+                {category: 'lower-body', items: ['Squats', 'Squat Jumps', 'Deadlifts']},
+                {category: 'core', items: ['Russian Twists', 'Dumbell Rack Marches']}
             ],
             combos: [
-                { id: 1, combo: ['jab','jab','roll','flurry'] },
-                { id: 2, combo: ['slip','jab','jab','fake','roll','hook','right hand'] }
+                {id: 1, combo: ['jab', 'jab', 'roll', 'flurry']},
+                {id: 2, combo: ['slip', 'jab', 'jab', 'fake', 'roll', 'hook', 'right hand']}
             ]
-        };
+        });
+        localStorage.setItem('guestData', JSON.stringify(appData));
     }
+
 
     renderAllSections();
 }
