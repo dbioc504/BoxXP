@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    displayCombos();
-});
-
 function displayCombos() {
     const container = document.getElementById('combos-container');
     container.innerHTML = "";
