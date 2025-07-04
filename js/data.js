@@ -220,3 +220,8 @@ function displayCategories() {
 }
 
 document.addEventListener('DOMContentLoaded', loadUserData);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadUserData);
+} else {
+    loadUserData();
+}
