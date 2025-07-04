@@ -109,7 +109,7 @@ function saveCombo() {
     storedData.combos.push(newCombo);
     localStorage.setItem('guestData', JSON.stringify(storedData));
 
-    if (window.appData) appData.combos = storedData.combos.slice();
+    if (window.appData) {appData.combos = storedData.combos.slice(); }
     console.log("Updated guestData: ", storedData);
 
     if (document.getElementById('combos-container')) { displayCombos(); }

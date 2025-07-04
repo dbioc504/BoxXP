@@ -634,3 +634,9 @@ Stack trace:
 [20-Apr-2025 11:37:57 UTC] PHP Warning:  Undefined global variable $_SESSION in /home/u531149302/domains/boxxp.io/public_html/sql_connection.php on line 8
 [20-Apr-2025 11:37:57 UTC] [saveAppData] Saving for user: dbioc
 [20-Apr-2025 11:40:44 UTC] [saveAppData] Saving for user: dbioc
+[04-Jul-2025 06:00:59 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Users\YDeezy\IdeaProjects\boxxp\sql_connection.php:27
+Stack trace:
+#0 C:\Users\YDeezy\IdeaProjects\boxxp\sql_connection.php(27): mysqli->__construct('localhost', 'u531149302_yung...', Object(SensitiveParameterValue), 'u531149302_boxx...')
+#1 C:\Users\YDeezy\IdeaProjects\boxxp\sql_connection.php(221): getDbConnection()
+#2 {main}
+  thrown in C:\Users\YDeezy\IdeaProjects\boxxp\sql_connection.php on line 27
