@@ -93,6 +93,29 @@
   });
 </script>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+<script type="module">
+  const firebaseConfig = {
+    apiKey: "AIzaSyDHcPWT5CguvvKwg95-D4ROaMypGu5H4OA",
+    authDomain: "boxxp-f4f64.firebaseapp.com",
+    projectId: "boxxp-f4f64",
+    storageBucket: "boxxp-f4f64.appspot.com",
+    messagingSenderId: "274613580349",
+    appId: "1:274613580349:web:44b844b91c8a3eb271f054",
+    measurementId: "G-N8MJ2DD4QB"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  window.db = db;
+</script>
+
 <script src="js/data.js"></script>
+
 </body>
 </html>
