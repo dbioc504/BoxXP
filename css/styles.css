@@ -173,3 +173,10 @@ h1 {
     padding: 2rem;
     border-radius: 10px;
 }
+
+.login-btn {
+    color:#fff;    /* make sure it’s not same as background */
+    display:inline-block;
+    padding:8px 16px;
+}
+
