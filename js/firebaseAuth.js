@@ -1,8 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword,
-         createUserWithEmailAndPassword, signOut,
-         onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyDHcPWT5CguvvKwg95-D4ROaMypGu5H4OA",
   authDomain: "boxxp-f4f64.firebaseapp.com",
@@ -13,8 +8,8 @@ const firebaseConfig = {
   measurementId: "G-N8MJ2DD4QB"
 };
 
-const app  = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
 
 export function signIn(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
@@ -27,4 +22,6 @@ export function createAccount(email, password) {
 export function logOut() {  return signOut(auth);
 }
 
-export { onAuthStateChanged };
+export function onAuthStateChanged(cb) {
+  return auth.onAuthStateChanged(cb);
+}

@@ -155,3 +155,21 @@ h1 {
     height: 75px;
 }
 
+#login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#login-modal .login-modal-content {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: 10px;
+}

@@ -22,6 +22,13 @@
 
   <!-- Your Shared Styles -->
   <link rel="stylesheet" href="css/styles.css?v=20250703-4" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +40,7 @@
   </div>
 
 
-  <div class=button-container">
+  <div class="button-container">
     <a class="custom-button" href="skillset.html">
       <img src="images/Skills_white.svg" alt="" />
       <div>SKILLSET</div>
@@ -64,7 +71,12 @@
     </button>
   </div>
 
-
+<div id="login-modal" class="login-modal" style="display:none;">
+  <div class="login-modal-content">
+    <div id="firebaseui-auth-container"></div>
+    <button id="close-login" class="login-btn mt-3">Close</button>
+  </div>
+</div>
 
 
 <script type="module" src="js/indexAuth.js"></script>
