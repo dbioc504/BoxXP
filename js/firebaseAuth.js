@@ -1,3 +1,5 @@
+import firebase from "firebase/compat";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDHcPWT5CguvvKwg95-D4ROaMypGu5H4OA",
   authDomain: "boxxp-f4f64.firebaseapp.com",
