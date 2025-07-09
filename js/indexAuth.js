@@ -1,5 +1,5 @@
 // js/indexAuth.js
-import { auth, logOut, onAuth } from './firebaseAuth.js';
+import { auth, logOut, onAuth } from './firebaseAuth.js?v=20250708';
 
 document.addEventListener('DOMContentLoaded', () => {
   const authLink   = document.getElementById('auth-link');
