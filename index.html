@@ -67,54 +67,7 @@
 
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const authLink   = document.getElementById("auth-link");
-    const signOutBtn = document.getElementById("sign-out-btn");
-    const user       = localStorage.getItem("currentUser");
-
-    if (user) {
-      // user is logged in
-      // need to fix log in12345
-      authLink.textContent = `Logged in as: ${user}`.toUpperCase();
-      authLink.removeAttribute("href");       // no longer a link
-      authLink.style.cursor = "default";      // indicate it's not clickable
-      signOutBtn.style.display = "inline-block";
-      signOutBtn.addEventListener("click", () => {
-        localStorage.removeItem("currentUser");
-        // you could also clear any other session data here…
-        window.location.reload();
-      });
-    } else {
-      // no one logged in
-      authLink.textContent = "LOGIN / CREATE ACCOUNT";
-      authLink.href        = "login.html";
-    }
-  });
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-
-<script type="module">
-  const firebaseConfig = {
-    apiKey: "AIzaSyDHcPWT5CguvvKwg95-D4ROaMypGu5H4OA",
-    authDomain: "boxxp-f4f64.firebaseapp.com",
-    projectId: "boxxp-f4f64",
-    storageBucket: "boxxp-f4f64.appspot.com",
-    messagingSenderId: "274613580349",
-    appId: "1:274613580349:web:44b844b91c8a3eb271f054",
-    measurementId: "G-N8MJ2DD4QB"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-
-  window.db = db;
-</script>
-
+<script type="module" src="js/indexAuth.js"></script>
 <script src="js/data.js"></script>
 
 </body>
