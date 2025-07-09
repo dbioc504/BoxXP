@@ -175,7 +175,7 @@ h1 {
 }
 
 .login-btn {
-    color:#fff;    /* make sure it’s not same as background */
+    color:white;    /* make sure it’s not same as background */
     display:inline-block;
     padding:8px 16px;
 }
