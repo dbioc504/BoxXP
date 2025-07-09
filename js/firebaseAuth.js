@@ -9,15 +9,9 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
 export const auth = firebase.auth();
 
-export function signIn(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
-}
-
-export function createAccount(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
 
 export function logOut() {  return signOut(auth);
 }

@@ -1,4 +1,5 @@
-import { auth, logOut, onAuthStateChanged } from './firebaseAuth.js';
+// js/indexAuth.js
+import { auth, logOut, onAuth } from './firebaseAuth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const authLink   = document.getElementById('auth-link');
@@ -6,53 +7,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginModal = document.getElementById('login-modal');
   const closeBtn   = document.getElementById('close-login');
 
-  let ui;
+  // Firebase-UI init (compat)
+  const ui = new firebaseui.auth.AuthUI(auth);
+  const uiConfig = {
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: () => {
+        loginModal.style.display = 'none';
+        return false; // do not redirect
+      }
+    }
+  };
 
   function showLogin() {
-    if (!ui) {
-      ui = new firebaseui.auth.AuthUI(auth);
-    }
-    ui.start('#firebaseui-auth-container', {
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
-      ],
-      callbacks: {
-        signInSuccessWithAuthResult: () => {
-          hideLogin();
-          return false;
-        }
-      }
-    });
+    ui.start('#firebaseui-auth-container', uiConfig);
     loginModal.style.display = 'flex';
   }
 
-  function hideLogin() {
-    loginModal.style.display = 'none';
-  }
-
-  onAuthStateChanged((user) => {
+  /* ---------------- auth state listener ---------------- */
+  onAuth(user => {
     if (user) {
       authLink.textContent = `Logged in as: ${user.email}`.toUpperCase();
-      authLink.removeAttribute('href');
       authLink.style.cursor = 'default';
       signOutBtn.style.display = 'inline-block';
     } else {
       authLink.textContent = 'LOGIN / CREATE ACCOUNT';
-      authLink.removeAttribute('href');
       authLink.style.cursor = 'pointer';
       signOutBtn.style.display = 'none';
     }
   });
 
-  authLink.addEventListener('click', (e) => {
+  /* ---------------- click handlers ---------------- */
+  authLink.addEventListener('click', e => {
     if (!auth.currentUser) {
       e.preventDefault();
       showLogin();
     }
   });
 
-  closeBtn.addEventListener('click', hideLogin);
+  closeBtn.addEventListener('click', () => loginModal.style.display = 'none');
 
   signOutBtn.addEventListener('click', async () => {
     await logOut();
