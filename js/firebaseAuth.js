@@ -9,13 +9,12 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
 export const auth = firebase.auth();
 
-
-export function logOut() {  return signOut(auth);
+export function logOut() {
+  return auth.signOut();
 }
 
-export function onAuthStateChanged(cb) {
+export function onAuth(cb) {
   return auth.onAuthStateChanged(cb);
 }
