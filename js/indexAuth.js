@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD,
                 requireDisplayName: false
             },
-            firebase.auth.GithubAuthProvider.PROVIDER_ID
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID
         ],
         callbacks: {
             signInSuccessWithAuthResult: () => {
