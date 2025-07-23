@@ -23,12 +23,6 @@
   <!-- Your Shared Styles -->
   <link rel="stylesheet" href="css/styles.css?v=20250703-6" />
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
-  <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
-
 </head>
 
 <body>
@@ -78,9 +72,17 @@
   </div>
 </div>
 
-<!-- Your module that *imports* firebaseAuth.js -->
+<!-- 1. Firebase core & compat libraries  -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<link   rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css">
+<script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+
+<!-- 2. *Your* ES‑module scripts (indexAuth.js, data.js, etc.) -->
 <script type="module" src="js/indexAuth.js?v=20250710"></script>
-<script type="module" src="js/data.js?v=20250708-2"></script>
+<script type="module" src="js/data.js?v=20250710"></script>
+
 
 
 

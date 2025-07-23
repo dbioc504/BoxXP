@@ -34,7 +34,16 @@
         <button class="btn btn-save" onclick="saveCombo()">Save Combo</button>
     </div>
 
-    <script src="js/data.js?v=20250703"></script>
+    <!-- 1. Firebase core & compat libraries  -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <link   rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css">
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+
+    <!-- 2. *Your* ES‑module scripts (indexAuth.js, data.js, etc.) -->
+    <script type="module" src="js/data.js?v=20250710"></script>
+
     <script src="js/createCombo.js?v=20250703"></script>
 </body>
 </html>

@@ -1,117 +1,82 @@
-let appData = {
-    skills: [],
-    workouts: [],
+import { auth, onAuth } from "./firebaseAuth.js";
+import { fetchUserData, saveUserData } from "./firestoreHelpers.js";
+
+function arrayHasRealItems(arr = []) {
+    return arr.some(cat => Array.isArray(cat.items) && cat.items.length > 0);
+}
+
+export const STARTER_DATA = {
+    skills: [
+        { category: 'Pressure', items: [] },
+        { category: 'Dogwork', items: [] },
+        { category: 'Boxing', items: [] },
+    ],
+    workouts: [
+        { category: 'Upper', items: [] },
+        { category: 'Lower', items: [] },
+        { category: 'Core', items: [] },
+    ],
     combos: []
-};
+}
+export let appData = structuredClone(STARTER_DATA)
 
-async function loadUserData() {
-    try {
-        const res = await fetch('sql_connection.php?whoami=1', { credentials: 'include' });
-        const whoami = await res.json();
-        appData.user = whoami.user || 'guestData';
-        console.log('[LOAD] Current user:', appData.user);
-    } catch (err) {
-        console.warn('[LOAD] Failed to get user from session:', err);
-        appData.user = 'guestData';
-    }
 
-    // Fetch from server if logged in
-    if (appData.user !== 'guestData') {
-        try {
-            let res, json;
+async function startApp(user){
+    if (user) {
+        const guest = loadGuestData();
+        const cloud = await fetchUserData();
+        appData = {
+            skills: arrayHasRealItems(guest.skills) ? guest.skills : cloud.skills,
+            workouts: arrayHasRealItems(guest.workouts) ? guest.workouts : cloud.workouts,
+            combos: guest.combos?.length ? guest.combos : cloud.combos
+        };
 
-            res = await fetch('sql_connection.php?fetch_skills=1', { credentials: 'include' });
-            json = await res.json();
-            appData.skills = json.skills;
+        const cloudString = JSON.stringify(cloud);
+        const mergedString = JSON.stringify(appData);
 
-            res = await fetch('sql_connection.php?fetch_workouts=1', { credentials: 'include' });
-            json = await res.json();
-            appData.workouts = json.workouts;
-
-            res = await fetch('sql_connection.php?fetch_combos=1', { credentials: 'include' });
-            json = await res.json();
-            appData.combos = json.combos;
-
-            renderAllSections();
-            return;
-        } catch (err) {
-            console.error('[LOAD] Server fetch error:', err);
+        if (mergedString !== cloudString) {
+            await saveUserData(appData);
         }
-    }
-
-    // Fallback to guestData
-    const stored = localStorage.getItem('guestData');
-    if (stored) {
-        const parsed = JSON.parse(stored);
-        appData.skills = parsed.skills || [];
-        appData.workouts = parsed.workouts || [];
-        appData.combos = parsed.combos || [];
+        localStorage.removeItem("guestData");
     } else {
-        Object.assign(appData, {
-            user: 'guestData',
-            skills: [
-                {category: 'dogwork', items: ['Combo-Angle-Combo', 'Left Hook(s)', 'Combo-Roll-Combo']},
-                {category: 'pressure', items: ['Forward Shuffle', 'Cut Off Ring', 'Left Hand Up, Roll Head Inside']},
-                {category: 'boxing', items: ['Shuffle and Tick', 'Stand Ground, Block Combo, Combo, Shuffle Out']}
-            ],
-            workouts: [
-                {category: 'upper-body', items: ['Pushups', 'Dips', 'Shoulder Press']},
-                {category: 'lower-body', items: ['Squats', 'Squat Jumps', 'Deadlifts']},
-                {category: 'core', items: ['Russian Twists', 'Dumbell Rack Marches']}
-            ],
-            combos: [
-                {id: 1, combo: ['jab', 'jab', 'roll', 'flurry']},
-                {id: 2, combo: ['slip', 'jab', 'jab', 'fake', 'roll', 'hook', 'right hand']}
-            ]
-        });
-        localStorage.setItem('guestData', JSON.stringify(appData));
+        appData = loadGuestData();
     }
-
-
     renderAllSections();
 }
 
+// load on startup
+export function loadGuestData() {
+    const stored = JSON.parse(localStorage.getItem('guestData') || 'null');
 
-function renderAllSections() {
-    if (document.getElementById('skills-container'))   displayCategories();
-    if (document.getElementById('combos-container'))   displayCombos();
-}
-
-async function saveUserData() {
-    console.log('[SAVE] saveUserData called');
-
-    localStorage.setItem('guestData', JSON.stringify(appData));
-
-    if (!appData.user || appData.user === 'guestData') {
-        console.warn('[SAVE] No logged-in user, skipping server save');
-        return;
+    // Nothing stored? → seed and return fresh copy
+    if (!stored) {
+        localStorage.setItem('guestData', JSON.stringify(STARTER_DATA));
+        return structuredClone(STARTER_DATA);
     }
 
-    try {
-        const form = new FormData();
-        form.append('appData', JSON.stringify(appData)); 
+    // merge: if any array is missing or empty, use starter version
+    const merged = {
+        skills:   Array.isArray(stored.skills)   && stored.skills.length   ? stored.skills   : structuredClone(STARTER_DATA.skills),
+        workouts: Array.isArray(stored.workouts) && stored.workouts.length ? stored.workouts : structuredClone(STARTER_DATA.workouts),
+        combos:   Array.isArray(stored.combos)   && stored.combos.length   ? stored.combos   : structuredClone(STARTER_DATA.combos)
+    };
 
-        const res = await fetch('sql_connection.php', {
-            method: 'POST',
-            body: form,
-            credentials: 'include' 
-        });
+    // persist merged version for next time
+    localStorage.setItem('guestData', JSON.stringify(merged));
+    return merged;
+}
 
-        const raw = await res.text();
-        console.log('[SAVE] Server response:', raw);
+export function saveAll () {
+    console.log("saveAll called. appData is now:", appData);
+    if (auth.currentUser) return saveUserData(appData);
+    localStorage.setItem('guestData', JSON.stringify(appData));
+}
 
-        try {
-            const json = JSON.parse(raw);
-            if (json.status === 'success') {
-                console.log('[SAVE] Data saved successfully');
-            } else {
-                console.error('[SAVE] Server error:', json.message);
-            }
-        } catch (err) {
-            console.error('[SAVE] Invalid JSON response from server:', raw);
-        }
-    } catch (err) {
-        console.error('[SAVE] Network or server error:', err);
+export function renderAllSections() {
+    if (document.getElementById('skills-container')) displayCategories();
+    if (typeof displayCombos === 'function' &&
+        document.getElementById('combos-container')) {
+        displayCombos();
     }
 }
 
@@ -170,7 +135,7 @@ function exitEditMode(textEl, catObj, editBtn, doneBtn) {
     textEl.dataset.editMode = 'false';
     editBtn.style.display = 'inline-block';
     doneBtn.style.display = 'none';
-    saveUserData();
+    saveAll();
 }
 
 function removeItem(category, item) {
@@ -179,7 +144,7 @@ function removeItem(category, item) {
     if (!catObj) return;
     catObj.items = catObj.items.filter(i => i !== item);
     displayCategories(pageType);
-    saveUserData();
+    saveAll();
 }
 
 function addItem(category) {
@@ -190,7 +155,7 @@ function addItem(category) {
     if (!catObj) return;
     catObj.items.push(newVal);
     displayCategories(pageType);
-    saveUserData();
+    saveAll();
 }
 
 function displayCategories() {
@@ -221,9 +186,21 @@ function displayCategories() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', loadUserData);
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadUserData);
-} else {
-    loadUserData();
+export async function boot() {
+    console.log("Boot loaded appData:", appData);
+    if (auth.currentUser) {
+        appData = await fetchUserData();
+    } else {
+        appData = loadGuestData();
+    }
+    renderAllSections();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    onAuth(startApp);
+});
+
+window.toggleEdit = toggleEdit;
+window.removeItem = removeItem;
+window.addItem = addItem;
+window.saveAll = saveAll;

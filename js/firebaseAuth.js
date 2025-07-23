@@ -7,9 +7,14 @@ const firebaseConfig = {
   appId: "1:274613580349:web:44b844b91c8a3eb271f054",
   measurementId: "G-N8MJ2DD4QB"
 };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth,  onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-firebase.initializeApp(firebaseConfig);
-export const auth = firebase.auth();
 
-export const onAuth = (cb) => auth.onAuthStateChanged(cb);
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+export const onAuth = (cb) => onAuthStateChanged(auth, cb);
 export const logOut = () => auth.signOut();

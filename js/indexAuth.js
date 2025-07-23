@@ -1,5 +1,6 @@
 // js/indexAuth.js
 import {auth, logOut, onAuth} from './firebaseAuth.js';
+import { boot } from './data.js';
 
 console.log('[indexAuth] script loaded, auth =', auth);
 
@@ -30,22 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function showLogin() {
+    const showLogin = () => {
         ui.start('#firebaseui-auth-container', uiConfig);
         loginModal.style.display = 'flex';
     }
 
     /* ---------------- auth state listener ---------------- */
-    onAuth(user => {
+    onAuth(async user => {
         if (user) {
             authLink.textContent = `Logged in as: ${user.email}`.toUpperCase();
-            authLink.style.cursor = 'default';
             signOutBtn.style.display = 'inline-block';
         } else {
             authLink.textContent = 'LOGIN / CREATE ACCOUNT';
-            authLink.style.cursor = 'pointer';
             signOutBtn.style.display = 'none';
         }
+
+        await boot();
     });
 
     /* ---------------- click handlers ---------------- */
