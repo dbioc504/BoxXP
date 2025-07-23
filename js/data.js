@@ -26,9 +26,9 @@ async function startApp(user){
         const guest = loadGuestData();
         const cloud = await fetchUserData();
         appData = {
-            skills: arrayHasRealItems(guest.skills) ? guest.skills : cloud.skills,
-            workouts: arrayHasRealItems(guest.workouts) ? guest.workouts : cloud.workouts,
-            combos: guest.combos?.length ? guest.combos : cloud.combos
+            skills: arrayHasRealItems(cloud.skills) ? cloud.skills : guest.skills,
+            workouts: arrayHasRealItems(cloud.workouts) ? cloud.workouts : guest.workouts,
+            combos: cloud.combos?.length ? cloud.combos : guest.combos
         };
 
         const cloudString = JSON.stringify(cloud);
