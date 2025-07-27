@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const isTouchDevice = "ontouchsatart" in window || navigator.maxTouchPoints > 0;
 
 const comboPieces = [
-    "JAB", "CROSS", "HOOK", "UPPERCUT", "SLIP",
-    "SHOULDER ROLL", "BLOCK", "PARRY", "WEAVE", "STEP BACK"
+    "JAB", "(BODY) JAB", "STRAIGHT", "(BODY) STRAIGHT", "LEFT HOOK", "(BODY) LEFT HOOK",
+    "RIGHT HOOK", "(BODY) RIGHT HOOK", "UPPERCUT", "SLIP", "BLOCK", "PARRY", "ROLL",
+    "STEP BACK",
 ];
 
 let userCombo = [];
