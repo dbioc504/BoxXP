@@ -21,7 +21,7 @@ export const STARTER_DATA = {
 export let appData = structuredClone(STARTER_DATA)
 
 
-async function startApp(user){
+export async function startApp(user){
     if (user) {
         const guest = loadGuestData();
         const cloud = await fetchUserData();
@@ -41,7 +41,15 @@ async function startApp(user){
     } else {
         appData = loadGuestData();
     }
+    window.appData = appData;
     renderAllSections();
+
+    if (window.location.pathname.endsWith('timeRunning.html')
+        && typeof initTimer() === "function") {
+            initTimer();
+        } else {
+        window.addEventListener('load', initTimer);
+    }
 }
 
 // load on startup

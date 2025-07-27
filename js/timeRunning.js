@@ -25,6 +25,8 @@ document.addEventListener('visibilitychange',()=>{
         enableKeepAwake();
 });
 
+
+/* -- trouble block
 window.addEventListener('load', ()=>{
     const audioBtn = document.getElementById('audio-btn');
     const icon     = document.getElementById('audio-icon');
@@ -41,26 +43,33 @@ window.addEventListener('load', ()=>{
 
     initTimer();
 });
+ */
+function setupAudio() {
+    const audioBtn = document.getElementById('audio-btn');
+    const icon = document.getElementById('audio-icon');
 
-const audioBtn = document.getElementById('audio-btn');
-const icon = document.getElementById('audio-icon');
+    audioBtn.addEventListener("click", async () => {
+        try {
+            await boxingBell.play();
+            boxingBell.pause();
+            boxingBell.currentTime = 0;
+            audioReady = true;
 
-audioBtn.addEventListener("click", async () => {
-    try{
-        await boxingBell.play();
-        boxingBell.pause();
-        boxingBell.currentTime = 0;
-        audioReady = true;
+            icon.src = "images/sound_on.svg"
+            audioBtn.style.pointerEvents = "none";
 
-        icon.src = "images/sound_on.svg"
-        audioBtn.style.pointerEvents = "none";
+        } catch (err) {
+            alert("Turn off silent mode to hear sound.");
+        }
+    });
+}
 
-    }catch (err) {
-        alert("Turn off silent mode to hear sound.");
-    }
-});
+window.addEventListener('load', setupAudio);
 
 function initTimer() {
+    // debug
+    console.log("initTimer - appdata:", window.appData);
+
     const showSkill   = localStorage.getItem("skill-display") === "true";
     const showCombo   = localStorage.getItem("combo-display") === "true";
     const showWorkout = localStorage.getItem("workout-display") === "true";
@@ -120,20 +129,32 @@ function initTimer() {
             return;
         }
 
+        // debug
+        console.log("🔍 getSkillDict() =>", getSkillDict());
+        console.log("⏳ currentRound:", currentRound);
+
         // COMBO
         if (showCombo) {
-            const combos = JSON.parse(localStorage.getItem("guestData") || "{}").combos || [];
-            comboDisp.textContent = combos.length
-                ? `COMBO: ${getRandom(combos).combo.map(m => m.toUpperCase()).join(" + ")}`
+            const sel = JSON.parse(localStorage.getItem("selectedCombos") || "[]");
+            const combosArr = (window.appData.combos || [])
+                .filter(c => sel.includes(c.id));
+            comboDisp.textContent = combosArr.length
+                ? `COMBO: ${getRandom(combosArr).combo.map(m=>m.toUpperCase()).join(" + ")}`
                 : "";
-        } else {
-            comboDisp.textContent = "";
         }
 
         // SKILL
         if (showSkill) {
             const plan = JSON.parse(localStorage.getItem("skillPlan") || "[]");
             const cat = plan[currentRound - 1];
+
+            // debug
+            console.log("SKILL data:", {
+                plan,
+                categoryThisRound: cat,
+                skillDict: getSkillDict()
+            });
+
             if (cat) {
                 const techs = getSkillDict()[cat];
                 if (techs && techs.length) {
@@ -248,10 +269,10 @@ function formatTime(sec) {
 }
 
 function getSkillDict() {
-    const gd = JSON.parse(localStorage.getItem("guestData") || "{}");
-    return (gd.skills || []).reduce((o, c) => {
-        o[c.category.toLowerCase()] = c.items;
-        return o;
+    const src = window.appData || { skills: [] };
+    return (src.skills).reduce((dict, cat) => {
+        dict[cat.category.toLowerCase()] = cat.items;
+        return dict;
     }, {});
 }
 

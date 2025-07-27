@@ -54,6 +54,12 @@
         <button id="save-btn">SAVE SELECTION</button>
     </div>
 
-    <script src="js/editSkills.js"></script>
+    <script type="module">
+        import { onAuth } from "./js/firebaseAuth.js";
+        import { startApp } from "./js/data.js";
+        onAuth(startApp);
+    </script>
+
+    <script type="module" src="js/editSkills.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+import { appData } from "./data.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const modeRadios     = document.querySelectorAll('input[name="skillMode"]');
     const focusContainer = document.getElementById("focus-container");
@@ -31,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function getSkillDict() {
-    const guestData = JSON.parse(localStorage.getItem("guestData")) || {};
+    const src = JSON.parse(localStorage.getItem("guestData")) || appData || {};
     const skillDict = {};
-    (guestData.skills || []).forEach(cat => {
+    (src.skills || []).forEach(cat => {
         skillDict[cat.category.toLowerCase()] = cat.items;
     });
     return skillDict;
