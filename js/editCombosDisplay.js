@@ -15,8 +15,9 @@ function displayCombos() {
     }
 
     let selectedCombos = JSON.parse(localStorage.getItem("selectedCombos")) || [];
+    const combos = window.appData.combos | [];
 
-    guestData.combos.forEach(combo => {
+    combos.forEach(combo => {
         const comboDiv = document.createElement("div");
         comboDiv.classList.add("selectable-item");
         if (selectedCombos.includes(combo.id)) {

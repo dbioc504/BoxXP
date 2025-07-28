@@ -1,3 +1,6 @@
+import { saveUserData } from "./firestoreHelpers.js";
+import {appData} from "./data.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     loadComboPieces();
     setupDragAndDrop();
@@ -9,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const isTouchDevice = "ontouchsatart" in window || navigator.maxTouchPoints > 0;
+const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 const comboPieces = [
     "JAB", "(BODY) JAB", "STRAIGHT", "(BODY) STRAIGHT", "LEFT HOOK", "(BODY) LEFT HOOK",
@@ -88,8 +91,8 @@ function removeMove(element) {
     }
 }
 
-function saveCombo() {
-    if (userCombo.length === 0){
+async function saveCombo() {
+    if (userCombo.length === 0) {
         alert("Your combo is empty!");
         return;
     }
@@ -97,7 +100,7 @@ function saveCombo() {
     let storedData = JSON.parse(localStorage.getItem('guestData'));
 
     if (!storedData) {
-        storedData = { user: "guestData", skills: [], workouts: [], combos: [] };
+        storedData = {user: "guestData", skills: [], workouts: [], combos: []};
     }
 
     if (!storedData.combos) storedData.combos = [];
@@ -110,11 +113,18 @@ function saveCombo() {
     storedData.combos.push(newCombo);
     localStorage.setItem('guestData', JSON.stringify(storedData));
 
-    if (window.appData) {appData.combos = storedData.combos.slice(); }
+    if (window.appData) {
+        appData.combos = storedData.combos.slice();
+    }
     console.log("Updated guestData: ", storedData);
 
-    if (document.getElementById('combos-container')) { displayCombos(); }
+    await saveUserData(appData);
+
+    if (document.getElementById('combos-container')) {
+        displayCombos();
+    }
 
     window.location.href = "combos.html";
 }
 
+window.saveCombo = saveCombo;

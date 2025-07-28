@@ -2,7 +2,9 @@ function displayCombos() {
     const container = document.getElementById('combos-container');
     container.innerHTML = "";
 
-    appData.combos.forEach(combo => {
+    const list = window.appData.combos || [];
+
+    list.forEach(combo => {
         const comboDiv = document.createElement('div');
         comboDiv.className = "combo-item";
         comboDiv.innerHTML = `
