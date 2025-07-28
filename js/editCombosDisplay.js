@@ -1,63 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-    displayCombos();
-});
+// editCombosDisplay.js
 
 function displayCombos() {
+    const combos   = window.appData?.combos   || [];
+    let selected   = JSON.parse(localStorage.getItem("selectedCombos") || "[]");
     const container = document.getElementById("combos-container");
     container.innerHTML = "";
 
-    const guestData = JSON.parse(localStorage.getItem("guestData"));
-    console.log("guestDataFirstLoad:", guestData);
-
-    if (!guestData || !guestData.combos) {
-        container.innerHTML += "<p>No combos found.</p>";
+    if (!combos.length) {
+        container.innerHTML = "<p>No combos found.</p>";
         return;
     }
 
-    let selectedCombos = JSON.parse(localStorage.getItem("selectedCombos")) || [];
-    const combos = window.appData.combos | [];
-
     combos.forEach(combo => {
-        const comboDiv = document.createElement("div");
-        comboDiv.classList.add("selectable-item");
-        if (selectedCombos.includes(combo.id)) {
-            comboDiv.classList.add("selected");
+        const div = document.createElement("div");
+        div.classList.add("selectable-item");
+        div.textContent = combo.combo.join(" + ");
+
+        if (selected.includes(combo.id)) {
+            div.classList.add("selected");
         }
 
-        comboDiv.textContent = combo.combo.join(" + ");
-
-        comboDiv.addEventListener("click", () => {
-            comboDiv.classList.toggle("selected");
-            if (comboDiv.classList.contains("selected")) {
-                console.log(selectedCombos);
-                selectedCombos.push(combo.id);
+        div.addEventListener("click", () => {
+            if (div.classList.toggle("selected")) {
+                selected.push(combo.id);
             } else {
-                console.log(selectedCombos);
-                selectedCombos = selectedCombos.filter(id => id !== combo.id);
+                selected = selected.filter(id => id !== combo.id);
             }
+            localStorage.setItem("selectedCombos", JSON.stringify(selected));
         });
 
-        container.appendChild(comboDiv);
+        container.appendChild(div);
     });
 }
 
 function saveCombos() {
-    const container = document.getElementById("combos-container");
-    const allItems = container.querySelectorAll(".selectable-item");
-
-    let newSelected = [];
-    const guestData = JSON.parse(localStorage.getItem("guestData"));
-
-    allItems.forEach((item, index) => {
-        if (item.classList.contains("selected")) {
-            const comboId = guestData.combos[index].id;
-            newSelected.push(comboId);
-        }
-    });
-
-    localStorage.setItem("selectedCombos", JSON.stringify(newSelected));
-
-    console.log(newSelected);
-
+    // selections are already in localStorage; just go back to timer setup
     window.location.href = "timerSetup.html";
 }
+
+// wire it up
+document.addEventListener("DOMContentLoaded", () => {
+    displayCombos();
+    document.querySelector(".save-btn")
+        .addEventListener("click", saveCombos);
+});
