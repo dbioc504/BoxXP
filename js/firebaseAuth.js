@@ -7,26 +7,21 @@ const firebaseConfig = {
   appId: "1:274613580349:web:44b844b91c8a3eb271f054",
   measurementId: "G-N8MJ2DD4QB"
 };
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import {
-  getAuth,
-  setPersistence,
-  browserLocalPersistence,
-  browserSessionPersistence,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+// at the top of firebaseAuth.js
+import firebase from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js";
+import "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js";
+import "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
 
+const app  = firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const db   = firebase.firestore();
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-
-setPersistence(auth, browserLocalPersistence)
-    .catch((err) => {
-      console.warn("Local persistence unavailable. Falling back to session:")
-      return setPersistence(auth, browserSessionPersistence);
+// now set persistence on the compat auth
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .catch(err => {
+      console.warn("Local persistence unavailable, falling back:", err);
+      return auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
     });
 
-export const db = getFirestore(app);
-export const onAuth = (cb) => onAuthStateChanged(auth, cb);
-export const logOut = () => auth.signOut();
+export const onAuth = cb => auth.onAuthStateChanged(cb);
+export const logOut  = () => auth.signOut();
