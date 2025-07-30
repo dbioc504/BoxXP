@@ -44,12 +44,15 @@ export async function startApp(user){
     window.appData = appData;
     renderAllSections();
 
-    if (window.location.pathname.endsWith('timeRunning.html')
-        && typeof initTimer() === "function") {
-            initTimer();
-        } else {
-        window.addEventListener('load', initTimer);
+    if (
+        window.location.pathname.endsWith("timeRunning.html") &&
+        typeof window.initTimer === "function"
+    ) {
+        window.initTimer();
+    } else {
+        window.addEventListener("load", window.initTimer);
     }
+
 }
 
 // load on startup

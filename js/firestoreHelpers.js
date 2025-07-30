@@ -3,8 +3,7 @@ import {
     doc,            // points at one document
     getDoc,         // read once
     setDoc,         // write or merge
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";  // or the CDN URL if you use option 1 earlier
-
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { STARTER_DATA } from "./data.js";
 
 export async function fetchUserData() {
