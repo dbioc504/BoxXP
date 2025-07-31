@@ -13,7 +13,7 @@ function displayCombos() {
 
     combos.forEach(combo => {
         const div = document.createElement("div");
-        div.classList.add("selectable-item");
+        div.className = "selectable-item";
         div.textContent = combo.combo.join(" + ");
 
         if (selected.includes(combo.id)) {

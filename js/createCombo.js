@@ -97,32 +97,14 @@ async function saveCombo() {
         return;
     }
 
-    let storedData = JSON.parse(localStorage.getItem('guestData'));
-
-    if (!storedData) {
-        storedData = {user: "guestData", skills: [], workouts: [], combos: []};
-    }
-
-    if (!storedData.combos) storedData.combos = [];
-
     const newCombo = {
         id: Date.now(),
         combo: [...userCombo]
     };
 
-    storedData.combos.push(newCombo);
-    localStorage.setItem('guestData', JSON.stringify(storedData));
-
-    if (window.appData) {
-        appData.combos = storedData.combos.slice();
-    }
-    console.log("Updated guestData: ", storedData);
+    appData.combos = [...(appData.combos || []), newCombo];
 
     await saveUserData(appData);
-
-    if (document.getElementById('combos-container')) {
-        displayCombos();
-    }
 
     window.location.href = "combos.html";
 }
