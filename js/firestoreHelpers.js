@@ -36,3 +36,5 @@ export function saveUserData(data) {
     const docRef = doc(db, "users", uid);
     return setDoc(docRef, data);
 }
+
+window.saveUserData = saveUserData;

@@ -215,3 +215,4 @@ window.toggleEdit = toggleEdit;
 window.removeItem = removeItem;
 window.addItem = addItem;
 window.saveAll = saveAll;
+window.appData = appData;

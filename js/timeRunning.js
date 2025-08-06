@@ -18,8 +18,8 @@ async function enableKeepAwake() {
             const {default: NoSleep} = await import(
                 'https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js');
             noSleep = new NoSleep();
+            noSleep.enable();
         }
-        noSleep.enable();
     } catch (e) {
         console.warn('Wake-lock error', e);
     }

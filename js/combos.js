@@ -30,8 +30,10 @@ function toggleMenu(comboId) {
 }
 
 function deleteCombo(comboId) {
+    console.log("Deleting combo with id:", comboId);
+    console.log("Before deletion appData.combos:", appData ? appData.combos : "undefined");
     appData.combos = appData.combos.filter(combo => combo.id !== parseInt(comboId));
-    saveUserData();
+    saveUserData(appData);
     displayCombos();
 }
 
