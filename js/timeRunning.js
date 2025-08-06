@@ -1,27 +1,32 @@
 console.log(">>> timeRunning.js LOADED", Date.now());
 
 
-
 const boxingBell = new Audio("sounds/boxing-bell.mp3");
 boxingBell.volume = 0.8;
 const sticksClack = new Audio("sounds/hand-clap-106596.mp3");
 sticksClack.volume = 0.8;
 let audioReady = false;
-
 let wakeLockHandle = null;
-async function enableKeepAwake(){
-    try{
-        if('wakeLock' in navigator){
+
+let noSleep = null;
+
+async function enableKeepAwake() {
+    try {
+        if ('wakeLock' in navigator) {
             wakeLockHandle = await navigator.wakeLock.request('screen');
-        }else{
-            const {default:NoSleep} = await import(
+        } else {
+            const {default: NoSleep} = await import(
                 'https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js');
-            new NoSleep().enable();
+            noSleep = new NoSleep();
         }
-    }catch(e){ console.warn('Wake-lock error',e); }
+        noSleep.enable();
+    } catch (e) {
+        console.warn('Wake-lock error', e);
+    }
 }
-document.addEventListener('visibilitychange',()=>{
-    if(document.visibilityState==='visible'&&wakeLockHandle?.released)
+
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible')
         enableKeepAwake();
 });
 
@@ -54,8 +59,8 @@ function initTimer() {
     // debug
     console.log("initTimer - appdata:", window.appData);
 
-    const showSkill   = localStorage.getItem("skill-display") === "true";
-    const showCombo   = localStorage.getItem("combo-display") === "true";
+    const showSkill = localStorage.getItem("skill-display") === "true";
+    const showCombo = localStorage.getItem("combo-display") === "true";
     const showWorkout = localStorage.getItem("workout-display") === "true";
 
     if (showSkill && !localStorage.getItem("skillPlan")) {
@@ -71,22 +76,22 @@ function initTimer() {
         return window.location.href = "editWorkouts.html";
     }
 
-    const roundsSetting   = parseInt(localStorage.getItem("rounds"))     || 12;
-    const roundTime       = parseTime(localStorage.getItem("round-time")  || "04:00");
-    const restTime        = parseTime(localStorage.getItem("rest-time")   || "00:30");
-    const getReadyTime    = parseTime(localStorage.getItem("get-ready-time") || "00:15");
+    const roundsSetting = parseInt(localStorage.getItem("rounds")) || 12;
+    const roundTime = parseTime(localStorage.getItem("round-time") || "04:00");
+    const restTime = parseTime(localStorage.getItem("rest-time") || "00:30");
+    const getReadyTime = parseTime(localStorage.getItem("get-ready-time") || "00:15");
 
     let currentPhase = "get-ready";
     let currentRound = 0;
-    let timeLeft     = getReadyTime;
-    let isPaused     = false;
+    let timeLeft = getReadyTime;
+    let isPaused = false;
 
-    const phaseTitle   = document.getElementById("phase-title");
+    const phaseTitle = document.getElementById("phase-title");
     const timerDisplay = document.getElementById("timer-display");
-    const comboDisp    = document.getElementById("combo-display");
-    const skillDisp    = document.getElementById("skill-display");
-    const workoutDisp  = document.getElementById("workout-display");
-    const pauseBtn     = document.getElementById("pause-resume");
+    const comboDisp = document.getElementById("combo-display");
+    const skillDisp = document.getElementById("skill-display");
+    const workoutDisp = document.getElementById("workout-display");
+    const pauseBtn = document.getElementById("pause-resume");
 
     function updateBackground() {
         if (currentPhase === "round") {
@@ -123,7 +128,7 @@ function initTimer() {
             const combosArr = (window.appData.combos || [])
                 .filter(c => sel.includes(c.id));
             comboDisp.textContent = combosArr.length
-                ? `COMBO: ${getRandom(combosArr).combo.map(m=>m.toUpperCase()).join(" + ")}`
+                ? `COMBO: ${getRandom(combosArr).combo.map(m => m.toUpperCase()).join(" + ")}`
                 : "";
         }
 
@@ -151,30 +156,28 @@ function initTimer() {
 
         if (showWorkout) {
             const sel = JSON.parse(localStorage.getItem("selectedWorkouts") || "[]");
-            const gd  = JSON.parse(localStorage.getItem("guestData") || "{}");
+            const gd = JSON.parse(localStorage.getItem("guestData") || "{}");
             const all = [];
-            (gd.workouts||[]).forEach((c,i) =>
-                c.items.forEach((w,j) =>
-                    all.push({ id:`${i}-${j}`, category:c.category.toLowerCase(), name:w })
+            (gd.workouts || []).forEach((c, i) =>
+                c.items.forEach((w, j) =>
+                    all.push({id: `${i}-${j}`, category: c.category.toLowerCase(), name: w})
                 )
             );
             const chosen = all.filter(w => sel.includes(w.id));
-            const upper = chosen.filter(w => w.category==="upper-body");
-            const lower = chosen.filter(w => w.category==="lower-body");
-            const core  = chosen.filter(w => w.category==="core");
+            const upper = chosen.filter(w => w.category === "upper-body");
+            const lower = chosen.filter(w => w.category === "lower-body");
+            const core = chosen.filter(w => w.category === "core");
 
             let txt = "";
-            if (roundsSetting===1 || (roundsSetting%2===1 && currentRound===roundsSetting)) {
+            if (roundsSetting === 1 || (roundsSetting % 2 === 1 && currentRound === roundsSetting)) {
                 const u = getRandom(upper), o = getRandom(core), l = getRandom(lower);
-                if (u&&o&&l) txt = `WORKOUT: ${u.name.toUpperCase()} & ${o.name.toUpperCase()} & ${l.name.toUpperCase()}`;
-            }
-            else if (currentRound%2===1) {
+                if (u && o && l) txt = `WORKOUT: ${u.name.toUpperCase()} & ${o.name.toUpperCase()} & ${l.name.toUpperCase()}`;
+            } else if (currentRound % 2 === 1) {
                 const u = getRandom(upper), o = getRandom(core);
-                if (u&&o) txt = `WORKOUT: ${u.name.toUpperCase()} & ${o.name.toUpperCase()}`;
-            }
-            else {
+                if (u && o) txt = `WORKOUT: ${u.name.toUpperCase()} & ${o.name.toUpperCase()}`;
+            } else {
                 const l = getRandom(lower), o = getRandom(core);
-                if (l&&o) txt = `WORKOUT: ${l.name.toUpperCase()} & ${o.name.toUpperCase()}`;
+                if (l && o) txt = `WORKOUT: ${l.name.toUpperCase()} & ${o.name.toUpperCase()}`;
             }
 
             workoutDisp.textContent = txt;
@@ -189,22 +192,22 @@ function initTimer() {
             case "get-ready":
                 currentPhase = "round";
                 currentRound = 1;
-                timeLeft     = roundTime;
+                timeLeft = roundTime;
                 break;
             case "round":
                 if (currentRound < roundsSetting) {
                     currentPhase = "rest";
-                    timeLeft     = restTime;
+                    timeLeft = restTime;
                 } else {
                     currentPhase = "finished";
-                    timeLeft     = 0;
+                    timeLeft = 0;
                     clearInterval(timerInterval);
                 }
                 break;
             case "rest":
                 currentRound++;
                 currentPhase = "round";
-                timeLeft     = roundTime;
+                timeLeft = roundTime;
                 break;
         }
 
@@ -221,7 +224,7 @@ function initTimer() {
                 timeLeft--;
                 updateDisplays();
                 if (timeLeft === 10 && currentPhase === "round") {
-                   if (audioReady) sticksClack.play();
+                    if (audioReady) sticksClack.play();
                 }
             } else {
                 if (audioReady) boxingBell.play();
@@ -247,13 +250,14 @@ function parseTime(timeStr) {
     }
     return parseInt(timeStr, 10);
 }
+
 function formatTime(sec) {
     const m = Math.floor(sec / 60), s = sec % 60;
     return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
 }
 
 function getSkillDict() {
-    const src = window.appData || { skills: [] };
+    const src = window.appData || {skills: []};
     return (src.skills).reduce((dict, cat) => {
         dict[cat.category.toLowerCase()] = cat.items;
         return dict;
