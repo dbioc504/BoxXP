@@ -26,24 +26,6 @@ document.addEventListener('visibilitychange',()=>{
 });
 
 
-/* -- trouble block
-window.addEventListener('load', ()=>{
-    const audioBtn = document.getElementById('audio-btn');
-    const icon     = document.getElementById('audio-icon');
-
-    audioBtn.addEventListener('click', async ()=>{
-        try{
-            await boxingBell.play();  boxingBell.pause(); boxingBell.currentTime=0;
-            audioReady = true;
-            enableKeepAwake();
-            icon.src = 'images/sound_on.svg';
-            audioBtn.style.pointerEvents='none';
-        }catch(e){ alert('Turn off silent mode to hear sound.'); }
-    });
-
-    initTimer();
-});
- */
 function setupAudio() {
     const audioBtn = document.getElementById('audio-btn');
     const icon = document.getElementById('audio-icon');
@@ -54,6 +36,8 @@ function setupAudio() {
             boxingBell.pause();
             boxingBell.currentTime = 0;
             audioReady = true;
+
+            await enableKeepAwake();
 
             icon.src = "images/sound_on.svg"
             audioBtn.style.pointerEvents = "none";
