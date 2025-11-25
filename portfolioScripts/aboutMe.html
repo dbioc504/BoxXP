@@ -55,11 +55,66 @@
             return (
                 <div className="page-shell">
                     <Navbar activePage="about"/>
+
                     <main>
-                        <section className="section">
-                            <h1 className="hero-name">DOMINICK BIOC</h1>
-                            <p>Welcome to my portfolio page! I’m a recent proud graduate from Xavier University of Louisiana. I genuinely enjoy programming and building software. I see it as one large puzzle or video game waiting to be conquered. I tend to obsess over my work and the things I care about, which lead to my soft skills of endless and relentless dedication and work ethic. Outside of coding, I enjoy action and RPG video games, skateboarding, anime, comic books, manga,  and action, sci-fi, and crime movies.  I also love the sport of boxing and I’m training to become a professional one day!</p>
+                        {/* HERO SECTION */}
+                        <section className="hero-layout">
+
+                            {/* Left Photo */}
+                            <div className="hero-photo">
+                                <img src="../images/portfolioHeadshot.jpg" alt="Dominick Photo"/>
+                            </div>
+
+                            {/* Text Section */}
+                            <div>
+                                <h1 className="hero-name">DOMINICK BIOC</h1>
+
+                                <div className="hero-subtitle">
+                                    <p>Computer Science Graduate</p>
+                                    <p>Software Engineer w/ a focus on:</p>
+                                    <ul className="hero-subtitle">
+                                        <li>Mobile Development</li>
+                                        <li>Web Development</li>
+                                        <li>Front End Development</li>
+                                        <li>UI/UX Design</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </section>
+
+                        {/* ABOUT COPY */}
+                        <div className="about-copy">
+                            <p>
+                                Welcome to my portfolio page! I’m a recent proud graduate from Xavier University of
+                                Louisiana. I genuinely enjoy programming and building software. I see it as one large
+                                puzzle or video game waiting to be conquered.
+                            </p>
+
+                            <p>
+                                I tend to obsess over my work and the things I care about, which lead to my soft skills
+                                of endless and relentless dedication and work ethic. Outside of coding, I enjoy action
+                                and RPG video games, skateboarding, anime, comic books, manga, and action, sci-fi, and
+                                crime movies.
+                            </p>
+
+                            <p>
+                                I also love the sport of boxing and I’m training to become a professional one day!
+                            </p>
+                        </div>
+
+                        {/* CONTACT */}
+                        <div className="site-footer">
+                            <div className="footer-links">
+                                <a className="footer-icon-link" href="https://www.linkedin.com/in/dominickbioc" target="_blank">LinkedIn</a>
+                                <a className="footer-icon-link" href="https://github.com/dbioc504" target="_blank">GitHub</a>
+                            </div>
+
+                            <div className="footer-copy">
+                                CONTACT EMAIL:<br />
+                                DOMINICKBIOC96@GMAIL.COM
+                            </div>
+                        </div>
+
                     </main>
                 </div>
             );
