@@ -89,12 +89,14 @@ h3,
 
 .hero-layout {
     display: grid;
-    grid-template-columns: minmax(0, 320px) minmax(0,1fr);
+    grid-template-columns: 350px 1fr;
     gap: 40px;
     align-items: center;
-    margin-bottom: 32px;
+    margin: 0 auto 32px auto;  /* full center */
+    max-width: 1000px;         /* keeps content centered */
     justify-content: center;
 }
+
 
 .hero-photo img {
     width: 100%;
@@ -106,6 +108,7 @@ h3,
 .hero-name {
     font-size: 64px;
     letter-spacing: 0.08em;
+    color: #DFDAEF;
 }
 
 .hero-subtitle p,
@@ -126,10 +129,12 @@ h3,
 }
 
 .about-copy {
-    max-width: 950px;
-    font-size: 18px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 20px;
     line-height: 1.7;
-    color:  #e4d9ff;
+    color: #DFDAEF;
+    text-align: center;
 }
 
 .about-copy p + p {
