@@ -145,76 +145,59 @@ h3,
    Skills page
    ============================ */
 
-.skills-grid {
+.skills-layout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1200px;
+    /*margin: 0 auto;*/
 }
 
-.skills-card {
-    background: #181225;
-    border-radius: 24px;
-    padding: 24px 22px;
-    border: 1px solid #44335e;
+.skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.skills-card h2 {
+.skills-title {
+    font-size: 60px;
+    color: #DFDAEF;
+    letter-spacing: 0.08em;
+}
+
+.skills-subtitle {
     font-size: 24px;
-    margin-bottom: 4px;
+    font-weight: 700;
+    color: #DFDAEF;
+    margin-top: 10px;
+    text-align: left;
 }
 
-.skills-card h3 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 16px;
-    margin-bottom: 6px;
-    color: #b3a5e6;
+.skills-text {
+    font-size: 18px;
+    color: #DFDAEF;
+    line-height: 1.6;
 }
 
-.skills-card p {
-    font-size: 14px;
-    color: #d8ccff;
+.skills-bullet-list {
+    list-style: flex;
+    padding-left: 24px;
+    color: #DFDAEF;
+    font-size: 18px;
+    line-height: 1.4;
 }
 
-/* tag & bullet list */
-
-.tag-list,
-.bullet-list {
-    list-style: none;
-    margin-top: 8px;
+.skills-icon-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 16px;
+    margin-top: 8px;
 }
 
-.tag-list li {
-    font-size: 13px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: #241a3a;
-    color: #f1e9ff;
-}
-
-.bullet-list {
-    flex-direction: column;
-    gap: 4px;
-}
-
-.bullet-list li {
-    font-size: 14px;
-    color: #e8ddff;
-}
-
-.bullet-list li::before {
-    content: "• ";
-    color: #ffd76b;
-}
-
-.skills-note {
-    margin-top: 12px;
-    font-size: 13px;
-    color: #c9b7ff;
+.skills-icon-row img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 /* ============================
@@ -377,10 +360,6 @@ h3,
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .skills-grid {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
     .project-body {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -435,5 +414,18 @@ h3,
         border-radius: 50%;
         margin: 0 auto;
         object-fit: cover;
+    }
+
+    .skills-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .skills-icon-row {
+        justify-content: center;
+    }
+
+    .skills-title {
+        font-size: 50px;
     }
 }

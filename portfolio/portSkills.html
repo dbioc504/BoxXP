@@ -2,9 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>SKILLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--  Stylesheets  -->
+    <link rel="stylesheet" href="../css/privacy.css">
+    <link rel="stylesheet" href="../css/portfolioStyles.css">
+
+    <!--  React CDN imports  -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function Navbar({ activePage }) {
+            return (
+                <header className="top-nav">
+                    <nav className="nav-tabs">
+                        <a href="aboutMe.html" className={"nav-link"}>ABOUT ME</a>
+                        <a href="portSkills.html" className={"nav-link active"}>SKILLS</a>
+                        <a href="projects.html" className={"nav-link"}>PROJECTS</a>
+                    </nav>
+                </header>
+            );
+        }
+
+        function App() {
+            return (
+                <div className="page-shell">
+                    <Navbar activePage="skills" />
+                    <SkillsPage />
+                </div>
+            );
+        }
+
+        function SkillsPage() {
+            return (
+                <div className="skills-layout">
+                    <SkillsSectionCoding />
+                    <SkillsSectionSoft />
+                    <SkillsSectionDesign />
+                </div>
+            );
+        }
+
+        function SkillsSectionCoding() {
+            return (
+                <section className="skills-section">
+                    <h1 className="skills-title">CODING</h1>
+                    <h2 className="skills-subtitle">Main Tech Stack:</h2>
+                    <p>Technologies I've built with and feel most comfortable in.</p>
+
+                    <div className="skills-icon-row">
+                        <img src="../images/MainTechIcons/reactNativeIcon.png" alt="reactNativeIcon"/>
+                        <img src="../images/MainTechIcons/expoIcon.png" alt="expoIcon"/>
+                        <img src="../images/MainTechIcons/intellijIcon.png" alt="intellijIcon"/>
+                        <img src="../images/MainTechIcons/webstormIcon.png" alt="webstormIcon"/>
+                        <img src="../images/MainTechIcons/javascriptIcon.png" alt="javascriptIcon"/>
+                        <img src="../images/MainTechIcons/htmlIcon.png" alt="htmlIcon"/>
+                        <img src="../images/MainTechIcons/cssIcon.png" alt="cssIcon"/>
+                        <img src="../images/MainTechIcons/openAI.png" alt="openAIIcon"/>
+                    </div>
+
+                    <h3 className="skills-subtitle">Other:</h3>
+                    <p>Technologies encountered through internships and university I’ve built with out of obligation.</p>
+                    <div className="skills-icon-row">
+                        <img src="../images/otherIcons/pythonIcon.png" alt="pythonIcon"/>
+                        <img src="../images/otherIcons/javaIcon.png" alt="javaIcon"/>
+                        <img src="../images/otherIcons/rIcon.png" alt="rIcon"/>
+                        <img src="../images/otherIcons/noderedIcon.png" alt="noderedIcon"/>
+                        <img src="../images/otherIcons/androidStudioIcon.png" alt="androidStudioIcon"/>
+                        <img src="../images/otherIcons/mqttIcon.png" alt="mqttIcon"/>
+                        <img src="../images/otherIcons/sqlIcon.png" alt="sqlIcon"/>
+                        <img src="../images/otherIcons/supabaseIcon.png" alt="supabaseIcon"/>
+                        <img src="../images/otherIcons/firebaseIcon.png" alt="firebaseIcon"/>
+                        <img src="../images/otherIcons/kotlinIcon.png" alt="kotlinIcon"/>
+                    </div>
+                </section>
+            );
+        }
+
+        function SkillsSectionSoft() {
+            return (
+                <section className="skills-section">
+                    <h1 className="skills-title">SOFT SKILLS</h1>
+                    <p className="skills-text">
+                        While not meaning to sound generic about my soft skills,
+                        I’d like to include I believe my involvement in combat sports
+                        translates to my soft skills.
+                    </p>
+
+                    <ul className="skills-bullet-list">
+                        <li>Incredibly Diligent and Laser Focused</li>
+                        <li>Persistent and Accountable</li>
+                        <li>Goal Driven and Quick Learner</li>
+                    </ul>
+
+                    <p className="skills-text">
+                        As a boxer and former wrestler, I understand the value of
+                        hard work in order to defend oneself, let alone win. These
+                        lessons have helped me progress in programming and creativity.
+                    </p>
+                </section>
+            );
+        }
+
+        function SkillsSectionDesign() {
+            return (
+                <section className="skills-section">
+                    <h1 className="skills-title">DESIGN</h1>
+                    <h2 className="skills-subtitle">Main Programs:</h2>
+                    <p>Before programming, I was involved in music and graphic design.</p>
+
+                    <div className="skills-icon-row">
+                        <img src="../images/designIcons/figmaIcon.png" alt="figmaIcon"/>
+                        <img src="../images/designIcons/frecoIcon.png" alt="frecoIcon"/>
+                        <img src="../images/designIcons/photoshopIcon.png" alt="photoshopIcon"/>
+                        <img src="../images/designIcons/procreateIcon.png" alt="procreateIcon"/>
+                        <img src="../images/designIcons/abletonIcon.png" alt="abletonIcon"/>
+                        <img src="../images/designIcons/logicIcon.png" alt="logicIcon"/>
+                    </div>
+
+                    <h3 className="skills-subtitle">Other:</h3>
+                    <p>Software I've been exposed to for assignments but haven't mastered</p>
+
+                    <div className="skills-icon-row">
+                        <img src="../images/designIcons/illustratorIcon.png" alt="illustratorIcon"/>
+                        <img src="../images/designIcons/indesignIcon.png" alt="indesignIcon"/>
+                    </div>
+
+                </section>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+
+    </script>
 </body>
 </html>
