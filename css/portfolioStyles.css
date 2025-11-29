@@ -37,6 +37,7 @@ h3,
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
+    padding-top: 16px;
     padding-bottom: 16px;
     background: #0f0b16;
 }
@@ -175,12 +176,13 @@ h3,
     font-size: 24px;
     font-weight: 700;
     color: #DFDAEF;
-    margin-top: 0;
+    margin-top: 16px;
     text-align: left;
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 .skills-text {
+    margin-top: 16px;
     font-size: 18px;
     color: #DFDAEF;
     line-height: 1.6;
@@ -194,11 +196,17 @@ h3,
     line-height: 1.4;
 }
 
+.skills-section .skills-title + .skills-text {
+    margin-top: 16px;
+}
+
+
 .skills-icon-row {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin-top: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .skills-icon-row img {
@@ -439,5 +447,24 @@ h3,
 
     .skills-title {
         font-size: 50px;
+    }
+
+    .skills-section,
+    .skills-section h1,
+    .skills-section h2,
+    .skills-section p,
+    .skills-section ul,
+    .skills-section li {
+        text-align: center;
+    }
+
+    .skills-bullet-list {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+
+    .skills-text {
+        margin-top: 16px;
     }
 }
