@@ -150,13 +150,13 @@ h3,
     grid-template-columns: repeat(3, 1fr);
     gap: 60px;
     max-width: 1200px;
-    /*margin: 0 auto;*/
+    margin: 40px auto;
 }
 
 .skills-section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    text-align: left;
 }
 
 .skills-title {
@@ -165,12 +165,19 @@ h3,
     letter-spacing: 0.08em;
 }
 
+.skills-section ul {
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+
 .skills-subtitle {
     font-size: 24px;
     font-weight: 700;
     color: #DFDAEF;
-    margin-top: 10px;
+    margin-top: 0;
     text-align: left;
+    margin-bottom: 8px;
 }
 
 .skills-text {
@@ -180,7 +187,7 @@ h3,
 }
 
 .skills-bullet-list {
-    list-style: flex;
+    list-style: disc;
     padding-left: 24px;
     color: #DFDAEF;
     font-size: 18px;
@@ -198,6 +205,11 @@ h3,
     width: 70px;
     height: 70px;
     object-fit: contain;
+}
+
+.skills-section p {
+    margin: 0;
+    margin-bottom: 8px;
 }
 
 /* ============================
