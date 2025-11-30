@@ -231,10 +231,52 @@ h3,
 }
 
 .project-card {
-    background: #13101f;
     border-radius: 24px;
-    border: 1px solid #5d4f7d;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-card .project-body {
+    transition: max-height 0.35s ease;
+    overflow: hidden;
+    max-height: 2000px;
+}
+
+.project-card.collapsed .project-body {
+    display: none !important;
+    padding: 0 !important;
+}
+
+.project-card .chevron {
+    transition: transform 0.35s ease;
+}
+
+.project-card.collapsed .chevron {
+    transform: rotate(180deg);
+}
+
+/* PWA Style */
+.project-card.pwa {
+    --border: #d2c7e6;
+    --bg: #090920;
+    --title: #fdfd75;
+}
+
+/* iOS Style */
+.project-card.ios {
+    --border: #d3c8e4;
+    --bg: #13111b;
+    --title: #f7e9ad;
+}
+
+/* Apply variables */
+.project-card {
+    border: 2px solid var(--border);
+    background: var(--bg);
+}
+
+.project-label {
+    color: var(--title);
 }
 
 .project-header {
@@ -245,9 +287,8 @@ h3,
 }
 
 .project-label {
-    font-size: 24px;
-    letter-spacing: 0.16em;
-    color: #ffe370;
+    font-family: "Fugaz One", sans-serif;
+    font-size: 48px;
 }
 
 .project-toggle {
@@ -258,7 +299,8 @@ h3,
     border: none;
     background: transparent;
     color: #d7ccff;
-    font-size: 16px;
+    font-size: 24px;
+    font-weight: 500;
     cursor: pointer;
     padding: 4px 0;
 }
@@ -321,14 +363,49 @@ h3,
     color: #ffd76b;
 }
 
-/* collapsed state toggled with JS */
-
 .project-card.collapsed .project-body {
     display: none;
 }
 
 .project-card.collapsed .chevron {
     transform: rotate(180deg);
+}
+
+/* PWA */
+
+.project-card.pwa .project-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 48px;
+    border-top: 1px solid var(--border);
+}
+
+.pwa-media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.pwa-media-grid img {
+    width: 100%;
+    border-radius: 12px;
+    background: #000;
+}
+
+.pwa-description p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #dcd1ff;
+    margin-bottom: 16px;
+}
+
+.pwa-features {
+    list-style: disc;
+    padding-left: 24px;
+    font-size: 16px;
+    color: #e8dfff;
+    line-height: 1.6;
 }
 
 /* ============================

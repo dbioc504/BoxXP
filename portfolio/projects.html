@@ -2,9 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PROJECTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--  Stylesheets  -->
+    <link rel="stylesheet" href="../css/privacy.css">
+    <link rel="stylesheet" href="../css/portfolioStyles.css">
+
+    <!--  React CDN imports  -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 </head>
+
 <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function Navbar({ activePage }) {
+            return (
+                <header className="top-nav">
+                    <nav className="nav-tabs">
+                        <a href="aboutMe.html" className="nav-link">ABOUT ME</a>
+                        <a href="portSkills.html" className="nav-link">SKILLS</a>
+                        <a href="projects.html" className="nav-link active">PROJECTS</a>
+                    </nav>
+                </header>
+            );
+        }
+
+        function ProjectCard({ title, subtitle, variant, body }) {
+            const [open, setOpen] = React.useState(false);
+
+            return (
+                <div className={`project-card ${variant} ${open ? "" : "collapsed"}`}>
+                    <div className="project-header" onClick={() => setOpen(!open)}>
+                        <div className="project-label">{title}</div>
+                        <button className="project-toggle">
+                            {subtitle}
+                            <span className="chevron">{"▲"}</span>
+                        </button>
+                    </div>
+
+                    <div className="project-body">
+                        {body}
+                    </div>
+                </div>
+            );
+        }
+
+        function ProjectsPage() {
+            return (
+                <div className="projects-list">
+                    <ProjectCard
+                        title="BOXXP+"
+                        subtitle="PWA / Web Application"
+                        variant="pwa"
+                        body={
+                            <>
+                                <div className="pwa-media-grid">
+                                    <img src="../images/pwaSS1/pwa1.png" alt="pwa1"/>
+                                    <img src="../images/pwaSS1/pwa2.png" alt="pwa2"/>
+                                    <img src="../images/pwaSS1/pwa3.png" alt="pwa3"/>
+                                    <img src="../images/pwaSS1/pwa4.png" alt="pwa4"/>
+                                    <img src="../images/pwaSS1/pwa5.png" alt="pwa5"/>
+                                    <img src="../images/pwaSS1/pwa6.png" alt="pwa6"/>
+                                </div>
+                            </>
+                        }
+                    />
+                    <ProjectCard
+                        title="BOXXP+"
+                        subtitle="iOS+ Application"
+                        variant="ios"
+                    />
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div className="page-shell">
+                    <Navbar activePage="projects" />
+                    <ProjectsPage />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+
+    </script>
+
 
 </body>
 </html>
