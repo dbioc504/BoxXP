@@ -8,6 +8,7 @@
     <!--  Stylesheets  -->
     <link rel="stylesheet" href="../css/privacy.css">
     <link rel="stylesheet" href="../css/portfolioStyles.css">
+    <link rel="stylesheet" href="../css/portStylesCont.css">
 
     <!--  React CDN imports  -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -36,9 +37,20 @@
 
         function ProjectCard({ title, subtitle, variant, body }) {
             const [open, setOpen] = React.useState(false);
+            const cardRef = React.useRef(null);
+
+            React.useEffect(() => {
+                if (open && cardRef.current) {
+                    const nav = document.querySelector(".top-nav");
+                    const offset = nav ? nav.offsetHeight + 16 : 16;
+                    const rect = cardRef.current.getBoundingClientRect();
+                    const scrollTop = window.scrollY + rect.top - offset;
+                    window.scrollTo({ top: scrollTop, behavior: "smooth" });
+                }
+            }, [open]);
 
             return (
-                <div className={`project-card ${variant} ${open ? "" : "collapsed"}`}>
+                <div ref={cardRef} className={`project-card ${variant} ${open ? "expanded" : "collapsed"}`}>
                     <div className="project-header" onClick={() => setOpen(!open)}>
                         <div className="project-label">{title}</div>
                         <button className="project-toggle">
@@ -56,13 +68,20 @@
 
         function Carousel({ images }) {
             const [index, setIndex] = React.useState(0);
+            const [lightboxIndex, setLightboxIndex] = React.useState(null);
 
             const prev = () => setIndex((index - 1 + images.length) % images.length);
             const next = () => setIndex((index + 1) % images.length);
 
             return (
                 <div className="carousel">
-                    <img src={images[index]} alt="carousel item" className="carousel-img"/>
+                    <img
+                        src={images[index]}
+                        alt="carousel item"
+                        className="carousel-img"
+                        onClick={() => setLightboxIndex(index)}
+                        style={{ cursor: "pointer" }}
+                    />
 
                     <button className="carousel-btn left" onClick={prev}>‹</button>
                     <button className="carousel-btn right" onClick={next}>›</button>
@@ -75,6 +94,36 @@
                             onClick={() => setIndex(i)}
                           />
                         ))}
+                    </div>
+
+                    <Lightbox
+                        images={images}
+                        index={lightboxIndex}
+                        setIndex={setLightboxIndex}
+                        onClose={() => setLightboxIndex(null)}
+                    />
+                </div>
+            );
+        }
+
+        function Lightbox({ images, index, onClose, setIndex }) {
+            if (index === null) return null;
+
+            const prev = () => setIndex((index - 1 + images.length) % images.length);
+            const next = () => setIndex((index + 1) % images.length);
+
+            return (
+                <div className="lightbox-backdrop open" onClick={onClose}>
+                    <div
+                        className="lightbox-content"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <img src={images[index]} className="lightbox-img" alt="lightbox image"/>
+
+                        <button className="lightbox-btn left" onClick={prev}>‹</button>
+                        <button className="lightbox-btn right" onClick={next}>›</button>
+
+                        <button className="lightbox-close" onClick={onClose}>×</button>
                     </div>
                 </div>
             );

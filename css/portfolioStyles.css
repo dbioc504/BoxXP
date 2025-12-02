@@ -33,7 +33,7 @@ h3,
 .top-nav {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 1000001;
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
@@ -231,9 +231,16 @@ h3,
 }
 
 .project-card {
+    border: 2px solid var(--border);
+    background: var(--bg);
     border-radius: 24px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    transition:
+        transform 0.85s ease,
+        width 0.85s ease,
+        max-width 0.85s ease,
+        padding-bottom 0.85s ease;
+    transform-origin: center;
+    position: relative;
 }
 
 .project-card .project-body {
@@ -248,12 +255,18 @@ h3,
 }
 
 .project-card .chevron {
-    transition: transform 0.35s ease;
+    transition: transform 0.50s ease;
 }
 
-.project-card.collapsed .chevron {
+.chevron {
+    transition: transform 0.35s ease;
+    transform: rotate(0deg);
+}
+
+.project-card.expanded .chevron {
     transform: rotate(180deg);
 }
+
 
 /* PWA Style */
 .project-card.pwa {
@@ -315,7 +328,14 @@ h3,
 
 /* project card inner body */
 
+
+
 .project-body {
+    overflow: hidden;
+    max-height: 0;
+    transition:
+        max-height 5s ease,
+        opacity 5s ease;
     display: grid;
     grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
     gap: 24px;
@@ -363,29 +383,46 @@ h3,
     color: #ffd76b;
 }
 
-.project-card.collapsed .project-body {
-    display: none;
-}
-
 .project-card.collapsed .chevron {
     transform: rotate(180deg);
 }
 
 .project-card.expanded {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    margin-left: calc(50% - 50vw + 16px);
+    margin-right: calc(50% - 50vw + 16px);
+    border-radius: 24px;
     padding-bottom: 40px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    transform: none;
+    min-height: calc(100vh - 120px);
+
+    display: flex;
+    flex-direction: column;
 }
+
+.project-card.expanded .project-body {
+    max-height: 2000px; /* large enough */
+    opacity: 1;
+
+    flex: 1;
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
 
 /* PWA */
 
 .project-card.pwa .project-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 32px;
-    padding: 48px;
-    border-top: 1px solid var(--border);
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding: 64px 80px;
+    max-width: 1800px;
+    margin: 0 auto;
 }
 
 .pwa-media-grid {
@@ -417,16 +454,13 @@ h3,
 
 .carousel {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: fit-content;
 }
 
 .carousel-img {
     width: 100%;
-    height: auto;
-    border-radius: 14px;
+    height: 100%;
     object-fit: cover;
-    background: #000;
 }
 
 .carousel-btn {
