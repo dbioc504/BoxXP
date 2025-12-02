@@ -54,6 +54,32 @@
             );
         }
 
+        function Carousel({ images }) {
+            const [index, setIndex] = React.useState(0);
+
+            const prev = () => setIndex((index - 1 + images.length) % images.length);
+            const next = () => setIndex((index + 1) % images.length);
+
+            return (
+                <div className="carousel">
+                    <img src={images[index]} alt="carousel item" className="carousel-img"/>
+
+                    <button className="carousel-btn left" onClick={prev}>‹</button>
+                    <button className="carousel-btn right" onClick={next}>›</button>
+
+                    <div className="carousel-dots">
+                        {images.map((_, i) => (
+                          <div
+                            key={i}
+                            className={`dot ${i === index ? "active" : ""}`}
+                            onClick={() => setIndex(i)}
+                          />
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
         function ProjectsPage() {
             return (
                 <div className="projects-list">
@@ -63,14 +89,16 @@
                         variant="pwa"
                         body={
                             <>
-                                <div className="pwa-media-grid">
-                                    <img src="../images/pwaSS1/pwa1.png" alt="pwa1"/>
-                                    <img src="../images/pwaSS1/pwa2.png" alt="pwa2"/>
-                                    <img src="../images/pwaSS1/pwa3.png" alt="pwa3"/>
-                                    <img src="../images/pwaSS1/pwa4.png" alt="pwa4"/>
-                                    <img src="../images/pwaSS1/pwa5.png" alt="pwa5"/>
-                                    <img src="../images/pwaSS1/pwa6.png" alt="pwa6"/>
-                                </div>
+                                <Carousel
+                                    images={[
+                                        "../images/pwaSS1/pwa1.png",
+                                        "../images/pwaSS1/pwa2.png",
+                                        "../images/pwaSS1/pwa3.png",
+                                        "../images/pwaSS1/pwa4.png",
+                                        "../images/pwaSS1/pwa5.png",
+                                        "../images/pwaSS1/pwa6.png",
+                                    ]}
+                                />
                             </>
                         }
                     />
