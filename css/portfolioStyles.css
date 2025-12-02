@@ -371,6 +371,13 @@ h3,
     transform: rotate(180deg);
 }
 
+.project-card.expanded {
+    padding-bottom: 40px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 /* PWA */
 
 .project-card.pwa .project-body {
