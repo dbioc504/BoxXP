@@ -55,7 +55,7 @@
                         <div className="project-label">{title}</div>
                         <button className="project-toggle">
                             {subtitle}
-                            <span className="chevron">{"▲"}</span>
+                            <span className="chevron">{"▼"}</span>
                         </button>
                     </div>
 
@@ -137,18 +137,52 @@
                         subtitle="PWA / Web Application"
                         variant="pwa"
                         body={
-                            <>
-                                <Carousel
-                                    images={[
-                                        "../images/pwaSS1/spwa1.png",
-                                        "../images/pwaSS1/spwa2.png",
-                                        "../images/pwaSS1/spwa3.png",
-                                        "../images/pwaSS1/spwa4.png",
-                                        "../images/pwaSS1/spwa5.png",
-                                        "../images/pwaSS1/spwa6.png",
-                                    ]}
-                                />
-                            </>
+                            <div className="pwa-three-col">
+
+                                <div className="pwa-left">
+                                    <p>
+                                        BoxXP+ started from a pretty personal place — my coach had to take
+                                        some time away from training, and I still wanted to keep practicing
+                                        with the structure he taught me. I didn’t want to lose that momentum,
+                                        so I began creating a tool that could guide me through the same skills
+                                        and combos on my own.
+                                    </p>
+                                    <p>
+                                        I launched the first version as a PWA so I could get it into my hands
+                                        as fast as possible without touching native code or waiting on App Store
+                                        approvals. It was meant to be super minimal, just enough to keep me
+                                        consistent. Over time, it grew into something much bigger: a real,
+                                        fully featured training app.
+                                    </p>
+                                </div>
+
+                                <div className="pwa-center">
+                                    <Carousel
+                                        images={[
+                                            "../images/pwaSS1/spwa1.png",
+                                            "../images/pwaSS1/spwa2.png",
+                                            "../images/pwaSS1/spwa3.png",
+                                            "../images/pwaSS1/spwa4.png",
+                                            "../images/pwaSS1/spwa5.png",
+                                            "../images/pwaSS1/spwa6.png",
+                                        ]}
+                                    />
+                                </div>
+
+                                <div className="pwa-right">
+                                    <ul className="pwa-features">
+                                        <li>Unified Firestore + offline cache system.</li>
+                                        <li>One-tap email/Google authentication.</li>
+                                        <li>Drag-and-drop combo creator with persistent IDs.</li>
+                                        <li>Configurable boxing timer with guardrails.</li>
+                                        <li>Wake-lock timer with audio cues and UI syncing.</li>
+                                        <li>
+                                            Smart skill/workout editors enforcing balanced plans and
+                                            full muscle-group coverage.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         }
                     />
                     <ProjectCard
