@@ -27,18 +27,19 @@ h3,
 .page-shell {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 16px 64px;
+    padding: 0 16px 64px;
 }
 
 .top-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
     position: sticky;
     top: 0;
     z-index: 1000001;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 32px;
-    padding-top: 16px;
-    padding-bottom: 16px;
     background: #0f0b16;
 }
 
@@ -421,6 +422,14 @@ h3,
     margin: 0 auto;
 }
 
+.project-card.ios .project-body {
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    padding: 15px 25px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
 .pwa-media-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -459,6 +468,7 @@ h3,
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     gap: 20px;
 }
 
@@ -489,13 +499,16 @@ h3,
 
 .carousel {
     position: relative;
-    width: fit-content;
+    max-width: 480px;
+    width: 100%;
 }
 
 .carousel-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 520px;
+    border-radius: 12px;
+    object-fit: contain;
 }
 
 .carousel-btn {
@@ -542,6 +555,41 @@ h3,
 
 .dot.active {
     background: #ffd76b;
+}
+
+.project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid currentColor;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.project-card.pwa .project-link-btn {
+    color: #fdfd75;
+    background: #0B0044;
+}
+
+.project-card.pwa .project-link-btn:hover {
+    background: rgba(253, 253, 117, 0.16);
+    transform: translateY(-1px);
+}
+
+.project-card.ios .project-link-btn {
+    color: #f7e9ad;
+    background: 07040A;
+}
+
+.project-card.ios .project-link-btn:hover {
+    background: rgba(247, 233, 173, 0.16);
+    transform: translateY(-1px);
 }
 
 /* ============================

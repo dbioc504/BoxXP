@@ -154,6 +154,14 @@
                                         consistent. Over time, it grew into something much bigger: a real,
                                         fully featured training app.
                                     </p>
+                                    <a
+                                        className="project-link-btn"
+                                        href="https://boxxp.io/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Open BOXXP.io Web App
+                                    </a>
                                 </div>
 
                                 <div className="pwa-center">
@@ -189,9 +197,72 @@
                         title="BOXXP+"
                         subtitle="iOS+ Application"
                         variant="ios"
+                        body={iOSBody()}
                     />
                 </div>
             );
+        }
+
+        function iOSBody() {
+            return (
+                <div className="pwa-three-col">
+
+                    <div className="pwa-left">
+                        <p>
+                            After launching the PWA version, I wanted to bring the full BoxXP+
+                            experience to native iOS so fighters could get smoother animations,
+                            offline performance, richer gestures, and true app-store availability.
+                        </p>
+
+                        <p>
+                            I rebuilt the app using React Native and Expo EAS with a modular
+                            TypeScript architecture. The goal was to ship something polished,
+                            scalable, and App-Store compliant while keeping the brand identity and
+                            training flow consistent across platforms.
+                        </p>
+
+                        <p>
+                            The iOS build supports secure authentication, real-time skill and combo
+                            storage, dynamic timers, and a fully animated drag-and-drop Combo
+                            Builder engineered without external DnD libraries.
+                        </p>
+                        <a
+                            className="project-link-btn"
+                            href="https://apps.apple.com/us/app/boxxp/id6755072881"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Open BOXXP+ in the App Store
+                        </a>
+                    </div>
+
+                    <div className="pwa-center">
+                        <Carousel
+                            images={[
+                                "../images/iOSss/iOSss1.jpeg",
+                                "../images/iOSss/iOSss2.jpg",
+                                "../images/iOSss/iOSss3.jpg",
+                                "../images/iOSss/iOSss4.jpg",
+                                "../images/iOSss/iOSss5.jpg",
+                                "../images/iOSss/iOSss6.jpg",
+                            ]}
+                        />
+                    </div>
+
+                    <div className="pwa-right">
+                        <ul className="pwa-features">
+                            <li>Built with React Native + Expo SDK 54 using modular TypeScript.</li>
+                            <li>Integrated Supabase backend with secure Auth flows (Apple, Google, Magic Link).</li>
+                            <li>Full CRUD for Skills and Combos with optimistic UI updates.</li>
+                            <li>Reanimated-powered drag-and-drop system, no external libraries.</li>
+                            <li>Custom boxing round timer with precise interval control and audio cues.</li>
+                            <li>Designed App-Store-ready branding, screenshots, and metadata.</li>
+                            <li>Native feel animations and single-hand usability design.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            )
         }
 
         function App() {
@@ -199,6 +270,23 @@
                 <div className="page-shell">
                     <Navbar activePage="projects" />
                     <ProjectsPage />
+                    <Footer />
+                </div>
+            );
+        }
+
+        function Footer() {
+            return (
+                <div className="site-footer">
+                    <div className="footer-links">
+                        <a className="footer-icon-link" href="https://www.linkedin.com/in/dominickbioc" target="_blank">LinkedIn</a>
+                        <a className="footer-icon-link" href="https://github.com/dbioc504" target="_blank">GitHub</a>
+                    </div>
+
+                    <div className="footer-copy">
+                        CONTACT EMAIL:<br />
+                        DOMINICKBIOC96@GMAIL.COM
+                    </div>
                 </div>
             );
         }

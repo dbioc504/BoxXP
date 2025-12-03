@@ -37,6 +37,7 @@
                 <div className="page-shell">
                     <Navbar activePage="skills" />
                     <SkillsPage />
+                    <Footer />
                 </div>
             );
         }
@@ -136,6 +137,22 @@
 
                 </section>
             )
+        }
+
+        function Footer() {
+            return (
+                <div className="site-footer">
+                    <div className="footer-links">
+                        <a className="footer-icon-link" href="https://www.linkedin.com/in/dominickbioc" target="_blank">LinkedIn</a>
+                        <a className="footer-icon-link" href="https://github.com/dbioc504" target="_blank">GitHub</a>
+                    </div>
+
+                    <div className="footer-copy">
+                        CONTACT EMAIL:<br />
+                        DOMINICKBIOC96@GMAIL.COM
+                    </div>
+                </div>
+            );
         }
 
         const root = ReactDOM.createRoot(document.getElementById("root"));
