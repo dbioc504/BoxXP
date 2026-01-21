@@ -20,7 +20,7 @@ export type PanelRun = {
     domain: Domain;
     question: string;
     answer: string;
-    citation: Citation[];
+    citations: Citation[];
     createdAt: number;
     latencyMs: number;
 };
