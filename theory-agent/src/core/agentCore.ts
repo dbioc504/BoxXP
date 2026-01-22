@@ -1,4 +1,4 @@
-import type { Citation, Domain, PanelRun, RuleChunk } from "./types";
+﻿import type { Citation, Domain, PanelRun, RuleChunk } from "./types";
 import { retrieveTopRules } from "./retriever";
 
 function makeId(prefix: string) {
@@ -7,11 +7,11 @@ function makeId(prefix: string) {
 
 function summarizeFromRules(question: string, rules: RuleChunk[]) {
     if (rules.length === 0) {
-        return "I do not have enough rules saved fro this domain yet. Add more rules, and try again"
+        return "I do not have enough rules saved for this domain yet. Add more rules, and try again"
     }
 
     const top = rules.slice(0, 3);
-    const bullets = top.map((r) => `• ${r.title}: ${r.body.slice(0,140)}...`).join("\n");
+    const bullets = top.map((r) => `- ${r.title}: ${r.body.slice(0,140)}...`).join("\n");
 
     return `Using your saved rules, here is a grounded answer.\n\n${bullets}\n\nNext step: add an example for this question so the agent can answer more specifically.`;
 }
