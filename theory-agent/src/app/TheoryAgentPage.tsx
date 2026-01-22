@@ -33,13 +33,35 @@ export function TheoryAgentPage() {
     );
 
     async function handleSubmit(question: string) {
-        const [tac, str] = await Promise.all([
-            runDomainAnswer({ domain: "tactical", question, rules }),
-            runDomainAnswer({ domain: "strength", question, rules }),
-        ]);
+        try {
+            const [tac, str] = await Promise.all([
+                runDomainAnswer({ domain: "tactical", question, rules }),
+                runDomainAnswer({ domain: "strength", question, rules }),
+            ]);
 
-        setTacticalRun(tac);
-        setStrengthRun(str);
+            setTacticalRun(tac);
+            setStrengthRun(str);
+        } catch (err) {
+            console.error("Agent run failed:", err);
+            setTacticalRun({
+                id: "error_tac",
+                domain: "tactical",
+                question,
+                answer: "Something went wrong generating tactical answer. Check console",
+                citations: [],
+                createdAt: Date.now(),
+                latencyMs: 0
+            });
+            setStrengthRun({
+                id: "error_str",
+                domain: "strength",
+                question,
+                answer: "Something went wrong generating the strength answer. Check console for details.",
+                citations: [],
+                createdAt: Date.now(),
+                latencyMs: 0,
+            });
+        }
     }
 
     return (

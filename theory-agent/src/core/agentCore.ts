@@ -7,13 +7,18 @@ function makeId(prefix: string) {
 
 function summarizeFromRules(question: string, rules: RuleChunk[]) {
     if (rules.length === 0) {
-        return "I do not have enough rules saved for this domain yet. Add more rules, and try again"
+        return `Question: ${question}\n\nI do not have enough rules saved for this domain yet. Add more rules, then try again.`
     }
 
-    const top = rules.slice(0, 3);
-    const bullets = top.map((r) => `- ${r.title}: ${r.body.slice(0,140)}...`).join("\n");
+    const top = rules.slice(0,3);
+    const matchedTitles = top.map((r) => r.title).join(" ");
 
-    return `Using your saved rules, here is a grounded answer.\n\n${bullets}\n\nNext step: add an example for this question so the agent can answer more specifically.`;
+    const bullets = top
+        .map((r) => `• ${r.title}: ${r.body.slice(0, 140)}...`)
+        .join("\n");
+
+    return `Question: ${question}\nMatched rules: ${matchedTitles}\n\n${bullets}\n\nNext step: add an example for this question so the agent can answer more specifically.`;
+
 }
 
 function citationsFromRules(rules: RuleChunk[]): Citation[] {

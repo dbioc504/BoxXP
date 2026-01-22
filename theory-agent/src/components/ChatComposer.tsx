@@ -7,6 +7,7 @@ export function ChatComposer(props: {
 
     function submit() {
         const v = text.trim();
+        console.log("submit:", v);
         if (!v) return;
         props.onSubmit(v);
         setText("");
