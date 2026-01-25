@@ -65,9 +65,9 @@ export function RuleModal(props: {
                     maxWidth: 520,
                     borderRadius: 12,
                     background: "rgba(120,110,170,0.55)",
-                    border: "1px solid rgba(255,255,255,0.16)",
+                    // border: "1px solid rgba(255,255,255,0.16)",
                     padding: 14,
-                    color: "white",
+                    // color: "white",
                 }}
             >
                 <div style={{ textAlign: "center", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>

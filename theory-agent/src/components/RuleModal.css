@@ -1,0 +1,11 @@
+.ruleModal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 70px;
+    background: #423C5D;
+    border-radius: 14px;
+}
+

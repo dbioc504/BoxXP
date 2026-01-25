@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ChatComposer.css";
 
 export function ChatComposer(props: {
     onSubmit: (text: string) => void;
@@ -14,30 +15,12 @@ export function ChatComposer(props: {
     }
 
     return (
-        <div
-            style={{
-                marginTop: 16,
-                padding: 14,
-                borderRadius: 16,
-                border: "1px solid rgba(255,255,255,0.10)",
-                background: "rgba(20,20,28,0.7)",
-                display: "flex",
-                gap: 12,
-                alignItems: "center",
-            }}
-        >
+        <div className="promptBox">
             <input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Chat here"
-                style={{
-                    flex: 1,
-                    background: "transparent",
-                    border: "none",
-                    outline: "none",
-                    color: "white",
-                    fontSize: 16,
-                }}
+                className="userText"
                 onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                         e.preventDefault();
@@ -47,14 +30,7 @@ export function ChatComposer(props: {
             />
             <button
                 onClick={submit}
-                style={{
-                    padding: "10px 14px",
-                    borderRadius: 12,
-                    border: "1px solid rgba(255,255,255,0.14)",
-                    background: "rgba(0,0,0,0.25)",
-                    color: "white",
-                    cursor: "pointer",
-                }}
+                className="submitBtn"
             >
                 Send
             </button>

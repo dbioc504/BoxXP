@@ -1,0 +1,28 @@
+.promptBox {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 16px;
+    /*border: 1px solid var(--text);*/
+    background: var(--bg-1);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.userText {
+    flex: 1px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.submitBtn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--text);
+    background: var(--bg-1);
+    color: var(--text);
+    cursor: pointer;
+}

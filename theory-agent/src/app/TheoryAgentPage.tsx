@@ -129,7 +129,7 @@ export function TheoryAgentPage() {
                             bottom: 16,
                             borderRadius: 12,
                             padding: "8px 12px",
-                            border: "1px solid rgba(255,255,255,0.14)",
+                            // border: "1px solid rgba(255,255,255,0.14)",
                             background: "rgba(0,0,0,0.25)",
                             color: "white",
                             cursor: "pointer",

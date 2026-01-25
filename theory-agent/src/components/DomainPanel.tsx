@@ -1,4 +1,5 @@
 import type { PanelRun } from "../core/types";
+import "../styles/ui.css";
 
 export function DomainPanel(props: {
     title: string;
@@ -7,28 +8,9 @@ export function DomainPanel(props: {
 }) {
     if (!props.run) {
         return (
-            <div
-                style={{
-                    position: "relative",
-                    borderRadius: 14,
-                    background: "rgba(30,30,45,0.65)",
-                    border: "1px solid rgba(255,255,255,0.10)",
-                    padding: 16,
-                    minHeight: 420,
-                    color: "white",
-                }}
-            >
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: 14 }}>
-                    <div
-                        style={{
-                            padding: "6px 14px",
-                            borderRadius: 10,
-                            border: "1px solid rgba(255,255,255,0.12)",
-                            background: "rgba(0,0,0,0.25)",
-                            fontSize: 14,
-                            letterSpacing: 1,
-                        }}
-                    >
+            <div className="card" style={{ minHeight: 420 }}>
+                <div className="centerRow" style={{ marginBottom: 14 }}>
+                    <div className="pill" style={{ marginBottom: 14 }}>
                         {props.title}
                     </div>
                 </div>
@@ -45,28 +27,9 @@ export function DomainPanel(props: {
     const run = props.run;
 
     return (
-        <div
-            style={{
-                position: "relative",
-                borderRadius: 14,
-                background: "rgba(30,30,45,0.65)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                padding: 16,
-                minHeight: 420,
-                color: "white",
-            }}
-        >
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 14 }}>
-                <div
-                    style={{
-                        padding: "6px 14px",
-                        borderRadius: 10,
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "rgba(0,0,0,0.25)",
-                        fontSize: 14,
-                        letterSpacing: 1,
-                    }}
-                >
+        <div className="card" style={{ minHeight: 420 }}>
+            <div className="centerRow" style={{ marginBottom: 14 }}>
+                <div className="pill" style={{ marginBottom: 14 }}>
                     {props.title}
                 </div>
             </div>
