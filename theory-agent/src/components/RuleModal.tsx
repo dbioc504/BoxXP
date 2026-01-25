@@ -55,7 +55,7 @@ export function RuleModal(props: {
                 justifyContent: "center",
                 alignItems: "flex-start",
                 paddingTop: 70,
-                background: "rgba(0,0,0,0.35)",
+                background: "rgba(0,0,0,1)",
                 borderRadius: 14,
             }}
         >
