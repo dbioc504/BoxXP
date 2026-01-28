@@ -5,6 +5,7 @@ import { ChatComposer } from "../components/ChatComposer";
 import { RuleModal } from "../components/RuleModal";
 import type { PanelRun, RuleChunk } from "../core/types";
 import { runDomainAnswer } from "../core/agentCore";
+import "./TheoryAgentPage.css"
 
 function loadRules(): RuleChunk[] {
     try {
@@ -103,37 +104,14 @@ export function TheoryAgentPage() {
     }
 
     return (
-        <div
-            style={{
-                minHeight: "100vh",
-                padding: 24,
-                background: "radial-gradient(circle at top, rgba(35,35,55,0.9), rgba(10,10,15,1))",
-            }}
-        >
+        <div className="fullPage">
             <HeaderBar />
 
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 18,
-                    alignItems: "stretch",
-                }}
-            >
+            <div className="domainGrid">
                 <DomainPanel title="TACTICAL" run={tacticalRun}>
                     <button
                         onClick={() => setShowTacModal(true)}
-                        style={{
-                            position: "absolute",
-                            left: 16,
-                            bottom: 16,
-                            borderRadius: 12,
-                            padding: "8px 12px",
-                            // border: "1px solid rgba(255,255,255,0.14)",
-                            background: "rgba(0,0,0,0.25)",
-                            color: "white",
-                            cursor: "pointer",
-                        }}
+                        className="saveRuleButton"
                     >
                         Save Rule
                     </button>
@@ -151,17 +129,7 @@ export function TheoryAgentPage() {
                 <DomainPanel title="STRENGTH AND CONDITIONING" run={strengthRun}>
                     <button
                         onClick={() => setShowStrModal(true)}
-                        style={{
-                            position: "absolute",
-                            left: 16,
-                            bottom: 16,
-                            borderRadius: 12,
-                            padding: "8px 12px",
-                            border: "1px solid rgba(255,255,255,0.14)",
-                            background: "rgba(0,0,0,0.25)",
-                            color: "white",
-                            cursor: "pointer",
-                        }}
+                        className="saveRuleButton"
                     >
                         Save Rule
                     </button>

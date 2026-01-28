@@ -1,0 +1,28 @@
+.fullPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: var(--grad-1);
+}
+
+.domainGrid {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.saveRuleButton {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    border-radius: 12px;
+    padding: 8px 12px;
+    border: none;
+    background: var(--grad-1);
+    color: var(--text);
+    cursor: pointer;
+}
